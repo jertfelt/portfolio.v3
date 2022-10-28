@@ -3,6 +3,7 @@ import { ThemeProvider, } from "styled-components";
 import GlobalStyle from "../components/styles/GlobalStyle";
 import '../styles/globals.css'
 
+
 const maintheme = {
   fontSizes: {
     small:"12px",
@@ -25,13 +26,11 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
   <>
-
   <ThemeProvider theme={maintheme}>
   <Component {...pageProps} />
+
   <GlobalStyle></GlobalStyle>
   </ThemeProvider>
-
-   
   </>
  )
 }

@@ -1,10 +1,7 @@
 import styled from "styled-components"
 import Head from "next/head"
+import Nav from "../components/Nav"
 
-
-const Title = styled.h1`
-
-text-transform: uppercase`
 
 export default function Home() {
   <Head>
@@ -22,9 +19,8 @@ export default function Home() {
 </Head>
   return (
   <>
-  <Title 
-  className="bread-font">
-    Hej</Title>
+  <Nav/>
+ 
   </>
   )
 }
