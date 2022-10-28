@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
     "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -17,5 +18,17 @@
   "devDependencies": {
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.0"
-  }
+  },
+  "description": "This is a reboot of jertfelt.se, in NEXTJS format.",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jertfelt/portfolio.v3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jertfelt/portfolio.v3/issues"
+  },
+  "homepage": "https://github.com/jertfelt/portfolio.v3#readme"
 }
