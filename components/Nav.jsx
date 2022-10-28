@@ -55,15 +55,6 @@ height:3em;
 const MainMenu = styled.ul`
 list-style: none;
 
-@media only screen and (max-width: 1070px){
-  max-width: 30%;
-  margin-left: 1rem;
-}
-
-@media only screen and (min-width: 991px){
-  max-width: 20%;
-  margin-left: 0;
-}
 `
 const HamburgerIcon = styled(Image)`
 margin-left:3rem;
@@ -72,6 +63,56 @@ max-height:2em;
 
 `
 
+const DropDownMenu = styled.ul`
+background-color: ${({theme}) => theme.colors.white};
+color: ${({theme}) => theme.colors.purple};
+display: flex;
+flex-direction: column;
+position: absolute;
+z-index: 99;
+padding:30px;
+top:74px;
+right:0px;
+list-style: none;
+font-size: ${({theme}) => theme.fontSizes.medium};
+font-weight:bold;
+
+a{
+  text-decoration:none;
+  text-align:left;
+  &:hover{
+    color:${({theme}) => theme.colors.vividblue};
+  }
+  &:focus{
+    color:${({theme}) => theme.colors.vividblue};
+  }
+  &:active{
+    color:${({theme}) => theme.colors.black};
+  }
+}
+span{
+  display:flex;
+  width:30%;
+  height:18px;
+  cursor:pointer;
+  margin-top:-1rem;
+  margin-bottom:3rem;
+  font-size:18px;
+  color:${({theme}) => theme.colors.black}
+}
+span:hover{ 
+    color:${({theme}) => theme.colors.vividblue};
+}
+span:focus{
+  color:${({theme}) => theme.colors.vividblue};
+}
+span:focus{
+  font-size:20px;
+}
+`
+const MenuLinks = styled(Link)`
+font-size: 2rem;
+`
 
 const Line = styled.span`
 height: 1px;
@@ -111,14 +152,28 @@ return (
   loading="lazy"
   alt="Öppna menyn här"
   onClick={toggleMenu}/>
-}
-  <>
-    {menuOpen && 
-    <>NÄ MEN HEJ</>
-      }
-  </>
+  }
   </MainMenu>
-
+  {menuOpen && 
+    <DropDownMenu>
+     <span 
+      onClick={toggleMenu}
+      loading="lazy"
+      aria-label="button"
+      alt="Stäng menyn här">
+      <p>X</p>
+      </span>
+      <MenuLinks href="/"
+      >Hem</MenuLinks>
+      <MenuLinks href="/CV">
+        CV
+      </MenuLinks>
+      <MenuLinks href="/Cases">
+        Cases
+      </MenuLinks>
+      
+    </DropDownMenu>
+      }
     </ContainerFlexSplit>
     </Container>
 
