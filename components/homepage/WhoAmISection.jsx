@@ -40,6 +40,8 @@ const BigNumber = styled.h3`
 font-size:${({theme}) => theme.fontSizes.xlarge};
 line-height:1em;
 color:${({theme}) => theme.colors.lightblue};
+font-family: Arya;
+font-weight: 900;
 
 `
 const Text = styled.p`

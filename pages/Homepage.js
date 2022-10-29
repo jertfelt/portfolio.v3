@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import HeroContent from "../components/homepage/Hero";
 import WhoAmI from "../components/homepage/WhoAmISection";
+import WordsAboutMe from "../components/homepage/WordsAboutMeSection";
 
 const wh = (w, h = w) => `
   width: ${w};
@@ -27,7 +28,7 @@ const Homepage = () => {
   <MainHP>
    <HeroContent/>
   <WhoAmI/>
-
+    <WordsAboutMe></WordsAboutMe>
   
   </MainHP>  );
 }
