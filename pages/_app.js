@@ -48,7 +48,8 @@ const maintheme = {
     xlarge: "100%"
   },
   borderradius: {
-   first:"86% 14% 52% 48% / 50% 52% 48% 50%"
+   first:"86% 14% 52% 48% / 50% 52% 48% 50%",
+   second:"45% 55% 52% 48% / 50% 25% 75% 50%"
   },
   colors: {
     grey: "#282828",
