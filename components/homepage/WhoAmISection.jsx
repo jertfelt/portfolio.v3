@@ -3,6 +3,7 @@ import { Container } from "../styles/Container.styled";
 import { Grid } from "../styles/Grid.styled";
 import { Line } from "../styles/Line.styled";
 import { TwoColumns, Column } from "../styles/TwoColumns.styled";
+import CountingUp from "./counter";
 
 const MainSection = styled.section`
 margin-bottom:${({theme}) => theme.paddingSizes.small};
@@ -68,9 +69,11 @@ const WhoAmI = () => {
     <Container
     xlarge>
       <Grid>
-        <div>
-        <h3>års erfarenhet som digital formgivare, både som frilans och anställd. </h3>
-        </div>
+        <CountingUp
+         number = {10}
+         text = {"års erfarenhet som digital formgivare, både som frilans och anställd."}
+         />
+   
         <div>
         <h3>års erfarenhet som digital formgivare, både som frilans och anställd. </h3>
         </div>
