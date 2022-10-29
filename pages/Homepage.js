@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import profilepic from "../public/img/tova-linkedin-portratt.png"
 
+
 const wh = (w, h = w) => `
   width: ${w};
   height: ${h};
@@ -89,6 +90,7 @@ div {
 const Hideable = styled.div`
 overflow: hidden;
 margin-bottom: ${({theme}) => theme.paddingSizes.medium};
+
 `
 
 const Heading = styled.h1`
@@ -114,11 +116,13 @@ const Homepage = () => {
     <HeroSection>
     <div>
       <Hideable>
+        
         <Heading
         title="Multidisciplinär"
         className="headingfont">
           Multidisciplinär
         </Heading>
+    
       </Hideable>
    
      
