@@ -77,6 +77,8 @@ list-style: none;
 font-size: ${({theme}) => theme.fontSizes.medium};
 font-weight:bold;
 
+
+
 a{
   text-align: right;
   margin-bottom:1rem;

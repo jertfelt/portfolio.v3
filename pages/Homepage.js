@@ -72,6 +72,32 @@ width:40em;
 border-radius: ${({theme}) => theme.borderradius.first}
 `
 
+const HeroSection = styled.section`
+margin-top:2rem;
+margin-bottom: ${({theme}) => theme.paddingSizes.medium};
+padding-top: ${({theme}) => theme.paddingSizes.large};
+min-height: 50vh;
+width:100%;
+position: relative;
+z-index: 2;
+display: block;
+div {
+  margin: ${({theme}) => theme.paddingSizes.medium};
+  width: ${({theme}) => theme.containers.xlarge};
+}
+`
+const Hideable = styled.div`
+overflow: hidden;
+margin-bottom: ${({theme}) => theme.paddingSizes.medium};
+`
+
+const Heading = styled.h1`
+font-size: 4.5rem;
+line-height: ${({theme}) => theme.fontSizes.xlarge};
+text-transform: uppercase;
+color: ${({theme}) => theme.colors.lightblue}
+`
+
 const Homepage = () => {
 
   return (
@@ -85,6 +111,19 @@ const Homepage = () => {
     />
     </Hero>
     </PageWrapper>
+    <HeroSection>
+    <div>
+      <Hideable>
+        <Heading
+        title="Multidisciplinär"
+        className="headingfont">
+          Multidisciplinär
+        </Heading>
+      </Hideable>
+   
+     
+    </div>
+    </HeroSection>
 
   </MainHP>  );
 }
