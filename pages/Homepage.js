@@ -26,9 +26,9 @@ const Homepage = () => {
 
   return (
   <MainHP>
-   <HeroContent/>
+  <HeroContent/>
   <WhoAmI/>
-    <WordsAboutMe></WordsAboutMe>
+  <WordsAboutMe/>
   
   </MainHP>  );
 }
