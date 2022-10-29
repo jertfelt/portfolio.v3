@@ -5,6 +5,11 @@ import Image from "next/image"
 import nextbutt from "../../public/icons/forwardbuttwhite.png";
 import { Button } from "../styles/Button.styled";
 import { Container } from "../styles/Container.styled";
+import { quotesAboutMe } from "../../data/quotes";
+
+
+
+
 
 const flexInst = ({direction, align, justify}) => `
 display: flex;
@@ -62,17 +67,39 @@ ${flexInst ({direction: "row", justify: "space-between"})}
 `
 // transition: all 0.5s ease-out;
 const Carousel = styled.article`
-background-color:black;
 height: 400px;
 max-height:80vh;
 width:80%;
+p {
+  font-family: Roboto;
+  font-size:${({theme}) => theme.fontSizes.medium};
+}
 `
-
+const Headline = styled.h3`
+font-family: Arya;
+color:${({theme}) => theme.colors.lightblue};
+font-size:${({theme}) => theme.fontSizes.xlarge};
+text-decoration: underline;
+margin-bottom:-1rem;
+`
+const QuoteLine = styled.h3`
+font-family: Roboto;
+color:${({theme}) => theme.colors.white};
+font-size:${({theme}) => theme.fontSizes.large};
+font-style: italic;
+`
 const WordsAboutMe = () => {
   const [quote, setQuote] = useState([])
 
+
+  let test2 = quotesAboutMe.filter(item => (item.id === 2))
+  console.log("filter", test2)
+  let test3 = test2.map(item => (item.headline))
+  console.log("testing", test3)
+
   useEffect(() => {
-    //fetch quotes
+    const first = quotesAboutMe.filter(item => (item.id === 1))
+    setQuote(first)
   }, [])
 
   const nextQuote = () => {
@@ -80,12 +107,21 @@ const WordsAboutMe = () => {
     //i++
   }
 
+
+
   return ( 
   <WordsSection>
   <Container xlarge>
   <Row>
   <Carousel>
-
+  {quote.map(item => (
+  <div
+  key={item.id}>
+  <Headline>{item.headline}</Headline>
+  <QuoteLine>"{item.quote}"</QuoteLine>
+  <p>{item.name}</p>   
+  </div>
+  ) )}
   </Carousel>
   <Button
   next
