@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Container } from "../styles/Container.styled";
 import { Grid } from "../styles/Grid.styled";
+import { Line } from "../styles/Line.styled";
+import { TwoColumns, Column } from "../styles/TwoColumns.styled";
 
 const MainSection = styled.section`
 margin-bottom:${({theme}) => theme.paddingSizes.small};
@@ -20,6 +22,19 @@ h2{
   line-height: 55px;
 }
 `
+const Quote = styled.h3`
+color: ${({theme}) => theme.colors.lightblue};
+font-size: ${({theme}) => theme.fontSizes.mediumlarge};
+font-family: Arya;
+line-height:1.1em;
+text-align: left;
+`
+const Numbers = styled.section`
+margin-bottom: 5em;
+font-size:  ${({theme}) => theme.fontSizes.medium};
+font-family: Roboto;
+padding-left:4rem;
+`
 
 const WhoAmI = () => {
   return ( 
@@ -32,11 +47,39 @@ const WhoAmI = () => {
      </About>
       </Grid>
       <TwoColumns>
-        <article>
-          <p></p>
-        </article>
+        <Column 
+        whoamI_1>
+          <p>
+            Mitt namn är Tova Jertfelt. Jag har en kandidatexamen från Konstfack i Grafisk Design & Illustration, och har sedan dess jobbat med bland annat webb, copy, kommunikation, som digital producent, som webb- & bildredaktör, fotograf, skribent, layoutare och som frilansande grafisk formgivare, projektledare, konstnär, illustratör och ibland animatör. Jag har till exempel formgivit grafiska profiler (med UX-perspektiv), gjort logotyper, skapat mallar åt sociala medier, formgett årsrapporter, ritat serier & illustrerat nyheter i tidningar.
+          </p>
+          <p>
+          Trots kreativa, utmanande och roliga yrkesroller så fann jag mig själv sökandes. Till slut hittade jag hem: jag älskar programmering!
+          </p>
+        </Column>
+        <Column
+        whoamI_2>
+          <Quote>Jag älskar att jag nu kan få kombinera mina tre styrkor: problemlösning, kreativitet, osläckta nyfikenhet.</Quote>
+        </Column>
       </TwoColumns>
     </Container>
+    <Line></Line>
+    <Numbers>
+     
+    <Container
+    xlarge>
+      <Grid>
+        <div>
+        <h3>års erfarenhet som digital formgivare, både som frilans och anställd. </h3>
+        </div>
+        <div>
+        <h3>års erfarenhet som digital formgivare, både som frilans och anställd. </h3>
+        </div>
+        <div>
+        <h3>års erfarenhet som digital formgivare, både som frilans och anställd. </h3>
+        </div>
+      </Grid>
+    </Container>
+    </Numbers>
   </MainSection>  );
 }
  

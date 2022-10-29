@@ -3,6 +3,7 @@ import styled, {css} from "styled-components"
 import Image from "next/image"
 import logo from "../public/img/tova-jertfelt-logo.png"
 import burgermenu from "../public/icons/pngkey.com-mobile-menu-icon-png-3321462.png"
+import { Line } from "./styles/Line.styled"
 import { useState } from "react"
 
 const Header = styled.header`
@@ -124,11 +125,7 @@ const MenuLinks = styled(Link)`
 font-size: 2rem;
 `
 
-const Line = styled.div`
-height: 3px;
-width:100%;
-background-color: ${({theme}) => theme.colors.white};
-`
+
 
 const Nav = () => {
 

@@ -1,9 +1,16 @@
 import styled from "styled-components"
+import { useEffect } from "react"
+
+//components:
 import Head from "next/head"
 import Nav from "../components/Nav"
 import Homepage from "./Homepage"
 
 export default function Home() {
+
+
+  return (  
+  <>
   <Head>
   <title>Tova Jertfelt Frontend</title>
   <meta 
@@ -16,9 +23,7 @@ export default function Home() {
   Sedan hösten 2021 går jag på Nackademins YH-utbildning för frontend-programmering. Studierna är fokuserade på javascript och webben, med kurser som går igenom CMS, javascript, HTML och CSS (samt tex SASS), grafikverktyg och att jobba i projekt. Jag själv gillar agila projekt, det är jag van med sedan tidigare i livet."/>
   <link rel="icon" 
   href="/favicon.ico" />
-</Head>
-  return (
-  <>
+  </Head>
   <Nav/>
   <Homepage/>
 
