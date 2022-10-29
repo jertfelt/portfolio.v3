@@ -36,6 +36,19 @@ font-size:  ${({theme}) => theme.fontSizes.medium};
 font-family: Roboto;
 padding-left:4rem;
 `
+const BigNumber = styled.h3`
+font-size:${({theme}) => theme.fontSizes.xlarge};
+line-height:1em;
+color:${({theme}) => theme.colors.lightblue};
+
+`
+const Text = styled.p`
+font-size:${({theme}) => theme.fontSizes.medium};
+margin-top:-3em;
+padding-right:1rem;
+text-align:left;
+width:80%;
+`
 
 const WhoAmI = () => {
   return ( 
@@ -68,17 +81,15 @@ const WhoAmI = () => {
      
     <Container
     xlarge>
-      <Grid>
+      <Grid numbers>
         <CountingUp
          number = {10}
          text = {"års erfarenhet som digital formgivare, både som frilans och anställd."}
          />
-   
+  
         <div>
-        <h3>års erfarenhet som digital formgivare, både som frilans och anställd. </h3>
-        </div>
-        <div>
-        <h3>års erfarenhet som digital formgivare, både som frilans och anställd. </h3>
+        <BigNumber>2021</BigNumber>
+        <Text>började jag lära mig programmering tack vare skola, youtube och vänner.</Text>
         </div>
       </Grid>
     </Container>

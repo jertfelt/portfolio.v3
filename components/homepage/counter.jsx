@@ -2,9 +2,7 @@ import CountUp from "react-countup";
 import styled from "styled-components";
 
 const NumberSpan = styled.span`
-display:flex;
-flex-direction: column;
-max-width:30%;
+max-width:180px;
 `
 const BigNumber = styled.h3`
 font-size:${({theme}) => theme.fontSizes.xlarge};
