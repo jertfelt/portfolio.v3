@@ -3,6 +3,7 @@ import styled, {css} from "styled-components"
 import Image from "next/image"
 import logo from "../public/img/tova-jertfelt-logo.png"
 import burgermenu from "../public/icons/pngkey.com-mobile-menu-icon-png-3321462.png"
+import close from "../public/icons/closing.png"
 import { Line } from "./styles/Line.styled"
 import { useState } from "react"
 

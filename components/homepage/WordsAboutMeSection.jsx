@@ -1,4 +1,17 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import Image from "next/image"
+//components
+import nextbutt from "../../public/icons/forwardbuttwhite.png";
+import { Button } from "../styles/Button.styled";
+import { Container } from "../styles/Container.styled";
+
+const flexInst = ({direction, align, justify}) => `
+display: flex;
+flex-direction: ${direction || "column"};
+align-items: ${align || "center"};
+justify-content: ${justify || "center"}; 
+`
 
 const WordsSection = styled.section`
 height: 100vh;
@@ -42,11 +55,49 @@ transform-origin: 100%;
 }
 
 `
+const Row = styled.div`
+margin-top:3em;
+padding:2em;
+${flexInst ({direction: "row", justify: "space-between"})}
+`
+// transition: all 0.5s ease-out;
+const Carousel = styled.article`
+background-color:black;
+height: 400px;
+max-height:80vh;
+width:80%;
+`
 
 const WordsAboutMe = () => {
+  const [quote, setQuote] = useState([])
+
+  useEffect(() => {
+    //fetch quotes
+  }, [])
+
+  const nextQuote = () => {
+    //map and filter out per id
+    //i++
+  }
+
   return ( 
   <WordsSection>
-  <h2>CASES:</h2>
+  <Container xlarge>
+  <Row>
+  <Carousel>
+
+  </Carousel>
+  <Button
+  next
+  aria-label="button"
+  onClick={nextQuote}>
+  <Image 
+  src={nextbutt}
+  alt="Nästa"
+  aria-label="button"/>
+  </Button>
+  </Row>
+  </Container>
   </WordsSection> );
 }
  

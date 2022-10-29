@@ -41,7 +41,7 @@ font-size:${({theme}) => theme.fontSizes.xlarge};
 line-height:1em;
 color:${({theme}) => theme.colors.lightblue};
 font-family: Arya;
-font-weight: 900;
+font-weight: 500;
 
 `
 const Text = styled.p`
@@ -91,7 +91,7 @@ const WhoAmI = () => {
   
         <div>
         <BigNumber>2021</BigNumber>
-        <Text>började jag lära mig programmering tack vare skola, youtube och vänner.</Text>
+        <Text>började jag lära mig frontendprogrammering genom YH, vänner, discord och youtube. </Text>
         </div>
       </Grid>
     </Container>

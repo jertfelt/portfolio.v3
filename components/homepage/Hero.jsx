@@ -29,8 +29,6 @@ bottom: 0%
 left: 15%;
 }
 
-
-
 @media only screen and (
   max-width: 700px
 ){
@@ -80,14 +78,11 @@ div {
   width: 90%;
 }
 `
-
-
 const Hideable = styled.div`
 overflow: hidden;
 margin-bottom: ${({theme}) => theme.paddingSizes.medium};
 flex-wrap:wrap;
 `
-
 const Heading = styled.h1`
 transition: all 0.5s ease-out;
 text-align:left;
