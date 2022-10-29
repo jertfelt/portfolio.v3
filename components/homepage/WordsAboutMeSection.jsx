@@ -44,8 +44,9 @@ transform-origin: 100%;
 `
 
 const WordsAboutMe = () => {
-  return ( <WordsSection>
-    
+  return ( 
+  <WordsSection>
+  <h2>CASES:</h2>
   </WordsSection> );
 }
  
