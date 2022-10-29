@@ -60,7 +60,6 @@ const HamburgerIcon = styled(Image)`
 margin-left:3rem;
 max-width:2.4em;
 max-height:2em;
-
 `
 
 const DropDownMenu = styled.ul`
@@ -70,6 +69,7 @@ display: flex;
 flex-direction: column;
 position: absolute;
 z-index: 99;
+width:50%;
 padding:30px;
 top:74px;
 right:0px;
@@ -78,8 +78,10 @@ font-size: ${({theme}) => theme.fontSizes.medium};
 font-weight:bold;
 
 a{
+  text-align: right;
+  margin-bottom:1rem;
   text-decoration:none;
-  text-align:left;
+
   &:hover{
     color:${({theme}) => theme.colors.vividblue};
   }
@@ -91,17 +93,24 @@ a{
   }
 }
 span{
+  border-radius: 50%;
+  align-items: center;
   display:flex;
-  width:30%;
-  height:18px;
+  width:30px;
+  height:30px;
   cursor:pointer;
   margin-top:-1rem;
   margin-bottom:3rem;
   font-size:18px;
-  color:${({theme}) => theme.colors.black}
+  padding:6px;
+  p{
+    padding:2px;
+  }
+  color:${({theme}) => theme.colors.vividblue}
 }
 span:hover{ 
-    color:${({theme}) => theme.colors.vividblue};
+  color:${({theme}) => theme.colors.white};
+  background-color:${({theme}) => theme.colors.vividblue};
 }
 span:focus{
   color:${({theme}) => theme.colors.vividblue};
