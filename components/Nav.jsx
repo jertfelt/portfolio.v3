@@ -62,6 +62,7 @@ max-height:2em;
 `
 
 const DropDownMenu = styled.ul`
+
 background-color: ${({theme}) => theme.colors.white};
 color: ${({theme}) => theme.colors.purple};
 display: flex;
@@ -75,8 +76,6 @@ right:0px;
 list-style: none;
 font-size: ${({theme}) => theme.fontSizes.medium};
 font-weight:bold;
-
-
 
 a{
   text-align: right;
@@ -112,6 +111,7 @@ span{
 span:hover{ 
   color:${({theme}) => theme.colors.white};
   background-color:${({theme}) => theme.colors.vividblue};
+
 }
 span:focus{
   color:${({theme}) => theme.colors.vividblue};

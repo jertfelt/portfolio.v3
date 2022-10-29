@@ -89,12 +89,28 @@ flex-wrap:wrap;
 `
 
 const Heading = styled.h1`
-
+transition: all 0.5s ease-out;
 text-align:left;
 font-size: 4.5rem;
 line-height: ${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
 color: ${({theme}) => theme.colors.lightblue};
+padding:1rem;
+  @media only screen and (max-width: 700px
+  ){
+  font-size:34px;
+  line-height:1rem;
+  }
+
+  ${props => 
+    props.first && 
+    css`
+    color: ${({theme}) => theme.colors.lightblue};
+    @media only screen and (max-width: 700px
+      ){
+      margin-top:3rem;
+      }
+    `}
 
  ${props => 
   props.alignright && 
@@ -108,13 +124,8 @@ color: ${({theme}) => theme.colors.lightblue};
     ){
     right:50%;
     }
-  
   `}
-  padding:1rem;
-  @media only screen and (max-width: 700px
-  ){
-  font-size:30px;
-  }
+  
   
 `
 
@@ -134,6 +145,7 @@ const HeroContent = () => {
     <div>
       <Hideable>
         <Heading
+        first
         title="Multidisciplinär"
         className="headingfont">
           Multidisciplinär
