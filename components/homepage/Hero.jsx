@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 
 import Image from "next/image";
-import profilepic from "../public/img/tova-linkedin-portratt.png"
+import profilepic from "../../public/img/tova-linkedin-portratt.png"
 
 const flexInst = ({direction, align, justify}) => `
 display: flex;

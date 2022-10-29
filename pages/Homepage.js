@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import HeroContent from "../components/Hero";
+import HeroContent from "../components/homepage/Hero";
+import WhoAmI from "../components/homepage/WhoAmISection";
 
 const wh = (w, h = w) => `
   width: ${w};
@@ -25,7 +26,9 @@ const Homepage = () => {
   return (
   <MainHP>
    <HeroContent/>
+  <WhoAmI/>
 
+  
   </MainHP>  );
 }
  

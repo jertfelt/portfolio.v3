@@ -31,6 +31,7 @@ const maintheme = {
     small:"12px",
     medium: "20px",
     large:"34px",
+    mediumlarge:"48px",
     xlarge:"72px"
   },
   paddingSizes: {
@@ -43,6 +44,7 @@ const maintheme = {
     small: "30%",
     medium: "60%",
     large: "80%",
+    xl: "90%",
     xlarge: "100%"
   },
   borderradius: {
