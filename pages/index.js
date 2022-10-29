@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Head from "next/head"
 import Nav from "../components/Nav"
-
+import Homepage from "./Homepage"
 
 export default function Home() {
   <Head>
@@ -20,7 +20,9 @@ export default function Home() {
   return (
   <>
   <Nav/>
- 
+  <Homepage/>
+
+
   </>
   )
 }
