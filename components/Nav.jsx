@@ -123,19 +123,17 @@ const MenuLinks = styled(Link)`
 font-size: 2rem;
 `
 
-const Line = styled.span`
-height: 1px;
-background-color: ${({theme}) => theme.colors.white};`
-
-
+const Line = styled.div`
+height: 3px;
+width:100%;
+background-color: ${({theme}) => theme.colors.white};
+`
 
 const Nav = () => {
 
 const [menuOpen, setMenuOpen] = useState(false);
 const toggleMenu = () => {
-  console.log(menuOpen)
   menuOpen ? (setMenuOpen(false)) : (setMenuOpen(true))
-  console.log("now it is:", menuOpen)
 }
 
 return (
