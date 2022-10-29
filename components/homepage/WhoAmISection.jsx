@@ -31,6 +31,11 @@ const WhoAmI = () => {
       <h2>OM MIG:</h2>
      </About>
       </Grid>
+      <TwoColumns>
+        <article>
+          <p></p>
+        </article>
+      </TwoColumns>
     </Container>
   </MainSection>  );
 }
