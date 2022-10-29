@@ -33,6 +33,21 @@ const maintheme = {
     large:"34px",
     xlarge:"72px"
   },
+  paddingSizes: {
+    small: "1em",
+    medium: "2em",
+    large: "4em",
+    xlarge: "6em"
+  },
+  containers: {
+    small: "30%",
+    medium: "60%",
+    large: "80%",
+    xlarge: "100%"
+  },
+  borderradius: {
+   first:"86% 14% 52% 48% / 50% 52% 48% 50%"
+  },
   colors: {
     grey: "#282828",
     white: "#f4f4f4",
