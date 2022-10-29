@@ -91,20 +91,18 @@ font-style: italic;
 const WordsAboutMe = () => {
   const [quote, setQuote] = useState([])
 
+  useEffect(() => {
+    const first = quotesAboutMe.filter(item => (item.id === 1))
+    setQuote(first)
+  }, [])
 
   let test2 = quotesAboutMe.filter(item => (item.id === 2))
   console.log("filter", test2)
   let test3 = test2.map(item => (item.headline))
   console.log("testing", test3)
 
-  useEffect(() => {
-    const first = quotesAboutMe.filter(item => (item.id === 1))
-    setQuote(first)
-  }, [])
-
   const nextQuote = () => {
-    //map and filter out per id
-    //i++
+    
   }
 
 
