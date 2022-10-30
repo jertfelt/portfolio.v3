@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { useEffect } from "react"
-import Data from '../components/api/Data'
+// import Data from '../components/api/Data'
 // import Test from "./dblist"
+import CasesPage from "./cases/cases"
 
 //components:
 import Head from "next/head"
@@ -26,10 +27,11 @@ export default function Home() {
   <link rel="icon" 
   href="/favicon.ico" />
   </Head>
-  <Data/>
-  <Nav/>
-  <Homepage/>
 
+  <Nav/>
+
+  <Homepage/>
+  <CasesPage/>
 
   </>
   )

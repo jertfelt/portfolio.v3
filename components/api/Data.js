@@ -8,6 +8,8 @@ const DATA = () => {
     getDataFirebase()
   , [getDataFirebase()]})
 
+
+
 const getDataFirebase = () => {
   initFirebase()
 const dbRef = ref(getDatabase());
@@ -25,7 +27,7 @@ get(child(dbRef, `/cases/`)).then((snapshot) => {
 }
 return (
   <>
-  {firebaseData && <div></div>}
+  {firebaseData && <div>hej</div>}
   </>
 )
 
