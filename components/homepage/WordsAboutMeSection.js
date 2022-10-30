@@ -104,18 +104,20 @@ margin-bottom:-0.2rem;
 const WordsAboutMe = () => {
   const [quote, setQuote] = useState([])
   const [imgsrc, setImage] = useState(firstpic)
+  const [imgalt, setAlt] = useState("Bild på Tova")
 
   useEffect(() => {
     const first = quotesAboutMe.filter(item => (item.id === 1))
     setQuote(first)
     setImage(firstpic)
+    setAlt("Bild på Tova som tar emot Publishingpriset 2017")
   }, [])
 
   // let test2 = quotesAboutMe.filter(item => (item.id === 2))
   // console.log("filter", test2)
   // let test3 = test2.map(item => (item.headline))
   // console.log("testing", test3)
-
+ 
   const nextQuote = () => {
     
   }
@@ -132,7 +134,8 @@ const WordsAboutMe = () => {
   <div
   key={item.id}>
   <QuoteImage
-  src={imgsrc} ></QuoteImage>
+  src={imgsrc}
+  alt={imgalt} ></QuoteImage>
   <Headline>{item.headline}</Headline>
   <QuoteLine>“{item.quote}”</QuoteLine>
   <p>{item.name}</p>   
