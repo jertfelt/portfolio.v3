@@ -36,12 +36,6 @@ return (
   cases
 )
 }
-
 export default Data
 
-
-export async function getAllCases(){
-  const allCases = await Data();
-  return allCases
-}
 
