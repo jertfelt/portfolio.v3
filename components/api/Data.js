@@ -2,18 +2,18 @@ import initFirebase from "./initialize";
 import { getDatabase, ref, child, get} from "firebase/database";
 import { useEffect, useState } from "react"
 
-const DATA = () => {
+const Data = () => {
   const [firebaseData, setFirebaseData] = useState(null)
+  const cases = [];
   useEffect(() => {
     getDataFirebase()
   , [getDataFirebase()]})
 
-
-
 const getDataFirebase = () => {
   initFirebase()
+
 const dbRef = ref(getDatabase());
-get(child(dbRef, `/cases/`)).then((snapshot) => {
+get(child(dbRef, `/cases`)).then((snapshot) => {
   setFirebaseData(snapshot.val())
   if (snapshot.exists()) {
     setFirebaseData(snapshot.val())
@@ -24,13 +24,24 @@ get(child(dbRef, `/cases/`)).then((snapshot) => {
   console.error(error);
 });
 
+for (const key in firebaseData) {
+  cases.push({
+    id: key,
+    ...firebaseData[key]
+  })
 }
+}
+// console.log("cases;", cases)
 return (
-  <>
-  {firebaseData && <div>hej</div>}
-  </>
+  cases
 )
-
 }
 
-export default DATA
+export default Data
+
+
+export async function getAllCases(){
+  const allCases = await Data();
+  return allCases
+}
+
