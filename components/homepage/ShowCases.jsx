@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { cases } from "../../data/cases"
 import styled from "styled-components"
 import Link from "next/link"
+import svenhippan from "../../public/img/smalin--1.png"
+
 
 const CaseList = styled.article`
 display:flex;
@@ -17,6 +19,12 @@ background-color:black;
 font-family:Roboto;
 margin-bottom:2rem;
 `
+// ${props => 
+//   props.svenhippan && 
+//   css`
+//   background-image: url(${svenhippan})
+//   `}
+
 const Row= styled.span`
 display:flex;
 flex-orientation: row;
@@ -90,6 +98,7 @@ const ShowCases = () => {
       <Tags>{item.tags}</Tags>
       </RowContainer>
       </Row>
+      
       <Description>{item.description}</Description>
    
 
@@ -100,3 +109,6 @@ const ShowCases = () => {
 }
  
 export default ShowCases;
+
+
+//https://stackoverflow.com/questions/65362902/loading-image-location-from-json-file-dynamically-cannot-find-module-reac
