@@ -1,6 +1,7 @@
 import initFirebase from "./initialize";
 import { getDatabase, ref, child, get} from "firebase/database";
 import { useEffect, useState } from "react"
+import ShowCases from "../homepage/ShowCases";
 
 const Data = () => {
   const [firebaseData, setFirebaseData] = useState(null)
@@ -31,9 +32,13 @@ for (const key in firebaseData) {
   })
 }
 }
-// console.log("cases;", cases)
+
 return (
-  cases
+  <ShowCases
+  cases={cases}
+  test= {firebaseData}/>
+
+
 )
 }
 export default Data

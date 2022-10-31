@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Container } from "../styles/Container.styled";
 import styled from "styled-components";
 import illustratedbg from "../../public/img/bg.png"
-
+import ShowCases from "./ShowCases"
 
 const flexInst = ({direction, align, justify}) => `
 display: flex;
@@ -43,7 +43,7 @@ const CasesPage = () => {
       <p>Här finns ett urval av olika saker jag kodat. Jag har jobbat främst med JS, CSS, SASS, HTML, Node.js och React.</p>
       </div>
       </Content>
-      
+      <ShowCases/>
     </Container>
   );
 }

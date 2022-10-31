@@ -19,7 +19,7 @@ justify-content: ${justify || "center"};
 `
 
 const WordsSection = styled.section`
-height: 100vh;
+min-height: 120vh;
 padding:2rem;
 padding-bottom: ${({theme}) => theme.paddingSizes.large};
 width:100%;
@@ -43,7 +43,7 @@ z-index:1;
   z-index: -1;
 }
 
-padding-bottom:4rem;
+padding-bottom:8rem;
 
 
 `
@@ -67,7 +67,7 @@ const Row = styled.div`
 margin-top:3em;
 padding:2em;
 ${flexInst ({direction: "row", justify: "space-between"})}
-padding-bottom: 2rem;
+padding-bottom: 4rem;
 @media only screen and (max-width: 700px
   ){
 padding-bottom:1rem;
@@ -76,7 +76,7 @@ padding-bottom:1rem;
 // transition: all 0.5s ease-out;
 const Carousel = styled.article`
 height: 400px;
-max-height:80vh;
+
 width:80%;
 p {
   font-family: Roboto;
