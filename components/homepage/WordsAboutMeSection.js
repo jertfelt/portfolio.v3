@@ -6,7 +6,7 @@ import nextbutt from "../../public/icons/forwardbuttwhite.png";
 import { Button } from "../styles/Button.styled";
 import { Container } from "../styles/Container.styled";
 import { quotesAboutMe } from "../../data/quotes";
-import thirdpic from "../../public/img/tova-atelje2.png";
+import  thirdpic from "../../public/img/tova-atelje2 copy.png";
 import secondpic from "../../public/img/tova-poetry-slam.png";
 import firstpic from "../../public/img/publishing-priset-2.png";
 
@@ -43,27 +43,35 @@ z-index:1;
   z-index: -1;
 }
 
-&::after {
-  background: inherit;
-  content: '';
-  display: block;
-  height: 75%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  z-index: -1;
-  bottom: 0;
--webkit-transform: skewY(0deg);
-transform: skewY(0deg);
--webkit-transform-origin: 100%;
-transform-origin: 100%;
-}
+padding-bottom:4rem;
+
 
 `
+
+// &::after {
+//   background: inherit;
+//   content: '';
+//   display: block;
+//   height: 75%;
+//   left: 0;
+//   position: absolute;
+//   right: 0;
+//   z-index: -1;
+//   bottom: 0;
+//     -webkit-transform: skewY(0deg);
+//   transform: skewY(0deg);
+//   -webkit-transform-origin: 100%;
+//   transform-origin: 100%;
+// }
 const Row = styled.div`
 margin-top:3em;
 padding:2em;
 ${flexInst ({direction: "row", justify: "space-between"})}
+padding-bottom: 2rem;
+@media only screen and (max-width: 700px
+  ){
+padding-bottom:1rem;
+  }
 `
 // transition: all 0.5s ease-out;
 const Carousel = styled.article`
@@ -74,6 +82,7 @@ p {
   font-family: Roboto;
   font-size:${({theme}) => theme.fontSizes.medium};
 }
+
 `
 const QuoteImage =styled(Image)`
 filter: drop-shadow(4mm 0mm 3mm #344ce6);
@@ -81,6 +90,7 @@ height: 30%;
 max-width: 90%;
 border-radius: ${({theme}) => theme.borderradius.second};
 z-index:1;
+transform: rotate(3deg);
 `
 
 const Headline = styled.h3`
@@ -92,34 +102,50 @@ margin-bottom:-1rem;
 z-index:3;
 position: absolute;
 top:0;
+
 `
 const QuoteLine = styled.h3`
 font-family: Roboto;
 color:${({theme}) => theme.colors.white};
 font-size:${({theme}) => theme.fontSizes.large};
 font-style: italic;
-line-height:1rem;
+width:80%;
 margin-bottom:-0.2rem;
 `
 const WordsAboutMe = () => {
   const [quote, setQuote] = useState([])
+  const [qID, setqID] = useState(0)
   const [imgsrc, setImage] = useState(firstpic)
   const [imgalt, setAlt] = useState("Bild på Tova")
 
   useEffect(() => {
     const first = quotesAboutMe.filter(item => (item.id === 1))
     setQuote(first)
+    setqID(1)
     setImage(firstpic)
     setAlt("Bild på Tova som tar emot Publishingpriset 2017")
   }, [])
-
-  // let test2 = quotesAboutMe.filter(item => (item.id === 2))
-  // console.log("filter", test2)
-  // let test3 = test2.map(item => (item.headline))
-  // console.log("testing", test3)
- 
   const nextQuote = () => {
-    
+
+      switch (qID){
+        case 1:
+          setQuote(quotesAboutMe.filter(item => (item.id === 2)))
+          setImage(secondpic)
+          setqID(2)
+          setAlt("Tova läser upp posei på Poetry Slam. Foto: Malin Lövkvist")
+        break;
+        case 2:
+          setQuote(quotesAboutMe.filter(item => (item.id === 3)))
+          setImage(thirdpic)
+          setqID(3)
+          setAlt("Tova har utställning i sin ateljé LITEN ELD, 2021")
+        break;
+
+        default:
+          setQuote(quotesAboutMe.filter(item => (item.id === 1)))
+          setqID(1)
+          setImage(firstpic)
+    }
   }
 
 
@@ -133,10 +159,11 @@ const WordsAboutMe = () => {
   {quote.map(item => (
   <div
   key={item.id}>
+  <Headline>{item.headline}</Headline>
   <QuoteImage
   src={imgsrc}
-  alt={imgalt} ></QuoteImage>
-  <Headline>{item.headline}</Headline>
+  alt={imgalt}
+  />
   <QuoteLine>“{item.quote}”</QuoteLine>
   <p>{item.name}</p>   
   </div>

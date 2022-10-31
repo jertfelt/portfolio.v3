@@ -5,7 +5,6 @@ const CasesPage = (props) => {
  
   return ( 
     <div>
-      
       <CaseList 
       items= {props.cases} />
       
