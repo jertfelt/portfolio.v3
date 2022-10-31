@@ -8,14 +8,14 @@ export const cases = [
     tags:"#react #redux #destructure #localstorage #react-router #lifecyclehooks #api #axios #state #css",
     sources:{
       link:"https://github.com/jertfelt/e-wallet",
-      imgurl:"../../public/img/ewallet--2.png",
+      imgurl:"/img/ewallet--2.png",
       imgalt: "Aktiva och inaktiva kort",
       github:"https://github.com/jertfelt/e-wallet"
     },
     extra:{
       file01:{
         isthere: true,
-        url:"../../public/img/ewallet.png",
+        url:"/img/ewallet.png",
         alt:"Printscreen från projektekt",
         id:"1file01",
         buttonid:"1filebutt01"
@@ -31,14 +31,14 @@ export const cases = [
   tags:"#react #css #state #hooks #website #filter #arraymap #react-router-dom #react-link #useFetch",
   sources:{
     link:"https://github.com/jertfelt/react-forum-js3",
-    imgurl:"../../public/img/react-forum--2.png",
+    imgurl:"/img/react-forum--2.png",
     imgalt: "Screenshot",
     github:"https://github.com/jertfelt/react-forum-js3"
   },
   extra:{
     file01:{
       isthere: true,
-      url:"../../public/img/react-forum.png",
+      url:"/img/react-forum.png",
       alt:"Printscreen från projektet",
       id:"2file01",
       buttonid:"2filebutt01"
@@ -54,14 +54,14 @@ export const cases = [
   tags:"#react #css #state #hooks #website",
   sources:{
     link:"https://www.tovajertfelt.se/smalin/",
-    imgurl:"../../public/img/smalin--1.png",
+    imgurl:"/img/smalin--1.png",
     imgalt: "Screenshot",
     github:"https://github.com/jertfelt/smalin"
   },
   extra:{
     file01:{
       isthere: true,
-      url:"../../public/img/smalin-website-2.png",
+      url:"/img/smalin-website-2.png",
       alt:"Printscreen från projektet",
       id:"3file01",
       buttonid:"3filebutt01"

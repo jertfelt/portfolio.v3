@@ -3,6 +3,7 @@ import { cases } from "../../data/cases"
 import styled from "styled-components"
 import Link from "next/link"
 import svenhippan from "../../public/img/smalin--1.png"
+import ImageContainer from "./ImageContainer"
 
 const Wrapper = styled.div`
 width:100%;
@@ -94,6 +95,8 @@ const ShowCases = () => {
     setCases(featured)
   }, [])
 
+  const basePath = "/img/"
+
   return (
     <Wrapper>
   <CaseList>
@@ -111,10 +114,15 @@ const ShowCases = () => {
       <Tags>{item.tags}</Tags>
       </RowContainer>
       </Row>
-      
       <Description>{item.description}</Description>
-   
-
+      <ImageContainer
+      image={`${item.sources.imgurl}`}
+      name={item.id}
+      description={item.sources.imgalt}/>
+      <ImageContainer
+      image={`${item.extra.file01.url}`}
+      name={item.id}
+      description={item.extra.file01.imgalt}/>
     </CaseContainer>
   ))}
   </CaseList>
