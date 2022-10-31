@@ -49,7 +49,7 @@ export const cases = [
   id:"c03",
   featured: true,
   headline:"Svenhippan",
-  subtitle: "Eget projekt/ React",
+  subtitle: "Eget projekt",
   description:"Ett eget, högst experimentiellt och självlärande projekt där jag jobbade med React och olika states. Hemsidan är en 'app' som användes när två kompisar till mig skulle ha en gemensam svenhippa, där de får en digital skattjakt i Uppsala.",
   tags:"#react #css #state #hooks #website",
   sources:{

@@ -42,8 +42,9 @@ const CasesPage = () => {
       <Headline>Cases</Headline>
       <p>Här finns ett urval av olika saker jag kodat. Jag har jobbat främst med JS, CSS, SASS, HTML, Node.js och React.</p>
       </div>
-      </Content>
       <ShowCases/>
+      </Content>
+      
     </Container>
   );
 }
