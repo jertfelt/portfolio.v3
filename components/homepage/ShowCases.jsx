@@ -4,13 +4,18 @@ import styled from "styled-components"
 import Link from "next/link"
 import svenhippan from "../../public/img/smalin--1.png"
 
-
-const CaseList = styled.article`
+const Wrapper = styled.div`
+width:100%;
 display:flex;
 flex-direction:column;
-column-gap:3rem;
-padding-left:4rem;
-width:100%;
+align-items:center;
+justify-content:center;
+padding:2rem;
+padding-left:6rem;
+`
+const CaseList = styled.article`
+max-width:1200px;
+
 `
 const CaseContainer = styled.article`
 width:100%;
@@ -36,13 +41,15 @@ const RowContainer = styled.span`
 flex-orientation: column;
 align-items:center;
 justify-content:space-between;
-max-width:34%;`
+max-width:30%;`
 
 const Links = styled.span`
 display:flex;
 flex-orientation: column;
 line-height:1rem;
+
 a{
+  font-size:${({theme}) => theme.fontSizes.medium};
   text-decoration:none;
   color: ${({theme}) => theme.colors.lightblue};
   margin-top:-2px;
@@ -55,6 +62,7 @@ a{
 `
 
 const CaseHeader = styled.h3`
+padding-left:2rem;
 font-size:${({theme}) => theme.fontSizes.large};
 line-height:1rem;
 color: ${({theme}) => theme.colors.lightblue};
@@ -64,15 +72,19 @@ text-transform: uppercase;
 const Description = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
 width:60%;
+margin-top:-4rem;
 `
 
 const Tags = styled.p`
-color: ${({theme}) => theme.colors.lightblue};
-;
+color: ${({theme}) => theme.colors.white};
+margin-left:-2rem;
+margin-top:-1rem;
 `
 
 const Subtitle = styled.h4`
-text-transform:uppercase`
+font-size:${({theme}) => theme.fontSizes.medium};
+text-transform:uppercase
+`
  
 const ShowCases = () => {
   const [newcases, setCases] = useState([])
@@ -83,6 +95,7 @@ const ShowCases = () => {
   }, [])
 
   return (
+    <Wrapper>
   <CaseList>
   {newcases.map(item => (
     <CaseContainer
@@ -105,6 +118,7 @@ const ShowCases = () => {
     </CaseContainer>
   ))}
   </CaseList>
+  </Wrapper>
   );
 }
  

@@ -14,7 +14,8 @@ const Content = styled.div`
 min-height:300vh;
 font-family:Roboto;
 width: 100%;
-
+align-items:center;
+justify-content:center;
 div{
   ${flexInst ({ justify: "space-between"})};
   width:100%;
@@ -44,7 +45,6 @@ const CasesPage = () => {
       </div>
       <ShowCases/>
       </Content>
-      
     </Container>
   );
 }
