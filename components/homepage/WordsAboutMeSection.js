@@ -9,23 +9,23 @@ import { quotesAboutMe } from "../../data/quotes";
 import  thirdpic from "../../public/img/tova-atelje2 copy.png";
 import secondpic from "../../public/img/tova-poetry-slam.png";
 import firstpic from "../../public/img/publishing-priset-2.png";
+import { flex, device, borders} from "../styles/Styles"
+import Link from "next/link";
+import { Line } from "../styles/Line.styled";
 
-
-const flexInst = ({direction, align, justify}) => `
-display: flex;
-flex-direction: ${direction || "column"};
-align-items: ${align || "center"};
-justify-content: ${justify || "center"}; 
-`
 
 const WordsSection = styled.section`
-min-height: 120vh;
+min-height: 100vh;
 padding:2rem;
-padding-bottom: ${({theme}) => theme.paddingSizes.large};
+
+padding-bottom: ${({theme}) => theme.paddingSizes.medium};
 width:100%;
 background-color: ${({theme}) => theme.colors.purple};
 position: relative;
 z-index:1;
+@media only screen and (${device.laptopL}){
+min-height:120vh;
+  }
 
 &::before {
   top: 0;
@@ -43,51 +43,57 @@ z-index:1;
   z-index: -1;
 }
 
-padding-bottom:8rem;
-
-
+&::after {
+  background: inherit;
+  content: '';
+  display: block;
+  height: 10%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  bottom: 0;
+    -webkit-transform: skewY(0deg);
+  transform: skewY(-4deg);
+  -webkit-transform-origin: 100%;
+  transform-origin: 100%;
+  @media only screen and (${device.laptopL}){
+    -webkit-transform: skewY(0deg);
+    transform: skewY(-2deg);
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
+    
+    }
+}
 `
 
-// &::after {
-//   background: inherit;
-//   content: '';
-//   display: block;
-//   height: 75%;
-//   left: 0;
-//   position: absolute;
-//   right: 0;
-//   z-index: -1;
-//   bottom: 0;
-//     -webkit-transform: skewY(0deg);
-//   transform: skewY(0deg);
-//   -webkit-transform-origin: 100%;
-//   transform-origin: 100%;
-// }
+
+
 const Row = styled.div`
 margin-top:3em;
 padding:2em;
-${flexInst ({direction: "row", justify: "space-between"})}
-padding-bottom: 4rem;
-@media only screen and (max-width: 700px
-  ){
-padding-bottom:1rem;
-  }
+${flex ({direction: "row", justify: "space-between"})}
+padding-bottom:2rem;
+margin-bottom:3em;
+
 `
 // transition: all 0.5s ease-out;
 const Carousel = styled.article`
-height: 400px;
-
-width:80%;
+height: 900px;
+width:100%;
+padding:5rem;
 p {
   font-family: Roboto;
   font-size:${({theme}) => theme.fontSizes.medium};
 }
-
+@media only screen and (${device.laptopL}){
+  width:60%;
+  }
 `
 const QuoteImage =styled(Image)`
 filter: drop-shadow(4mm 0mm 3mm #344ce6);
-height: 30%;
-max-width: 90%;
+height:500px;
+max-width: 100%;
 border-radius: ${({theme}) => theme.borderradius.second};
 z-index:1;
 transform: rotate(3deg);
@@ -102,7 +108,6 @@ margin-bottom:-1rem;
 z-index:3;
 position: absolute;
 top:0;
-
 `
 const QuoteLine = styled.h3`
 font-family: Roboto;
@@ -112,6 +117,37 @@ font-style: italic;
 width:80%;
 margin-bottom:-0.2rem;
 `
+const ContainerToLinks = styled.article`
+margin-bottom:3em;
+width:60%;
+font-family: Roboto;
+padding:2rem;
+padding-left:8rem;
+min-height:300px;
+h3{
+  font-size:2rem;
+}
+p{
+  font-size:${({theme}) => theme.fontSizes.medium};
+  line-height:2rem;
+}
+a{
+  text-decoration: none;
+  color:${({theme}) => theme.colors.lightblue};
+  &:hover{
+    color:${({theme}) => theme.colors.vividblue};
+  }
+  &:active{
+    color:${({theme}) => theme.colors.white};
+  }
+
+}
+span{
+  ${flex({direction: "row", align: "flex-start", justify: "flex-start"})}
+  gap: 10px;
+}
+`
+
 const WordsAboutMe = () => {
   const [quote, setQuote] = useState([])
   const [qID, setqID] = useState(0)
@@ -125,8 +161,9 @@ const WordsAboutMe = () => {
     setImage(firstpic)
     setAlt("Bild på Tova som tar emot Publishingpriset 2017")
   }, [])
-  const nextQuote = () => {
 
+
+  const nextQuote = () => {
       switch (qID){
         case 1:
           setQuote(quotesAboutMe.filter(item => (item.id === 2)))
@@ -134,6 +171,7 @@ const WordsAboutMe = () => {
           setqID(2)
           setAlt("Tova läser upp posei på Poetry Slam. Foto: Malin Lövkvist")
         break;
+
         case 2:
           setQuote(quotesAboutMe.filter(item => (item.id === 3)))
           setImage(thirdpic)
@@ -148,8 +186,7 @@ const WordsAboutMe = () => {
     }
   }
 
-
-
+ 
   return ( 
   <WordsSection>
   <Container xlarge>
@@ -181,6 +218,17 @@ const WordsAboutMe = () => {
   aria-label="button"/>
   </Button>
   </Row>
+  <Line></Line>
+  <ContainerToLinks>
+  <h3>Se även:</h3>
+    <p> Min <Link href="http://www.tovajertfelt.com">portfolio</Link> där jag publicerat min konst, design och illustration.
+    Genom åren har jag frilansat åt/ jobbat för allt från organisationer, privatpersoner och företag. Mina uppdrag har varierat mellan tidningsillustration, grafisk formgivning, layout, rena konstnärliga projekt, webbredaktion, art direction, digital produktion och sociala medier.
+    </p>
+    <span>
+      <Link href="https://www.linkedin.com/in/tovajertfelt/">Linkedin</Link>
+      <Link href="https://www.instagram.com/jertfelt/">Instagram</Link>
+    </span>
+  </ContainerToLinks>
   </Container>
   </WordsSection> );
 }

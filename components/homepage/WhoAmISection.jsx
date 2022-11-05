@@ -50,6 +50,7 @@ margin-top:-3em;
 padding-right:1rem;
 text-align:left;
 width:80%;
+
 `
 
 const WhoAmI = () => {
