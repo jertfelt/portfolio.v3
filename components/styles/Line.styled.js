@@ -11,7 +11,12 @@ overflow: hidden;
 position: relative;
 width: 130%;
 height: 30px;
+margin-top:5rem;
+margin-bottom:5rem;
 margin-left:-3rem;
+-webkit-transform: skewY(-4deg);
+transform: skewY(-4deg);
+
 `
 const Ellipse = styled.div`
   position: absolute;
@@ -30,6 +35,7 @@ height: 20px;
   top: 20px;
   left: 18px;
   background-position: 0px -20px;
+  
   `
 
 export const SquigglyLine = () => {
