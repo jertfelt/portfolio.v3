@@ -3,21 +3,15 @@ import { Container } from "../styles/Container.styled";
 import styled from "styled-components";
 import illustratedbg from "../../public/img/bg.png"
 import ShowCases from "./ShowCases"
+import { flex } from "../styles/Styles";
 
-const flexInst = ({direction, align, justify}) => `
-display: flex;
-flex-direction: ${direction || "column"};
-align-items: ${align || "center"};
-justify-content: ${justify || "center"}; 
-`
 const Content = styled.div`
 min-height:300vh;
 font-family:Roboto;
 width: 100%;
-align-items:center;
-justify-content:center;
+padding-top:4rem;
 div{
-  ${flexInst ({ justify: "space-between"})};
+  ${flex ({ justify: "space-between"})};
   width:100%;
   p{
     padding:2rem;

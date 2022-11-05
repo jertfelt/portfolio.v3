@@ -11,7 +11,7 @@ import secondpic from "../../public/img/tova-poetry-slam.png";
 import firstpic from "../../public/img/publishing-priset-2.png";
 import { flex, device, borders} from "../styles/Styles"
 import Link from "next/link";
-import { Line } from "../styles/Line.styled";
+import { Line, SquigglyLine } from "../styles/Line.styled";
 
 
 const WordsSection = styled.section`
@@ -218,7 +218,7 @@ const WordsAboutMe = () => {
   aria-label="button"/>
   </Button>
   </Row>
-  <Line></Line>
+  <SquigglyLine></SquigglyLine>
   <ContainerToLinks>
   <h3>Se även:</h3>
     <p> Min <Link href="http://www.tovajertfelt.com">portfolio</Link> där jag publicerat min konst, design och illustration.

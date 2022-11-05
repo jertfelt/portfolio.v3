@@ -13,6 +13,7 @@ align-items:center;
 justify-content:center;
 padding:2rem;
 padding-left:6rem;
+
 `
 const CaseList = styled.article`
 max-width:1200px;
