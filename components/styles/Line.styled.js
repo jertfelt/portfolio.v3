@@ -14,8 +14,14 @@ height: 30px;
 margin-top:5rem;
 margin-bottom:5rem;
 margin-left:-3rem;
--webkit-transform: skewY(-4deg);
-transform: skewY(-4deg);
+
+${props => 
+  props.tilt4 && 
+  css`
+  
+  -webkit-transform: skewY(-4deg);
+  transform: skewY(-4deg);
+  `}
 
 `
 const Ellipse = styled.div`

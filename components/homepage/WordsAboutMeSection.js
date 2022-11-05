@@ -218,7 +218,7 @@ const WordsAboutMe = () => {
   aria-label="button"/>
   </Button>
   </Row>
-  <SquigglyLine></SquigglyLine>
+  <SquigglyLine />
   <ContainerToLinks>
   <h3>Se även:</h3>
     <p> Min <Link href="http://www.tovajertfelt.com">portfolio</Link> där jag publicerat min konst, design och illustration.
