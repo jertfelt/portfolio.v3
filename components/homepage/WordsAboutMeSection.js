@@ -12,7 +12,7 @@ import firstpic from "../../public/img/publishing-priset-2.png";
 import { flex, device, borders} from "../styles/Styles"
 import Link from "next/link";
 import { Line, SquigglyLine } from "../styles/Line.styled";
-
+import Canvas from "./Canvas"
 
 const WordsSection = styled.section`
 min-height: 100vh;
@@ -66,8 +66,6 @@ min-height:120vh;
     }
 }
 `
-
-
 
 const Row = styled.div`
 margin-top:3em;
@@ -148,6 +146,7 @@ span{
 }
 `
 
+
 const WordsAboutMe = () => {
   const [quote, setQuote] = useState([])
   const [qID, setqID] = useState(0)
@@ -192,7 +191,6 @@ const WordsAboutMe = () => {
   <Container xlarge>
   <Row>
   <Carousel>
-  
   {quote.map(item => (
   <div
   key={item.id}>
@@ -219,6 +217,7 @@ const WordsAboutMe = () => {
   </Button>
   </Row>
   <SquigglyLine />
+  <Canvas/>
   <ContainerToLinks>
   <h3>Se även:</h3>
     <p> Min <Link href="http://www.tovajertfelt.com">portfolio</Link> där jag publicerat min konst, design och illustration.
