@@ -12,19 +12,20 @@ const data = {
     'CSS',
     'HTML',
     'Tillgänglighet',
-    'Strapi',
     'CMS-system',
     'Projektmetodik Frontend',
   ],
   datasets: [{
-    label: 'Nackademin',
-    data: [7, 2, 1, 3, 10, 4, 1, 1, 3],
+    data: [7, 2, 1, 3, 10, 4, 1, 3],
     backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      '#344ce6',
+      'black',
+      '#282828',
+      "#f4f4f4",
+      "#bee5f5",
     ],
-    hoverOffset: 4
+    borderWidth: 0,
+    hoverOffset: 10
   }]
 };
 
@@ -36,7 +37,9 @@ const data2 = {
   ],
   datasets: [{
     borderWidth: 0,
-    label:"Kurser kvar:",
+    labels: {
+      display: false
+    },
     data: [10, (14-10)],
     backgroundColor: [
       '#bee5f5',
@@ -45,11 +48,7 @@ const data2 = {
   }],
   options:{
     plugins:{
-     
     legend:{
-      labels: {
-        color: "yellow", 
-      },
       display:false
     },
   }
