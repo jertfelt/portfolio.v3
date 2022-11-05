@@ -1,55 +1,59 @@
 import { useEffect, useState } from "react"
 import { cases } from "../../data/cases"
-import styled from "styled-components"
+import styled, {css} from "styled-components"
 import Link from "next/link"
-import svenhippan from "../../public/img/smalin--1.png"
-import ImageContainer from "./ImageContainer"
+
+import { flex, device } from "../styles/Styles";
+import Image from "next/image"
 
 const Wrapper = styled.div`
 width:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
+${flex}
 padding:2rem;
-padding-left:6rem;
-
+@media ${device.tablet}{
+  padding-left:6rem;
+}
 `
 const CaseList = styled.article`
 max-width:1200px;
-
+margin: 0 auto;
+display: grid;
+gap: 2rem;
+@media ${device.laptop}{
+  grid-template-columns: repeat(2, 1fr); 
+}
 `
 const CaseContainer = styled.article`
-width:100%;
-padding:2rem;
+border-radius: 29px;
+padding:1rem;
 background-color:black;
 font-family:Roboto;
-margin-bottom:2rem;
+${flex}
+@media ${device.laptop}{
+  padding:3rem;
+}
 `
-// ${props => 
-//   props.svenhippan && 
-//   css`
-//   background-image: url(${svenhippan})
-//   `}
 
 const Row= styled.span`
-display:flex;
-flex-orientation: row;
-align-items:center;
-justify-content:space-between;
+${flex};
+@media ${device.tablet}{
+  ${flex({direction: "row", justify:"space-between"})};
+}
+@media ${device.laptop}{
+  ${flex({direction: "row", align: "flex-start", justify: "space-around"})};
+}
 `
 
 const RowContainer = styled.span`
-flex-orientation: column;
-align-items:center;
-justify-content:space-between;
-max-width:30%;`
+${flex({align:"flex-start",justify:"space-between"})};
+max-width:80%;
+@media ${device.laptop}{
+  max-width:30%;
+  ${flex({align:"center", justify:"space-between"})}
+}`
 
 const Links = styled.span`
-display:flex;
-flex-orientation: column;
 line-height:1rem;
-
 a{
   font-size:${({theme}) => theme.fontSizes.medium};
   text-decoration:none;
@@ -61,19 +65,37 @@ a{
     text-decoration:underline;
   }
 }
+@media ${device.tablet}{
+  line-height:1.8rem;
+  margin:0;
+  
+}
 `
 
 const CaseHeader = styled.h3`
-padding-left:2rem;
-font-size:${({theme}) => theme.fontSizes.large};
-line-height:1rem;
 color: ${({theme}) => theme.colors.lightblue};
 font-family:Arya;
 text-transform: uppercase;
+font-size:${({theme}) => theme.fontSizes.large};
+margin-left:-300px;
+@media ${device.laptop}{
+  flex-wrap: wrap;
+  max-width:50%;
+  font-size:${({theme}) => theme.fontSizes.large};
+  line-height:2rem;
+  margin:0;
+}
+@media ${device.tablet}{
+  flex-wrap: wrap;
+  max-width:50%;
+  font-size:${({theme}) => theme.fontSizes.large};
+  line-height:2rem;
+  margin-top:1rem;
+}
 `
 const Description = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
-width:60%;
+width:90%;
 margin-top:-4rem;
 `
 
@@ -87,12 +109,42 @@ const Subtitle = styled.h4`
 font-size:${({theme}) => theme.fontSizes.medium};
 text-transform:uppercase
 `
+
+const ImageContainer = styled.span`
+${flex}
+gap:30px;
+img{
+  width:100%;
+}
+margin-bottom:3rem;
+@media ${device.tablet}{
+  ${flex({direction:"row"})}
+}`
+
+const CaseImages = styled(Image)`
+${props => 
+  props.first && 
+  css`
+&:hover{
+  border-radius: ${({theme}) => theme.borderradius.first};
+  opacity:90%;
+}
+  `}
+${props => 
+  props.second && 
+  css`
+  &:hover{
+    border-radius: ${({theme}) => theme.borderradius.second};
+    opacity:90%;
+  }
+  `}
+`
+
  
 const ShowCases = () => {
   const [newcases, setCases] = useState([])
   useEffect(() => {
     const featured = cases.filter(item => (item.featured === true))
-    console.log(featured)
     setCases(featured)
   }, [])
 
@@ -116,14 +168,21 @@ const ShowCases = () => {
       </RowContainer>
       </Row>
       <Description>{item.description}</Description>
-      <ImageContainer
-      image={`${item.sources.imgurl}`}
-      name={item.id}
-      description={item.sources.imgalt}/>
-      <ImageContainer
-      image={`${item.extra.file01.url}`}
-      name={item.id}
-      description={item.extra.file01.imgalt}/>
+      <ImageContainer>
+      <CaseImages
+      first
+      width={300}
+      height={300}
+      src={`${item.sources.imgurl}`}
+      alt={item.sources.imgalt}/>
+     
+      <CaseImages
+      second
+      width={300}
+      height={300}
+      src={`${item.extra.file01.url}`}
+      alt={item.extra.file01.imgalt}/>
+  </ImageContainer>
     </CaseContainer>
   ))}
   </CaseList>
