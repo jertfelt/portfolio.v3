@@ -2,10 +2,11 @@
 export const theme = {
   fontSizes: {
     small:"12px",
+    mediumsmall:"1rem",
     medium: "20px",
-    large:"34px",
-    mediumlarge:"48px",
-    xlarge:"72px"
+    large:"2em",
+    mediumlarge:"3em",
+    xlarge:"4em"
   },
   paddingSizes: {
     small: "1em",

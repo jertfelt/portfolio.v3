@@ -19,7 +19,7 @@ max-width:1200px;
 margin: 0 auto;
 display: grid;
 gap: 2rem;
-@media ${device.laptop}{
+@media ${device.desktop}{
   grid-template-columns: repeat(2, 1fr); 
 }
 `
@@ -33,33 +33,14 @@ ${flex}
   padding:3rem;
 }
 `
-
-const Row= styled.span`
-${flex};
-@media ${device.tablet}{
-  ${flex({direction: "row", justify:"space-between"})};
-}
-@media ${device.laptop}{
-  ${flex({direction: "row", align: "flex-start", justify: "space-around"})};
-}
-`
-
-const RowContainer = styled.span`
-${flex({align:"flex-start",justify:"space-between"})};
-max-width:80%;
-@media ${device.laptop}{
-  max-width:30%;
-  ${flex({align:"center", justify:"space-between"})}
-}`
-
 const Links = styled.span`
 line-height:1rem;
+${flex({direction:"row"})}
+gap:10px;
 a{
   font-size:${({theme}) => theme.fontSizes.medium};
   text-decoration:none;
   color: ${({theme}) => theme.colors.lightblue};
-  margin-top:-2px;
-  margin-right:3rem;
   &:hover{
     color: ${({theme}) => theme.colors.white};
     text-decoration:underline;
@@ -67,61 +48,37 @@ a{
 }
 @media ${device.tablet}{
   line-height:1.8rem;
-  margin:0;
-  
 }
+padding-bottom:2em;
 `
 
 const CaseHeader = styled.h3`
 color: ${({theme}) => theme.colors.lightblue};
 font-family:Arya;
 text-transform: uppercase;
-font-size:${({theme}) => theme.fontSizes.large};
-margin-left:-300px;
-@media ${device.laptop}{
-  flex-wrap: wrap;
-  max-width:50%;
-  font-size:${({theme}) => theme.fontSizes.large};
-  line-height:2rem;
-  margin:0;
-}
-@media ${device.tablet}{
-  flex-wrap: wrap;
-  max-width:50%;
-  font-size:${({theme}) => theme.fontSizes.large};
-  line-height:2rem;
-  margin-top:1rem;
-}
+font-size:${({theme}) => theme.fontSizes.mediumlarge};
+margin-top:-2rem;
 `
 const Description = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
 width:90%;
-margin-top:-4rem;
 `
 
 const Tags = styled.p`
 color: ${({theme}) => theme.colors.white};
-margin-left:-2rem;
 margin-top:-1rem;
+font-size:${({theme}) => theme.fontSizes.mediumsmall};
+width:90%;
+margin-top:-3rem;
 `
 
 const Subtitle = styled.h4`
 font-size:${({theme}) => theme.fontSizes.medium};
-text-transform:uppercase
+text-transform:uppercase;
 `
 
-const ImageContainer = styled.span`
-${flex}
-gap:30px;
-img{
-  width:100%;
-}
-margin-bottom:3rem;
-@media ${device.tablet}{
-  ${flex({direction:"row"})}
-}`
-
 const CaseImages = styled(Image)`
+width:100%;
 ${props => 
   props.first && 
   css`
@@ -139,7 +96,13 @@ ${props =>
   }
   `}
 `
-
+const Images = styled.span`
+${flex}
+gap:2rem;
+@media ${device.laptop}{
+ 
+  ${flex({direction:"row"})}
+}`
  
 const ShowCases = () => {
   const [newcases, setCases] = useState([])
@@ -148,41 +111,37 @@ const ShowCases = () => {
     setCases(featured)
   }, [])
 
-  const basePath = "/img/"
-
   return (
     <Wrapper>
   <CaseList>
   {newcases.map(item => (
     <CaseContainer
     key={item.id}>
-      <Row>
+        <Subtitle>{item.subtitle}</Subtitle>
       <CaseHeader>{item.headline}</CaseHeader>
-      <RowContainer>
-      <Subtitle>{item.subtitle}</Subtitle>
-      <Links>
-        <Link href= {item.sources.link}>Se mer </Link>
-        <Link href= {item.sources.github}>Github</Link>
-      </Links>
-      <Tags>{item.tags}</Tags>
-      </RowContainer>
-      </Row>
-      <Description>{item.description}</Description>
-      <ImageContainer>
+      <Link href="/">
+      <Images>
       <CaseImages
       first
       width={300}
       height={300}
       src={`${item.sources.imgurl}`}
       alt={item.sources.imgalt}/>
-     
       <CaseImages
       second
       width={300}
       height={300}
       src={`${item.extra.file01.url}`}
       alt={item.extra.file01.imgalt}/>
-  </ImageContainer>
+      </Images>
+      </Link>
+      <Description>{item.description}</Description>
+      <Tags>{item.tags}</Tags>
+      <Links>
+        <Link href= {item.sources.link}>Se mer </Link>
+        <Link href= {item.sources.github}>Github</Link>
+      </Links>
+      
     </CaseContainer>
   ))}
   </CaseList>

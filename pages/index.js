@@ -9,8 +9,6 @@ import Nav from "../components/Nav"
 import Homepage from "./Homepage"
 
 export default function Home() {
-
-
   return (  
   <>
   <Head>
