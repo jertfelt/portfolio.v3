@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import Head from "next/head"
 import Nav from "../components/Nav"
 import Homepage from "./Homepage"
+import Link from "next/link"
 
 export default function Home() {
   return (  
@@ -25,8 +26,9 @@ export default function Home() {
   href="/favicon.ico" />
   </Head>
   <Nav/>
-  <Homepage/>
 
+  <Homepage/>
+  
   </>
   )
 }

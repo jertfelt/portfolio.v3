@@ -18,6 +18,7 @@ h3{
   color:${({theme}) => theme.colors.lightblue};
   font-size:${({theme}) => theme.fontSizes.large};
 }
+
 font-family: Roboto;
 
 h4{
@@ -33,15 +34,18 @@ p{
   }
 }
 `
+const Wrapper = styled.div`
+max-width:900px;`
+
+
 const CounterWrapper = styled.span`
 position: relative;
 top:-240px;
 `
 
-const Wrapper = styled.div`
-max-width:900px;`
 
 const WordCloud = styled.ul`
+max-width:50%;
 list-style: none;
 padding-left: 0;
 display: flex;

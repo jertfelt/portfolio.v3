@@ -174,7 +174,7 @@ return (
       <MenuLinks href="/CV">
         CV
       </MenuLinks>
-      <MenuLinks href="/Cases">
+      <MenuLinks href="/cases">
         Cases
       </MenuLinks>
     </DropDownMenu>

@@ -100,7 +100,7 @@ const Images = styled.span`
 ${flex}
 gap:2rem;
 @media ${device.laptop}{
- 
+
   ${flex({direction:"row"})}
 }`
  
@@ -112,7 +112,7 @@ const ShowCases = () => {
   }, [])
 
   return (
-    <Wrapper>
+  <Wrapper>
   <CaseList>
   {newcases.map(item => (
     <CaseContainer
@@ -120,15 +120,14 @@ const ShowCases = () => {
         <Subtitle>{item.subtitle}</Subtitle>
       <CaseHeader>{item.headline}</CaseHeader>
       <Link href="/">
-      <Images>
-      <CaseImages
-      first
+      <Images 
+      arial-label="buttons">
+      <CaseImages first
       width={300}
       height={300}
       src={`${item.sources.imgurl}`}
       alt="Printscreen"/>
-      <CaseImages
-      second
+      <CaseImages second
       width={300}
       height={300}
       src={`${item.extra.file01.url}`}

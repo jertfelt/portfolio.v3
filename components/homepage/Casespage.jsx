@@ -9,9 +9,10 @@ const Content = styled.div`
 min-height:300vh;
 font-family:Roboto;
 width: 100%;
+margin-top:2em;
 padding-top:4rem;
 div{
-  ${flex ({ justify: "space-between"})};
+  ${flex ({justify: "space-between"})};
   width:100%;
   p{
     padding:2rem;
@@ -35,7 +36,7 @@ const CasesPage = () => {
       <Content>
       <div>
       <Headline>Cases</Headline>
-      <p>Här finns ett urval av olika saker jag kodat. Jag har jobbat främst med JS, CSS, SASS, HTML, Node.js och React.</p>
+      <p>Här finns ett urval av olika saker jag kodat. En del är studentarbeten, andra är egna experiment.</p>
       </div>
       <ShowCases/>
       </Content>

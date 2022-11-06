@@ -13,7 +13,6 @@ const Canvas = ({data, options}) => {
 
   return (
       <DougnoutItem 
-      className="chart"
       data={data}
       options={options}
       />
