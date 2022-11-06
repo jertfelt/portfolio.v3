@@ -13,7 +13,6 @@ ${props =>
     padding:2rem;
   }
   img{
-
     max-width:20px;
     max-height:20px;
     @media only screen and (${device.tablet}){

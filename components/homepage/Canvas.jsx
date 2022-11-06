@@ -2,11 +2,12 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart,ArcElement, Tooltip, Legend } from "chart.js";
 import 'chart.js/auto';
 import styled from "styled-components";
-import {flex} from "../styles/Styles";
+import {flex, device} from "../styles/Styles";
 import { courses } from "../../data/courses";
 import { useEffect, useState } from "react";
 import {Bar} from "react-chartjs-2";
 import CountingUp from "./counter";
+import Link from "next/link";
 
 const Container = styled.div`
 padding:3rem;
@@ -22,7 +23,13 @@ h4{
   margin-top:-1rem;
 }
 p{
+  text-align:center;
   margin-top:-1rem;
+  line-height:1.5rem;
+  a{
+    text-decoration: none;
+    color:${({theme}) => theme.colors.lightblue};
+  }
 }
 `
 
@@ -32,8 +39,9 @@ margin-top:3rem;
 `
 
 const CounterWrapper = styled.span`
-position: absolute;
-margin-top:-3rem;`
+position: relative;
+top:-200px;
+`
 
 const Wrapper = styled.div`
 max-width:900px;`
@@ -59,21 +67,51 @@ li {
 }
 .even{
   font-size: 1.2rem;
+  font-weight: bold;
 }
 .VG{
   font-size: 1.5rem;
   color: ${({theme}) => theme.colors.white};
 }
+.notDone{
+  color: ${({theme}) => theme.colors.grey};
+ 
+}
 `
-
+const HoverElement = styled.div`
+position:relative;
+text-align:center;
+width:50%;
+top:-200px;
+z-index:3;
+padding:1rem;
+margin:-2rem;
+border-radius: 29px;
+background-color: ${({theme}) => theme.colors.grey};
+`
 
 
 const Canvas = () => {
   const [doneCourses, setCourses] = useState([]);
+  const [all, setAll] = useState([])
+  const [isShown, setIsShown] = useState(false);
+
   useEffect(() => {
-    const passed = courses.filter(item => (item.done === true))
-    setCourses(passed)
+    setCourses(courses.filter(item => (item.done === true)))
+    setAll(shuffle(courses))
     }, [])
+
+
+    const shuffle = (array) => {
+      let currentIndex = array.length, randomIndex;
+      while (currentIndex != 0){
+        randomIndex = Math.floor(Math.random()* currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+      return array;
+    }
     
     const done = (doneCourses.length/courses.length *100);
 
@@ -128,44 +166,85 @@ const Canvas = () => {
       percent ={true}
       ></CountingUp>
       </CounterWrapper>
+      <h3>Kurser på Nackademin:</h3>
       <WordCloud
       role="Image"
       alt="Tag cloud"
       aria-label= "Tag cloud">
-      {doneCourses.map(item => {
-        if((item.id %3 === 0)){
+        <>
+      {all.map(item => {
+        if ((item.done !== true)){
+          if((item.title === "LIA 2")){
+            return  <li key={item.id}
+            data-weight={item.id}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}
+            className="notDone">
+              {item.title}*
+            </li>
+          }
+          if((item.title === "LIA 1")){
+            return  <li key={item.id}
+            data-weight={item.id}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}
+            className="notDone">
+              {item.title}*
+            </li>
+          }
+          
           return  <li key={item.id}
-          data-weight={item.id}
-          className="even">
-            {item.title}
+            data-weight={item.id}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}
+            className="notDone">
+              {item.title}
             </li>
+          
         }
-        else if((item.id %2 === 0)) {
-          return <li key={item.id}
-          data-weight={item.id}
-          className="uneven">
-            {item.title}
-            </li>
-        }
-        else if ((item.id ===1)){
-          return <li key={item.id}
-          data-weight={item.id}
-          >
-            {item.title}
-            </li>
-        }
-        else {
-          return <li key={item.id}
-          data-weight={item.id}
-          className={item.betyg}>
-            {item.title}
-            </li>
-        }
-      })
-       
-      }
+          else if((item.id %3 === 0)){
+            return  <li key={item.id}
+            data-weight={item.id}
+            className="even"
+            >
+              {item.title}
+              </li>
+          }
+          else if((item.id %2 === 0)) {
+            return <li key={item.id}
+            data-weight={item.id}
+            className="uneven"
+            >
+              {item.title}
+              </li>
+          }
+          else if ((item.id ===1)){
+            return <li key={item.id}
+            data-weight={item.id}
+          
+            >
+              {item.title}
+              </li>
+          }
+          else {
+            return <li key={item.id}
+            data-weight={item.id}
+            className={item.betyg}
+           >
+              {item.title}
+              </li>
+          }
+      })}
+    
+      </>
       </WordCloud>
+      {isShown && (
+        <HoverElement>
+          Den här kursen är antingen igång eller kommer att bli klar under läsåret 2022-23.
+        </HoverElement>
+      )}
       <h3>Totalt {doneCourses.length} av {courses.length} kurser avklarade</h3>
+      <p>*LIA: Lärande I Arbete. Praktik på arbetsplats.<br/><Link href="https://vinnovera.se/">LIA 1  & 2 är jag praktikant hos webbyrån Vinnovera.</Link></p>
     </Container>
     );
 }
