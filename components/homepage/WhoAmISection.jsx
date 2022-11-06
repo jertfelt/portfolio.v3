@@ -4,16 +4,20 @@ import { Grid } from "../styles/Grid.styled";
 import { Line } from "../styles/Line.styled";
 import { TwoColumns, Column } from "../styles/TwoColumns.styled";
 import CountingUp from "./counter";
+import { flex, device } from "../styles/Styles";
 
 const MainSection = styled.section`
 margin-bottom:${({theme}) => theme.paddingSizes.small};
-display:block;`
+display:block;
+`
 
 const About = styled.div`
 padding-top: ${({theme}) => theme.paddingSizes.small};
 margin-left: ${({theme}) => theme.paddingSizes.medium};
 align-self: strecth;
 justify-self: start;
+
+
 h2{
   font-family: Arya;
   font-size: ${({theme}) => theme.fontSizes.mediumlarge};
@@ -25,16 +29,24 @@ h2{
 `
 const Quote = styled.h3`
 color: ${({theme}) => theme.colors.lightblue};
-font-size: ${({theme}) => theme.fontSizes.mediumlarge};
+font-size: ${({theme}) => theme.fontSizes.medium};
+margin-left:1rem;
 font-family: Arya;
 line-height:1.1em;
-text-align: left;
+flex-wrap: wrap;
+
+@media ${device.tablet}{
+  font-size: ${({theme}) => theme.fontSizes.large};
+  text-align: left;
+}
 `
 const Numbers = styled.section`
+margin-top:-3rem;
 margin-bottom: 5em;
 font-size:  ${({theme}) => theme.fontSizes.medium};
 font-family: Roboto;
 padding-left:4rem;
+
 `
 const BigNumber = styled.h3`
 font-size:${({theme}) => theme.fontSizes.xlarge};
@@ -42,7 +54,6 @@ line-height:1em;
 color:${({theme}) => theme.colors.lightblue};
 font-family: Arya;
 font-weight: 500;
-
 `
 const Text = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
@@ -80,8 +91,7 @@ const WhoAmI = () => {
       </TwoColumns>
     </Container>
     <Line></Line>
-    <Numbers>
-     
+    <Numbers> 
     <Container
     xlarge>
       <Grid numbers>
@@ -89,7 +99,6 @@ const WhoAmI = () => {
          number = {10}
          text = {"års erfarenhet som digital formgivare, både som frilans och anställd."}
          />
-  
         <div>
         <BigNumber>2021</BigNumber>
         <Text>började jag lära mig frontendprogrammering genom YH, vänner, discord och youtube. </Text>

@@ -6,6 +6,7 @@ import {flex} from "../styles/Styles";
 import { courses } from "../../data/courses";
 import { useEffect, useState } from "react";
 import {Bar} from "react-chartjs-2";
+import CountingUp from "./counter";
 
 const Container = styled.div`
 padding:3rem;
@@ -29,6 +30,10 @@ const DougnoutItem = styled(Doughnut)`
 max-width:100%;
 margin-top:3rem;
 `
+
+const CounterWrapper = styled.span`
+position: absolute;
+margin-top:-3rem;`
 
 const Wrapper = styled.div`
 max-width:900px;`
@@ -60,6 +65,9 @@ li {
   color: ${({theme}) => theme.colors.white};
 }
 `
+
+
+
 const Canvas = () => {
   const [doneCourses, setCourses] = useState([]);
   useEffect(() => {
@@ -68,7 +76,6 @@ const Canvas = () => {
     }, [])
     
     const done = (doneCourses.length/courses.length *100);
-    const labels = doneCourses.map(item => item.title);
 
     const data2 = {
       labels: [
@@ -115,8 +122,12 @@ const Canvas = () => {
       />
       
       </Wrapper>
-   
-     
+      <CounterWrapper>
+      <CountingUp
+      number={done}
+      percent ={true}
+      ></CountingUp>
+      </CounterWrapper>
       <WordCloud
       role="Image"
       alt="Tag cloud"
@@ -136,6 +147,13 @@ const Canvas = () => {
             {item.title}
             </li>
         }
+        else if ((item.id ===1)){
+          return <li key={item.id}
+          data-weight={item.id}
+          >
+            {item.title}
+            </li>
+        }
         else {
           return <li key={item.id}
           data-weight={item.id}
@@ -147,7 +165,7 @@ const Canvas = () => {
        
       }
       </WordCloud>
-      <h3>Totalt {doneCourses.length} av {courses.length} avklarade</h3>
+      <h3>Totalt {doneCourses.length} av {courses.length} kurser avklarade</h3>
     </Container>
     );
 }

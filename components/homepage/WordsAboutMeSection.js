@@ -216,6 +216,7 @@ const WordsAboutMe = () => {
   aria-label="button"/>
   </Button>
   </Row>
+  </Container>
   <SquigglyLine />
   <Canvas/>
   <ContainerToLinks>
@@ -228,7 +229,6 @@ const WordsAboutMe = () => {
       <Link href="https://www.instagram.com/jertfelt/">Instagram</Link>
     </span>
   </ContainerToLinks>
-  </Container>
   </WordsSection> );
 }
  

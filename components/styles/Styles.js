@@ -8,7 +8,6 @@ align-items: ${align || "center"};
 justify-content: ${justify || "center"}; 
 `
 
-
 export const Row = styled.span`
 ${flex}
 gap: 10px;`

@@ -15,7 +15,7 @@ const Text = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
 margin-top:-3em;
 `
-const CountingUp = ({number, text}) => {
+const CountingUp = ({number, percent, text}) => {
 
   return ( 
     <NumberSpan>
@@ -25,6 +25,7 @@ const CountingUp = ({number, text}) => {
      end={number} 
      duration={2} 
      delay={0}/>
+     {percent && <>%</>}
      </BigNumber>
      <Text>{text}</Text>
     </NumberSpan>     
