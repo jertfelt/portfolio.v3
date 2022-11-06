@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 const Container = styled.div`
 padding:3rem;
 ${flex};
+
 h3{
   line-height:1.5em;
   text-align: center;
@@ -212,7 +213,7 @@ const Nackademin = () => {
           else if ((item.id ===1)){
             return <li key={item.id}
             data-weight={item.id}
-          
+            className="uneven"
             >
               {item.title}
               </li>

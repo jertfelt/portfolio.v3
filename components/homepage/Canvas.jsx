@@ -6,14 +6,14 @@ import styled from "styled-components";
 import {Bar} from "react-chartjs-2";
 
 const DougnoutItem = styled(Doughnut)`
-max-width:100%;
+
 margin-top:3rem;
 `
 const Canvas = ({data, options}) => {
- 
 
   return (
       <DougnoutItem 
+      className="chart"
       data={data}
       options={options}
       />
