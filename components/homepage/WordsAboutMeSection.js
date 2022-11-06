@@ -17,7 +17,6 @@ import Canvas from "./Canvas"
 const WordsSection = styled.section`
 min-height: 100vh;
 padding:2rem;
-
 padding-bottom: ${({theme}) => theme.paddingSizes.medium};
 width:100%;
 background-color: ${({theme}) => theme.colors.purple};
@@ -25,7 +24,8 @@ position: relative;
 z-index:1;
 @media only screen and (${device.laptopL}){
 min-height:120vh;
-  }
+}
+
 
 &::before {
   top: 0;
@@ -62,39 +62,49 @@ min-height:120vh;
     transform: skewY(-2deg);
     -webkit-transform-origin: 100%;
     transform-origin: 100%;
-    
     }
 }
 `
 
 const Row = styled.div`
-margin-top:3em;
-padding:2em;
-${flex ({direction: "row", justify: "space-between"})}
-padding-bottom:2rem;
-margin-bottom:3em;
-
+padding:1em;
+${flex ({align:"center",justify: "space-between"})}
+@media only screen and (${device.tablet}){
+  ${flex ({direction: "row", justify: "space-between"})}
+  margin-top:3em;
+  padding:2em;
+  padding-bottom:2rem;
+  margin-bottom:3em;
+  }
 `
 // transition: all 0.5s ease-out;
 const Carousel = styled.article`
-height: 900px;
-width:100%;
-padding:5rem;
 p {
   font-family: Roboto;
   font-size:${({theme}) => theme.fontSizes.medium};
 }
-@media only screen and (${device.laptopL}){
-  width:60%;
+@media only screen and (${device.laptop}){
+  max-height: 900px;
+  width:90%;
+  padding:1rem;
   }
 `
 const QuoteImage =styled(Image)`
 filter: drop-shadow(4mm 0mm 3mm #344ce6);
-height:500px;
+max-height:300px;
 max-width: 100%;
 border-radius: ${({theme}) => theme.borderradius.second};
 z-index:1;
 transform: rotate(3deg);
+@media only screen and (${device.mobileL}){
+  max-width:400px;
+  max-height:300px;
+  }  
+@media only screen and (${device.laptop}){
+  max-width:600px;
+  max-height:500px;
+  padding:1rem;
+  }  
 `
 
 const Headline = styled.h3`
@@ -104,8 +114,10 @@ font-size:${({theme}) => theme.fontSizes.xlarge};
 text-decoration: underline;
 margin-bottom:-1rem;
 z-index:3;
-position: absolute;
-top:0;
+@media only screen and (${device.tablet}){
+  position: absolute;
+  top:0;
+  }
 `
 const QuoteLine = styled.h3`
 font-family: Roboto;
