@@ -13,6 +13,7 @@ import { flex, device, borders} from "../styles/Styles"
 import Link from "next/link";
 import { Line, SquigglyLine } from "../styles/Line.styled";
 import Canvas from "./Canvas"
+import Nackademin from "./Nackademin";
 
 const WordsSection = styled.section`
 min-height: 100vh;
@@ -68,7 +69,7 @@ min-height:120vh;
 
 const Row = styled.div`
 padding:1em;
-${flex ({align:"center",justify: "space-between"})}
+${flex ({align:"center", justify: "space-between"})}
 @media only screen and (${device.tablet}){
   ${flex ({direction: "row", justify: "space-between"})}
   margin-top:3em;
@@ -129,10 +130,12 @@ margin-bottom:-0.2rem;
 `
 const ContainerToLinks = styled.article`
 margin-bottom:3em;
-width:60%;
+@media only screen and (${device.tablet}){
+  width:60%;
+  padding-left:8rem;
+  }
 font-family: Roboto;
 padding:2rem;
-padding-left:8rem;
 min-height:300px;
 h3{
   font-size:2rem;
@@ -230,7 +233,8 @@ const WordsAboutMe = () => {
   </Row>
   </Container>
   <SquigglyLine />
-  <Canvas/>
+  <Nackademin/>
+  
   <ContainerToLinks>
   <h3>Se även:</h3>
     <p> Min <Link href="http://www.tovajertfelt.com">portfolio</Link> där jag publicerat min konst, design och illustration.
