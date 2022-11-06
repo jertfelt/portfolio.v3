@@ -126,13 +126,13 @@ const ShowCases = () => {
       width={300}
       height={300}
       src={`${item.sources.imgurl}`}
-      alt={item.sources.imgalt}/>
+      alt="Printscreen"/>
       <CaseImages
       second
       width={300}
       height={300}
       src={`${item.extra.file01.url}`}
-      alt={item.extra.file01.imgalt}/>
+      alt="Printscreen"/>
       </Images>
       </Link>
       <Description>{item.description}</Description>
