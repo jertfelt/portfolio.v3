@@ -19,30 +19,23 @@ h1{
   margin-bottom:-1rem;
 }`
 
+// const data = cases;
+// const paths = data.map(item => {
+//   return {
+//     params: {id: item.id}
+//   }
+// })
 
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await res.json();
   
-  const paths = data.map(ninja => {
+  const paths = data.map(post => {
     return {
-      params: {id: ninja.id.toString()}
+      params: {id: post.id.toString()}
     }
   })
-
-  
-
-//version 2:
-// const data = cases;
-// console.log(data)
-// const paths = data.map(item => {
-//   return {
-//     params: {id: item.id.toString()}
-//   }
-// })
-// console.log("paths", paths)
-
   return {
     paths, 
     fallback: false, //visar 404 om man försöker gå in på en id som inte finns
@@ -54,7 +47,6 @@ export async function getStaticProps(context) {
   const id = context.params.id;
   const res = await fetch("https://jsonplaceholder.typicode.com/users/" + id);
   const data = await res.json();
-  
   return {
     // Passed to the page component as props
     props: { post: data },
@@ -69,7 +61,7 @@ const Details = ({post}) => {
   return ( 
     <Container xlarge>
       <Content>
-      <h1>Test </h1>
+      <h1>{post.name}</h1>
       <p>This is a test</p>
       </Content>
     </Container>
