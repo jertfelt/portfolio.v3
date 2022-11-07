@@ -31,6 +31,8 @@ export const getStaticPaths = async () => {
     }
   })
 
+  
+
 //version 2:
 // const data = cases;
 // console.log(data)
@@ -47,10 +49,18 @@ export const getStaticPaths = async () => {
   }
 }
 
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps(context) {
+  return {
+    // Passed to the page component as props
+    props: { post: {} },
+  }
+}
 
 
 
-const Details = () => {
+
+const Details = ({post}) => {
   return ( 
     <Container xlarge>
       <Content>
