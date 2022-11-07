@@ -51,9 +51,13 @@ export const getStaticPaths = async () => {
 
 // `getStaticPaths` requires using `getStaticProps`
 export async function getStaticProps(context) {
+  const id = context.params.id;
+  const res = await fetch("https://jsonplaceholder.typicode.com/users/" + id);
+  const data = await res.json();
+  
   return {
     // Passed to the page component as props
-    props: { post: {} },
+    props: { post: data },
   }
 }
 
@@ -61,6 +65,7 @@ export async function getStaticProps(context) {
 
 
 const Details = ({post}) => {
+  console.log(post)
   return ( 
     <Container xlarge>
       <Content>
