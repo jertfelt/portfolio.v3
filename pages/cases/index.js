@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Link from "next/link";
-import {cases } from "../../data/cases";
 import {Container} from "../../components/styles/Container.styled.js"
 import {flex, device} from "../../components/styles/Styles"
 import {Grid} from "../../components/styles/Grid.styled"
 import Image from "next/image";
+import { getDatabase, ref, get, child, onValue } from "firebase/database"
+import initFirebase from "../../components/api/initialize";
+import {useState, useEffect } from "react";
+
 
 const Content = styled.section`
 min-height:130vh;
@@ -43,6 +46,8 @@ a{
 }
 `
 
+//https://frontend-portfolio-446fc-default-rtdb.europe-west1.firebasedatabase.app/cases
+
 export const getStaticProps = async () => {
   const res =  await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await res.json();
@@ -55,36 +60,78 @@ export const getStaticProps = async () => {
 
 
 const Cases = ({cases}) => {
+
+
+
+// const getData = (route) => {    
+//   const db = getDatabase()
+//   const dbRef = ref(db, route)
+//   onValue(dbRef, (snapshot) => {
+//     setFirebaseData(snapshot.val().cases)
+//   })
+ 
+// }
+const [dataFb, setData] = useState(null)
+
+const getData = () => {
+  const dbRef = ref(getDatabase());
+get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
+  if (snapshot.exists()) {
+    console.log("array", snapshot.val());
+   setData(snapshot.val())
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
+});
+}
+
+useEffect(() => {
+  initFirebase("cases/");
+  getData();
+},[])
+
+console.log(dataFb, "dataFB")
+
+
   return (
     <Container xlarge>
       <Content>
       <h1>All Cases</h1>
       <Grid>
-      {cases.map(c => {
-        if((c.id %2=== 0)){
-          return   <Link href={'/cases/' + c.id} 
+       {dataFb && dataFb.map((c, index) => {
+       
+        if((index %2 === 0)){
+          return   <Link href={'/cases/' + c.title} 
           key={c.id}
           className="first">
-              <h3>{c.name}</h3>
-              <p>{c.email}</p>
+              {/* <Image src={c.sources.imgurl}
+              width={100}
+              height={100} 
+              alt={c.sources}/> */}
+              <h3> {c.title}</h3>
+              <p> {c.sub}</p>
           </Link>
         }
-        else if ((c.id %3=== 0)){
-          return   <Link href={'/cases/' + c.id} 
+        else if ((index %3 === 0)){
+          return   <Link href={'/cases/' + c.title} 
           key={c.id}
           className="second">
-              <h3>{c.name}</h3>
+              <h3>  {c.title}</h3>
+              <p> {c.sub}</p>
           </Link>
         }
         else {
-          return   <Link href={'/cases/' + c.id} 
+          return <Link href={'/cases/' + c.title} 
           key={c.id}
-          >
-              <h3>{c.name}</h3>
+          > 
+              <h3>{c.title}</h3>
+              <p> {c.sub}</p>
           </Link>
         }
       
-      })}
+      })} 
       </Grid>
       </Content>
     </Container>
