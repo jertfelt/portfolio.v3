@@ -8,7 +8,6 @@ const MainHP = styled.main`
 background-color:${({theme}) => theme.colors.grey};
 `
 const Homepage = () => {
-
   return (
   <MainHP>
   <HeroContent/>
@@ -17,5 +16,5 @@ const Homepage = () => {
   <CasesPage/>
   </MainHP>  );
 }
- 
+
 export default Homepage;

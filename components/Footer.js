@@ -4,12 +4,14 @@ import Link from "next/link";
 
 
 const FooterContainer = styled.footer`
+margin-top:10em;
 padding:1rem;
 padding-bottom: ${({theme}) => theme.paddingSizes.medium};
 width:100%;
 background-color: ${({theme}) => theme.colors.purple};
 position:relative;
 z-index:1;
+
 ${flex}
 
 &::before {
