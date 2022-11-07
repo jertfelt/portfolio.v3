@@ -5,6 +5,7 @@ import {Line} from "../components/styles/Line.styled"
 import {Grid} from "../components/styles/Grid.styled";
 
 const Content = styled.section`
+padding-top:5em;
 ${flex}
 font-family:Roboto;
 padding-left:4rem;`

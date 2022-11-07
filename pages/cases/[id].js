@@ -27,7 +27,7 @@ console.log(res)
 export const Details = ({cases}) => {
   return (
     <div>
-      <>{cases.title }</ h1>
+      <h1>{cases.title }</ h1>
       <p>{cases.text }</p>
     </div>
   );
