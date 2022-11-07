@@ -20,6 +20,18 @@ ${props =>
   // // max-width: ${({theme}) => theme.containers.xl};
   `}
 
+  ${props => 
+    props.cv && 
+    css`  
+
+gap: 5rem;
+@media (min-width: 700px) {
+  grid-template-columns: repeat(2, 1fr);
+ }
+
+
+    `}
+  
 
 
 `

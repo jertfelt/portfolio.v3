@@ -125,9 +125,6 @@ span:focus{
 const MenuLinks = styled(Link)`
 font-size: 2rem;
 `
-
-
-
 const Nav = () => {
 
 const [menuOpen, setMenuOpen] = useState(false);
@@ -171,7 +168,7 @@ return (
       </span>
       <MenuLinks href="/"
       >Hem</MenuLinks>
-      <MenuLinks href="/CV">
+      <MenuLinks href="/cv">
         CV
       </MenuLinks>
       <MenuLinks href="/cases">

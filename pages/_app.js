@@ -1,4 +1,4 @@
-
+import Layout from "../components/Layout";
 import { ThemeProvider, } from "styled-components";
 import GlobalStyle from "../components/styles/GlobalStyle";
 import '../styles/globals.css'
@@ -10,9 +10,10 @@ const MyApp = ({ Component, pageProps }) => {
   return (
   <>
   <ThemeProvider theme={theme}>
-  <Component {...pageProps} />
-
-  <GlobalStyle></GlobalStyle>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+    <GlobalStyle/>
   </ThemeProvider>
   </>
  )
