@@ -4,6 +4,7 @@ import {cases } from "../../data/cases";
 import {Container} from "../../components/styles/Container.styled.js"
 import {flex, device} from "../../components/styles/Styles"
 import {Grid} from "../../components/styles/Grid.styled"
+import Image from "next/image";
 
 const Content = styled.section`
 min-height:130vh;
@@ -65,6 +66,7 @@ const Cases = ({cases}) => {
           key={c.id}
           className="first">
               <h3>{c.name}</h3>
+              <p>{c.email}</p>
           </Link>
         }
         else if ((c.id %3=== 0)){
