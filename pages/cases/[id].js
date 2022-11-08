@@ -1,73 +1,74 @@
+import { useRouter } from "next/router";
+
 import styled from "styled-components";
-import Link from "next/link";
 import {Container} from "../../components/styles/Container.styled.js"
 import {flex, device} from "../../components/styles/Styles"
+import {Grid} from "../../components/styles/Grid.styled"
+
+//next and react
+import Link from "next/link";
 import Image from "next/image";
-import { cases } from "../../data/cases.js";
+import {useState, useEffect } from "react";
 
-const Content = styled.div`
-min-height:100vh;
-padding:1rem;
+//firebase
+import { getDatabase, ref, get, child, onValue } from "firebase/database"
+import initFirebase from "../../components/api/initialize";
+
+import IndividualPage from "../../components/cases/IndividualPage";
+
+
+const Content = styled.section`
+min-height:130vh;
 ${flex}
-font-family:Roboto;
-font-size:${({theme}) => theme.fontSizes.medium};
-h1{
-  font-family:Arya;
-  font-size:${({theme}) => theme.fontSizes.xlarge};
-  color: ${({theme}) => theme.colors.lightblue};
-  text-transform: uppercase;
-  margin-bottom:-1rem;
-}`
+margin-top:5em;
+}
+`
 
-// const data = cases;
-// const paths = data.map(item => {
-//   return {
-//     params: {id: item.id}
-//   }
-// })
+const Page = () => {
+  const router = useRouter()
+  const {id} = router.query
+  console.log(id)
+  const [dataFb, setData] = useState(null)
 
+  const getData = () => {
+    const dbRef = ref(getDatabase());
+  get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
+    if (snapshot.exists()) {
 
-export const getStaticPaths = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await res.json();
-  
-  const paths = data.map(post => {
-    return {
-      params: {id: post.id.toString()}
+     setData(snapshot.val())
+    } else {
+      console.log("No data available");
     }
-  })
-  return {
-    paths, 
-    fallback: false, //visar 404 om man försöker gå in på en id som inte finns
+  }).catch((error) => {
+    console.error(error);
+  });
   }
-}
+  useEffect(() => {
+    initFirebase("cases/");
+    getData();
+  },[])
 
-// `getStaticPaths` requires using `getStaticProps`
-export async function getStaticProps(context) {
-  const id = context.params.id;
-  const res = await fetch("https://jsonplaceholder.typicode.com/users/" + id);
-  const data = await res.json();
-  return {
-    // Passed to the page component as props
-    props: { post: data },
-  }
-}
+  console.log("data:", dataFb)
 
 
 
 
-const Details = ({post}) => {
-  console.log(post)
-  return ( 
+  return (
+
     <Container xlarge>
-      <Content>
-      <h1>{post.name}</h1>
-      <p>This is a test</p>
+       <Content>
+      {!dataFb && <>...Laddar sidan</>}
+      {dataFb && <IndividualPage
+      array = {dataFb}
+      id = {id}
+      />}
       </Content>
+      <button onClick="">-</button>
+      <button onClick="">+</button>
     </Container>
-  );
+  )
 }
 
+export default Page
 
-
-export default Details;
+//lägg in "nästa för att bläddra mellan id"

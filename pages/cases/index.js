@@ -1,13 +1,20 @@
 import styled from "styled-components";
-import Link from "next/link";
 import {Container} from "../../components/styles/Container.styled.js"
 import {flex, device} from "../../components/styles/Styles"
 import {Grid} from "../../components/styles/Grid.styled"
+
+//next and react
+import Link from "next/link";
 import Image from "next/image";
-import { getDatabase, ref, get, child, onValue } from "firebase/database"
-import initFirebase from "../../components/api/initialize";
 import {useState, useEffect } from "react";
 
+//firebase
+import { getDatabase, ref, get, child, onValue } from "firebase/database"
+import initFirebase from "../../components/api/initialize";
+
+//components
+import { SelectFilter } from "../../components/cases/SelectFilter.js";
+import CaseList from "../../components/cases/CaseList.js";
 
 const Content = styled.section`
 min-height:130vh;
@@ -45,32 +52,12 @@ a{
     }
 }
 `
-
 //https://frontend-portfolio-446fc-default-rtdb.europe-west1.firebasedatabase.app/cases
 
-export const getStaticProps = async () => {
-  const res =  await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await res.json();
-
-  return {
-    props:{ cases: data}
-  }
-}
-
-
-
-const Cases = ({cases}) => {
-
-
-
-// const getData = (route) => {    
-//   const db = getDatabase()
-//   const dbRef = ref(db, route)
-//   onValue(dbRef, (snapshot) => {
-//     setFirebaseData(snapshot.val().cases)
-//   })
- 
-// }
+const Cases = () => {
+  const [selected, setSelected] = useState("");
+  const [showFilter, setShowFilter] = useState(false);
+  const [showAll, setShowAll] = useState(true);
 const [dataFb, setData] = useState(null)
 
 const getData = () => {
@@ -95,44 +82,43 @@ useEffect(() => {
 console.log(dataFb, "dataFB")
 
 
+
+const checkOption =(e)=>{
+  setSelected(e.target.value)
+  setShowFilter(true);
+  setShowAll(false);
+  if(e.target.value ==="showMeAll" || e.target.value ==="pickOne"){
+    setShowFilter(false);
+    setShowAll(true);
+  }
+  }
+
+
+
   return (
     <Container xlarge>
       <Content>
       <h1>All Cases</h1>
-      <Grid>
-       {dataFb && dataFb.map((c, index) => {
-       
-        if((index %2 === 0)){
-          return   <Link href={'/cases/' + c.title} 
-          key={c.id}
-          className="first">
-              {/* <Image src={c.sources.imgurl}
-              width={100}
-              height={100} 
-              alt={c.sources}/> */}
-              <h3> {c.title}</h3>
-              <p> {c.sub}</p>
-          </Link>
-        }
-        else if ((index %3 === 0)){
-          return   <Link href={'/cases/' + c.title} 
-          key={c.id}
-          className="second">
-              <h3>  {c.title}</h3>
-              <p> {c.sub}</p>
-          </Link>
-        }
-        else {
-          return <Link href={'/cases/' + c.title} 
-          key={c.id}
-          > 
-              <h3>{c.title}</h3>
-              <p> {c.sub}</p>
-          </Link>
-        }
+      {/* <div>
+      <h4>Filtrering:</h4>
+          <select onChange={(checkOption)}>
+           <option 
+              value="pickOne">
+                Välj en:</option>
+            <SelectFilter
+             items= {dataFb}></SelectFilter>
+             <option 
+              value="showMeAll">Visa alla!</option>
+          </select>
+      </div> */}
+      <>{!dataFb && <>...Laddar sidan</>}
+      {dataFb && <CaseList
+      array = {dataFb}
+      >
+      </CaseList>}
+      </>
+  
       
-      })} 
-      </Grid>
       </Content>
     </Container>
   );
