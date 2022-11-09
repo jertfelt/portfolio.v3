@@ -52,20 +52,87 @@ a{
     }
 }
 `
-//https://frontend-portfolio-446fc-default-rtdb.europe-west1.firebasedatabase.app/cases
+const Filter = styled.div`
+${flex}
+margin-bottom:2rem;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  
+}
+select::-ms-expand {
+  display: none;
+}
+.selectmenu{
+
+  font-family: Arya;
+  margin-top:1rem;
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid ${({theme}) => theme.colors.purple};
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: ${({theme}) => theme.colors.white};
+  background-image: linear-gradient(to top, ${({theme}) => theme.colors.lightblue}, ${({theme}) => theme.colors.white}33%);
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+}
+select,
+.selectmenu:after {
+  grid-area: select;
+  
+}
+.selectmenu:after{
+  justify-self: end;
+}
+.selectmenu::after{
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: ${({theme}) => theme.colors.purple};
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+option{
+  font-family:Arial;
+}
+`
+
 
 const Cases = () => {
   const [selected, setSelected] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [showAll, setShowAll] = useState(true);
-const [dataFb, setData] = useState(null)
+const [dataFb, setData] = useState([])
+const [cases, setCases] = useState([])
+const options = []
+const [filtoptions, setOptions] = useState([])
 
 const getData = () => {
   const dbRef = ref(getDatabase());
 get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
   if (snapshot.exists()) {
-    console.log("array", snapshot.val());
-   setData(snapshot.val())
+    setData(snapshot.val())
   } else {
     console.log("No data available");
   }
@@ -77,49 +144,89 @@ get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
 useEffect(() => {
   initFirebase("cases/");
   getData();
+  if(dataFb){
+    const t = dataFb.map(item => item.tag)
+    let options = [...new Set(t)]
+    setOptions(options)
+  }
 },[])
 
 
-
-
-
 const checkOption =(e)=>{
-  setSelected(e.target.value)
-  setShowFilter(true);
-  setShowAll(false);
-  if(e.target.value ==="showMeAll" || e.target.value ==="pickOne"){
+ 
+  if(e.target.value ==="showMeAll"){
     setShowFilter(false);
     setShowAll(true);
   }
+  else{
+    if(dataFb){
+      setShowFilter(true);
+      setShowAll(false);
+      const featured = dataFb.filter(item => (item.tag === e.target.value))
+      setCases(featured)
+      console.log(featured, "setted")
+    }
+  }
   }
 
-
+  const capitalize = (item) => {
+    return item.charAt(0).toUpperCase() + item.slice(1);
+  }
 
   return (
     <Container xlarge>
       <Content>
-      <h1>All Cases</h1>
-      {/* <div>
-      <h4>Filtrering:</h4>
-          <select onChange={(checkOption)}>
-           <option 
-              value="pickOne">
-                Välj en:</option>
-            <SelectFilter
-             items= {dataFb}></SelectFilter>
-             <option 
+      <h1>Cases:</h1>
+      
+      <Filter>
+        <label for="selectfilter">Välj ett ämne:</label>
+        <span className="selectmenu">
+        {!filtoptions &&<>Går ej att filtrera just nu</>}
+        {filtoptions && <>
+          <select id="selectfilter"
+          onChange={(checkOption)}>
+    <option 
               value="showMeAll">Visa alla!</option>
+             
+                {filtoptions.map((item,index) => 
+                 (
+                  <option 
+                  key= {index}
+                  value={item}>{capitalize(item)}
+                    </option>
+                ))}
+            
           </select>
-      </div> */}
+          </>}
+          </span>
+      </Filter>
       <>{!dataFb && <>...Laddar sidan</>}
-      {dataFb && <CaseList
+
+      {showFilter && <>
+      {cases && 
+      <div>
+      <p>Antal träffar: {cases.length}</p>
+      <CaseList
+      array = {cases}
+      >
+      </CaseList>
+      </div>}
+      </>}
+
+      {showAll && <>
+      {dataFb && 
+       <div>
+       <p>Antal träffar: {dataFb.length}</p><CaseList
       array = {dataFb}
       >
-      </CaseList>}
+      </CaseList>
+      </div>}
+      </>
+      }
       </>
   
       
-      </Content>
+      </Content> 
     </Container>
   );
 }

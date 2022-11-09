@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from "react"
-import { cases } from "../../data/cases"
 import styled, {css} from "styled-components"
 import Link from "next/link"
 
@@ -17,11 +16,16 @@ ${flex}
 @media ${device.laptop}{
   padding:3rem;
 }
+a{
+  text-decoration: none;
+  color:${({theme}) => theme.colors.lightblue};
+}
 `
 const Links = styled.span`
 line-height:1rem;
 ${flex({direction:"row"})}
 gap:10px;
+
 a{
   font-size:${({theme}) => theme.fontSizes.medium};
   text-decoration:none;
@@ -48,39 +52,27 @@ const Description = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
 width:90%;
 `
-
-const Tags = styled.p`
-color: ${({theme}) => theme.colors.white};
-margin-top:-1rem;
-font-size:${({theme}) => theme.fontSizes.mediumsmall};
-width:90%;
-margin-top:-3rem;
-`
-
 const Subtitle = styled.h4`
 font-size:${({theme}) => theme.fontSizes.medium};
 text-transform:uppercase;
 `
-
 const CaseImages = styled(Image)`
 width:100%;
 ${props => 
   props.first && 
   css`
-&:hover{
-  border-radius: ${({theme}) => theme.borderradius.first};
-  opacity:90%;
-}
-&:focus{
-   
-  border-radius: ${({theme}) => theme.borderradius.first};
-  opacity:90%;
-}
-&:active{
-
-border-radius: ${({theme}) => theme.borderradius.first};
-opacity:100%;
-}
+  &:hover{
+    border-radius: ${({theme}) => theme.borderradius.first};
+    opacity:90%;
+  }
+  &:focus{
+    border-radius: ${({theme}) => theme.borderradius.first};
+    opacity:90%;
+  }
+  &:active{
+    border-radius: ${({theme}) => theme.borderradius.first};
+    opacity:100%;
+  }
   `}
 ${props => 
   props.second && 
@@ -90,12 +82,10 @@ ${props =>
     opacity:90%;
   }
   &:focus{
-   
       border-radius: ${({theme}) => theme.borderradius.third};
       opacity:90%;
   }
   &:active{
-   
     border-radius: ${({theme}) => theme.borderradius.third};
     opacity:100%;
 }
@@ -104,17 +94,14 @@ ${props =>
 const Images = styled.span`
 ${flex}
 gap:2rem;
+max-width:90%;
+padding-left:2rem;
 @media ${device.laptop}{
-
   ${flex({direction:"row"})}
 }`
  
 
-const CasefItem = ({ item, index}) => {
-
-
- 
-
+const CasefItem = ({item, index}) => {
   return (
     <CaseContainer
     key={index}>

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 const CaseItem = ({ item, index, tags}) => {
 
-console.log("tags:", tags)
   const [clName, setClName] = useState(null);
   useEffect(()  => {
     if (index %3 === 0){
@@ -21,7 +20,6 @@ console.log("tags:", tags)
     className={clName}>
       <h3>{item.title}</h3>
       <p>{item.sub}</p>
- 
     </Link>
   );
 }

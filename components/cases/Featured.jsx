@@ -1,20 +1,9 @@
 import CasefItem from "./CasefItem"
-import { Grid } from "../styles/Grid.styled";
 import { useEffect, useState } from "react"
-import { cases } from "../../data/cases"
-import styled, {css} from "styled-components"
-import Link from "next/link"
-
-import { flex, device } from "../styles/Styles";
-import Image from "next/image"
-
-
 
 const Featured = ({array}) => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState(array)
   let featuredCases = []
-  console.log("fea:", array)
-
   useEffect(() => {
     array.map((c => {
       if(c.featured === true)
@@ -23,21 +12,19 @@ const Featured = ({array}) => {
           setData(featuredCases)
     }))
   }, [])
-
-  console.log("kollar array:", featuredCases)
   return ( 
-    <>
+<>
+      {!data && <p>..Laddar</p>}
         {data.map((c) => 
-       (<CasefItem
-        key={c.id}
-        item= {c}
-        index={c.id}
-  />
-  )
+          (<CasefItem
+          key={c.id}
+          item= {c}
+          index={c.id}
+          />
+          ) 
         )}
-    </>
- 
-   );
+</>
+  );
 }
 
  

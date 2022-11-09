@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const withTM = require('next-transpile-modules')(['object-to-array-convert']);
+
 
 const nextConfig = {
   reactStrictMode: true,
