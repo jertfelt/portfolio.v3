@@ -36,19 +36,28 @@ a{
   &:hover{
     color: ${({theme}) => theme.colors.white};
     border-radius:${({theme}) => theme.borderradius.third};
-    
+    background-color:${({theme}) => theme.colors.vividblue};
+    color: ${({theme}) => theme.colors.lightblue};
   }
 }
 .first{
+ 
+  color: ${({theme}) => theme.colors.lightblue};
+  
   &:hover{
   border-radius:${({theme}) => theme.borderradius.first};
- 
+  background-color:${({theme}) => theme.colors.lightblue};
+  color: ${({theme}) => theme.colors.purple};
   }
 }
 .second{
+
+  color: ${({theme}) => theme.colors.white};
+  
   &:hover{
     border-radius:${({theme}) => theme.borderradius.second};
-  
+    background-color:${({theme}) => theme.colors.black};
+    color: ${({theme}) => theme.colors.white};
     }
 }
 `
@@ -205,21 +214,22 @@ const checkOption =(e)=>{
       {showFilter && <>
       {cases && 
       <div>
-      <p>Antal träffar: {cases.length}</p>
       <CaseList
       array = {cases}
       >
       </CaseList>
+      <p>Antal: {cases.length}</p>
       </div>}
       </>}
 
       {showAll && <>
       {dataFb && 
        <div>
-       <p>Antal träffar: {dataFb.length}</p><CaseList
+       <CaseList
       array = {dataFb}
       >
       </CaseList>
+      <p>Antal: {dataFb.length}</p>
       </div>}
       </>
       }
