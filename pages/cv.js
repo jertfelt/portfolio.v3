@@ -4,6 +4,8 @@ import {Container} from "../components/styles/Container.styled.js"
 import {Line} from "../components/styles/Line.styled"
 import {Grid} from "../components/styles/Grid.styled";
 
+import { getData, getFeaturedCases, getCaseByTag } from "../components/api/cases";
+
 const Content = styled.section`
 padding-top:5em;
 ${flex}

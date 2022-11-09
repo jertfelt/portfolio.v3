@@ -1,11 +1,8 @@
 import styled from "styled-components";
 import {Container} from "../../components/styles/Container.styled.js"
 import {flex, device} from "../../components/styles/Styles"
-import {Grid} from "../../components/styles/Grid.styled"
 
 //next and react
-import Link from "next/link";
-import Image from "next/image";
 import {useState, useEffect } from "react";
 
 //firebase
@@ -13,7 +10,6 @@ import { getDatabase, ref, get, child, onValue } from "firebase/database"
 import initFirebase from "../../components/api/initialize";
 
 //components
-import { SelectFilter } from "../../components/cases/SelectFilter.js";
 import CaseList from "../../components/cases/CaseList.js";
 
 const Content = styled.section`
