@@ -79,7 +79,7 @@ useEffect(() => {
   getData();
 },[])
 
-console.log(dataFb, "dataFB")
+
 
 
 

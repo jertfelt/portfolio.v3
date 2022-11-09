@@ -24,8 +24,10 @@ h1{
 
 const IndividualPage = ({array, id}) => {
 
+  console.log(id)
+
   let individual = array.filter(item => {
-    return item.id === id
+    return item.id.toString() === id
   })
 
 

@@ -5,8 +5,13 @@ import illustratedbg from "../../public/img/bg.png"
 import ShowCases from "./ShowCases"
 import { flex } from "../styles/Styles";
 
+//firebase
+import { getDatabase, ref, get, child, onValue } from "firebase/database"
+import initFirebase from "../../components/api/initialize";
+
+
 const Content = styled.div`
-min-height:300vh;
+min-height:100vh;
 font-family:Roboto;
 width: 100%;
 margin-top:2em;
@@ -30,6 +35,8 @@ text-transform: uppercase;
 margin-bottom:-2rem;`
 
 const CasesPage = () => {
+
+  
   return (
     <Container
     xlarge>

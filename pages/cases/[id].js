@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {useState, useEffect } from "react";
 
+
 //firebase
 import { getDatabase, ref, get, child, onValue } from "firebase/database"
 import initFirebase from "../../components/api/initialize";
@@ -51,10 +52,16 @@ const Page = () => {
   console.log("data:", dataFb)
 
 
+ const [showBack, setBack] = useState(false)
+
+ useEffect(() => {
+  if (id >= 2){
+    setBack(true)
+   }
+ },[])
 
 
   return (
-
     <Container xlarge>
        <Content>
       {!dataFb && <>...Laddar sidan</>}
@@ -63,12 +70,17 @@ const Page = () => {
       id = {id}
       />}
       </Content>
-      <button onClick="">-</button>
-      <button onClick="">+</button>
+      <div>
+      {showBack && 
+      <button ><Link href="">-</Link></button>
+      }
+      <button><Link href="">+</Link></button>
+      </div>
+      
     </Container>
   )
 }
 
 export default Page
 
-//lägg in "nästa för att bläddra mellan id"
+//lägg in "nästa för att bläddra mellan id" kommer nog vara så att jag måste byta namn på 
