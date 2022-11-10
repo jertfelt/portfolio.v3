@@ -22,8 +22,11 @@ ${flex}
 font-family: Roboto;
 
 h1{
+  margin-top:6rem;
   font-family:Arya;
-  font-size:${({theme}) => theme.fontSizes.large};
+  font-size:${({theme}) => theme.fontSizes.xlarge};
+  text-transform: uppercase;
+  margin-bottom:-1rem;
 }
 
 a{
@@ -61,9 +64,18 @@ a{
     }
 }
 `
+const Intro = styled.div`
+${flex({direction:"row"})}
+width:80%;
+gap:30px;
+margin-bottom:1rem;`
+
+const Text = styled.p`
+max-width:40%;
+line-height:1.8rem;`
+
 const Filter = styled.div`
 ${flex}
-margin-bottom:2rem;
 
 *,
 *::before,
@@ -189,6 +201,9 @@ const checkOption =(e)=>{
     <Container xlarge>
       <Content>
       <h1>Cases:</h1>
+      <Intro>
+      <Text>Här är projekt jag jobbat på. De flesta är skoluppgifter under min tid på Nackademin, andra är egna projekt och/eller projekt jag deltar/tagit på under min praktik.
+      </Text>
       <Filter>
         <label htmlFor="selectfilter">Välj ett ämne:</label>
         <span className="selectmenu">
@@ -211,6 +226,7 @@ const checkOption =(e)=>{
           </>}
           </span>
       </Filter>
+      </Intro>
       <>{!allData && <>...Laddar sidan</>}
 
       {showFilter && <>
