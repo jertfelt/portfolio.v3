@@ -12,6 +12,10 @@ import { getData, getTag, getTags } from "../../components/api/cases";
 import CaseList from "../../components/cases/CaseList.js";
 import { capitalize } from "../../components/helpers/capitalize.js";
 
+import cases from "../../data/cases"
+
+
+
 const Content = styled.section`
 min-height:130vh;
 ${flex}
@@ -123,11 +127,33 @@ option{
 }
 `
 
+const WordCloud = styled.div`
+${flex({align:"flex-start", justify:"flex-start"})}
+float: left;
+
+div{
+  max-width:400px;
+  flex-wrap:wrap;
+  ${flex({direction:"row", align:"flex-start", justify:"flex-start"})}
+  gap:10px;
+p{
+  line-height:4px;
+  font-size:12px;
+  &:hover{
+    color: ${({theme}) => theme.colors.vividblue};
+    cursor: none;
+  }
+}
+
+}
+
+
+`
 
 const Cases = () => {
 const [showFilter, setShowFilter] = useState(false);
 const [showAll, setShowAll] = useState(true);
-const [allData, setallData] = useState([]);
+const [allData, setallData] = useState(null);
 const [cases, setCases] = useState([])
 const [filtoptions, setOptions] = useState([])
 const [tags, setTags] = useState([]) 
@@ -146,33 +172,16 @@ useEffect(() => {
   fetchData().catch(console.error)
 }, [])
 
-// useEffect(() => {
-//     // const t = allData.map(item => item.tag)
-//     // let options = [...new Set(t)]
-//     // setOptions(options)
-// //tagcloud:
-//     const c1 = allData.map(item => item.tags.c1)
-//     const c2 = allData.map(item => item.tags.c2)
-//     const c3 = allData.map(item => item.tags.c3)
-//     const alltags = c1.concat(c2, c3)
-//     let uniquetags = [...new Set(alltags)]
-//     setTags(uniquetags)
- 
-// },[])
-
-
 const checkOption =(e)=>{
   if(e.target.value ==="showMeAll"){
     setShowFilter(false);
     setShowAll(true);
   }
   else{
-    if(allData){
       setShowFilter(true);
       setShowAll(false);
       const featured = allData.filter(item => (item.tag === e.target.value))
       setCases(featured)
-    }
   }
   }
 
@@ -226,15 +235,20 @@ const checkOption =(e)=>{
       </div>}
       </>
       }
-      </>
-      <div>
+       <WordCloud>
+          <div>
         {tags.map((item,index) => (
-         <p key={index}>{item}</p>
+         <p key={index}>#
+          {capitalize(item)}</p>
         ) )}
-      </div>
+        </div>
+      </WordCloud>
+      </>
+    
       </Content> 
+     
     </Container>
   );
 }
- 
+
 export default Cases;
