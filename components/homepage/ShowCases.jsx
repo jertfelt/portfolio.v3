@@ -27,13 +27,7 @@ gap: 2rem;
   grid-template-columns: repeat(2, 1fr); 
 }
 `
-
-
 const ShowCases = ({cases}) => {
-
-  console.log(cases, "this is cases")
-  
-
   return (
   <Wrapper>
     {!cases && <div>Något har gått fel. Prova att refresha sidan.</div>}

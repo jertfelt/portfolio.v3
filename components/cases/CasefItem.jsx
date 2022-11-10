@@ -59,15 +59,17 @@ text-transform:uppercase;
 
 const CasefItem = ({item, index}) => {
 
-
   useEffect(() => {
   
   },[])
   
 
   return (
+    
     <CaseContainer
-    key={index}>
+    >
+     {item && <>
+      
     <Subtitle>{item.sub}</Subtitle> 
       <CaseHeader>    
         <Link href={'/cases/' + item.id} 
@@ -78,20 +80,26 @@ const CasefItem = ({item, index}) => {
     </CaseHeader> 
 
     <Link href={'/cases/' + item.id} 
-    state={{data: item.id}}
     key={item.id}
     >
-    {/* <ImageContainer
+
+     {/* <ImageContainer
     id = {item.id}
-    /> */}
-      <Description>{item.text}</Description>
+    />  */}
+     <Description>{item.text}</Description>
       
-    </Link>
+      </Link>
+      
     <Links>
         <Link href= {item.sources.link}>Se mer </Link>
         <Link href= {item.sources.github}>/Github</Link>
       </Links> 
-    </CaseContainer>
+      </>
+     }
+     {!item && <div>Något har gått fel.</div>}
+       </CaseContainer>
+   
+
   );
 }
 export default CasefItem;

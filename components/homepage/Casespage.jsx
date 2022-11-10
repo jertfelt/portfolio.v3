@@ -6,6 +6,8 @@ import ShowCases from "./ShowCases"
 import { flex } from "../styles/Styles";
 import { useState, useEffect, useCallback } from "react";
 import { getData } from "../api/cases";
+import { getDatabase, ref, get, child, onValue } from "firebase/database"
+import initFirebase from "../../components/api/initialize";
 
 const Content = styled.div`
 min-height:100vh;
@@ -31,47 +33,36 @@ font-size:${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
 margin-bottom:-2rem;`
 
-// const [cases, setCases] = useState(null)
-
-// useEffect(() => {
-//   initFirebase("cases/");
-//   Get();
-// },[])
-
-// const Get = () => {
-//   let cases = []
-//   const dbRef = ref(getDatabase());
-// get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
-//   if (snapshot.exists()){
-//     let data = snapshot.val()
-// for (const key in data) {
-//   cases.push({
-//     id: key,
-//     ...data[key]
-//   })
-//   }}
-//   else {
-//     console.log("Ingen data tillgänglig")
-//   }
-// }).catch((error) => {
-//   console.error(error)
-// })
-// setCases(cases)
-// }
-
-
 const CasesPage = () => {
-  const [cases, setAllData] = useState([])
+  // const [cases, setAllData] = useState([])
 
-  const fetchData = useCallback(async () => {
-    const newData = await getData();
-    console.log(newData, "test2")
-    setAllData(newData)
-  })
+  // const fetchData = useCallback(async () => {
+  //   const newData = await getData();
+  //   setAllData(newData)
+  // })
   
-  useEffect(() => {
-    fetchData().catch(console.error)
-  }, [])
+  // useEffect(() => {
+  //   fetchData().catch(console.error)
+  // }, [])
+
+  let cases = []
+  initFirebase("cases/");
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
+    if (snapshot.exists()){
+      let data = snapshot.val()
+  for (const key in data) {
+    cases.push({
+      ...data[key]
+    })
+    }}
+    else {
+      console.log("Ingen data tillgänglig")
+    }
+  }).catch((error) => {
+    console.error(error)
+  })
+
 
   return (
     <Container
