@@ -125,32 +125,26 @@ option{
 
 
 const Cases = () => {
-  const [selected, setSelected] = useState("");
-  const [showFilter, setShowFilter] = useState(false);
-  const [showAll, setShowAll] = useState(true);
-const [dataFb, setData] = useState([])
+const [selected, setSelected] = useState("");
+const [showFilter, setShowFilter] = useState(false);
+const [showAll, setShowAll] = useState(true);
+const [allData, setallData] = useState([]);
 const [cases, setCases] = useState([])
-const options = []
 const [filtoptions, setOptions] = useState([])
+const [tags, setTags] = useState([]) 
 
-const getData = () => {
-  const dbRef = ref(getDatabase());
-get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
-  if (snapshot.exists()) {
-    setData(snapshot.val())
-  } else {
-    console.log("No data available");
-  }
-}).catch((error) => {
-  console.error(error);
-});
-}
+
+const fetchData = useCallback(async () => {
+  const newData = await getData();
+  setallData(newData)
+})
 
 useEffect(() => {
-  initFirebase("cases/");
-  getData();
-  if(dataFb){
-    const t = dataFb.map(item => item.tag)
+  fetchData().catch(console.error)
+}, [])
+useEffect(() => {
+  if(allData){
+    const t = allData.map(item => item.tag)
     let options = [...new Set(t)]
     setOptions(options)
   }

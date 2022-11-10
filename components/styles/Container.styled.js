@@ -6,6 +6,10 @@ ${props =>
   props.xlarge && 
   css`
   max-width: ${({theme}) => theme.containers.xlarge};
+  min-width:${({theme}) => theme.containers.xlarge};
+  
+  
+  
   `}
 
   ${props => 

@@ -166,12 +166,15 @@ return (
       alt="Stäng menyn här">
       <p>X</p>
       </span>
-      <MenuLinks href="/"
+      <MenuLinks onClick={toggleMenu}
+      href="/"
       >Hem</MenuLinks>
-      <MenuLinks href="/cv">
+      <MenuLinks onClick={toggleMenu}
+      href="/cv">
         CV
       </MenuLinks>
-      <MenuLinks href="/cases">
+      <MenuLinks onClick={toggleMenu}
+      href="/cases">
         Cases
       </MenuLinks>
     </DropDownMenu>
