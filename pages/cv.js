@@ -4,7 +4,7 @@ import {Container} from "../components/styles/Container.styled.js"
 import {Line} from "../components/styles/Line.styled"
 import { useCallback, useEffect, useState } from "react";
 import {Grid} from "../components/styles/Grid.styled";
-import { getData, getFeaturedCases, getCaseByTag, getTest, getTestAsync, getCV } from "../components/api/cases";
+import { getCV } from "../components/api/cases";
 
 const Content = styled.section`
 padding: 5rem;

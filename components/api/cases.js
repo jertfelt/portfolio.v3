@@ -2,7 +2,7 @@
 import { getDatabase, ref, get, child, onValue } from "firebase/database"
 import initFirebase from "../../components/api/initialize";
 
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 
 export async function getData (){
@@ -50,7 +50,27 @@ export async function getFeaturedCases(){
   return allCases.filter(c => c.featured)
 }
 
-export async function getCaseByTag(tag){
-  const allCases = await getData();
-  return allCases.filter(c => c.tag === tag)
+export async function getTag (){
+let tag = [];
+let data = [];
+  const allData = await getData();
+  data = allData;
+
+  let uniquetags = [...new Set(data.map(item => item.tag))]
+  tag = uniquetags;
+return tag
 }
+
+export async function getTags (){
+  let tags = [];
+  let data = [];
+    const allData = await getData();
+    data = allData;
+    const c1 = data.map(item => item.tags.c1)
+    const c2 = data.map(item => item.tags.c2)
+    const c3 = data.map(item => item.tags.c3)
+    const alltags = c1.concat(c2, c3)
+    let uniquetags = [...new Set(alltags)]
+    tags = uniquetags;
+  return tags
+  }

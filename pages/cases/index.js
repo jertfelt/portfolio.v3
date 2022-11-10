@@ -3,14 +3,14 @@ import {Container} from "../../components/styles/Container.styled.js"
 import {flex, device} from "../../components/styles/Styles"
 
 //next and react
-import {useState, useEffect } from "react";
+import {useState, useEffect, useCallback } from "react";
 
-//firebase
-import { getDatabase, ref, get, child, onValue } from "firebase/database"
-import initFirebase from "../../components/api/initialize";
+//firebase:
+import { getData, getTag, getTags } from "../../components/api/cases";
 
 //components
 import CaseList from "../../components/cases/CaseList.js";
+import { capitalize } from "../../components/helpers/capitalize.js";
 
 const Content = styled.section`
 min-height:130vh;
@@ -125,7 +125,6 @@ option{
 
 
 const Cases = () => {
-const [selected, setSelected] = useState("");
 const [showFilter, setShowFilter] = useState(false);
 const [showAll, setShowAll] = useState(true);
 const [allData, setallData] = useState([]);
@@ -137,48 +136,52 @@ const [tags, setTags] = useState([])
 const fetchData = useCallback(async () => {
   const newData = await getData();
   setallData(newData)
+  const newTagsList = await getTag();
+  setOptions(newTagsList)
+  const allTags = await getTags();
+  setTags(allTags)
 })
 
 useEffect(() => {
   fetchData().catch(console.error)
 }, [])
-useEffect(() => {
-  if(allData){
-    const t = allData.map(item => item.tag)
-    let options = [...new Set(t)]
-    setOptions(options)
-  }
-},[])
+
+// useEffect(() => {
+//     // const t = allData.map(item => item.tag)
+//     // let options = [...new Set(t)]
+//     // setOptions(options)
+// //tagcloud:
+//     const c1 = allData.map(item => item.tags.c1)
+//     const c2 = allData.map(item => item.tags.c2)
+//     const c3 = allData.map(item => item.tags.c3)
+//     const alltags = c1.concat(c2, c3)
+//     let uniquetags = [...new Set(alltags)]
+//     setTags(uniquetags)
+ 
+// },[])
 
 
 const checkOption =(e)=>{
- 
   if(e.target.value ==="showMeAll"){
     setShowFilter(false);
     setShowAll(true);
   }
   else{
-    if(dataFb){
+    if(allData){
       setShowFilter(true);
       setShowAll(false);
-      const featured = dataFb.filter(item => (item.tag === e.target.value))
+      const featured = allData.filter(item => (item.tag === e.target.value))
       setCases(featured)
-      console.log(featured, "setted")
     }
   }
-  }
-
-  const capitalize = (item) => {
-    return item.charAt(0).toUpperCase() + item.slice(1);
   }
 
   return (
     <Container xlarge>
       <Content>
       <h1>Cases:</h1>
-      
       <Filter>
-        <label for="selectfilter">Välj ett ämne:</label>
+        <label htmlFor="selectfilter">Välj ett ämne:</label>
         <span className="selectmenu">
         {!filtoptions &&<>Går ej att filtrera just nu</>}
         {filtoptions && <>
@@ -199,7 +202,7 @@ const checkOption =(e)=>{
           </>}
           </span>
       </Filter>
-      <>{!dataFb && <>...Laddar sidan</>}
+      <>{!allData && <>...Laddar sidan</>}
 
       {showFilter && <>
       {cases && 
@@ -213,19 +216,22 @@ const checkOption =(e)=>{
       </>}
 
       {showAll && <>
-      {dataFb && 
+      {allData && 
        <div>
        <CaseList
-      array = {dataFb}
+      array = {allData}
       >
       </CaseList>
-      <p>Antal: {dataFb.length}</p>
+      <p>Antal: {allData.length}</p>
       </div>}
       </>
       }
       </>
-  
-      
+      <div>
+        {tags.map((item,index) => (
+         <p key={index}>{item}</p>
+        ) )}
+      </div>
       </Content> 
     </Container>
   );
