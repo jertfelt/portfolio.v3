@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { cases } from "../../data/cases"
 import styled, {css} from "styled-components"
 import Link from "next/link"
 
 import { flex, device } from "../styles/Styles";
+
+import { getData} from "../../components/api/cases";
 
 //firebase
 import { getDatabase, ref, get, child, onValue } from "firebase/database"
@@ -25,47 +27,21 @@ gap: 2rem;
   grid-template-columns: repeat(2, 1fr); 
 }
 `
-const ShowCases = () => {
-  const [newcases, setCases] = useState([])
-  const [dataFb, setData] = useState([])
 
-  const getData = () => {
-    const dbRef = ref(getDatabase());
-  get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      const val = snapshot.val();
-      setData(val)
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
-  }
+
+const ShowCases = ({cases}) => {
+
+  console.log(cases, "this is cases")
   
-useEffect(() => {
-  initFirebase("cases/");
-  getData();
-},[])
-
-
-// const dev = dataFb.filter(obj => obj.include("react").map(obj => ({"name": obj.title, "test:": obj.id})))
-// console.log(dev)
-  useEffect(() => {
-    const featured = cases.filter(item => (item.featured === true))
-    setCases(featured)
-  }, [])
-
- 
-
 
   return (
   <Wrapper>
+    {!cases && <div>Något har gått fel. Prova att refresha sidan.</div>}
   <CaseList>
-    <>{!dataFb && <>...Laddar!</>}
-    {dataFb && 
+    <>
+    {cases && 
     <Featured
-    array = {dataFb}/>}
+    array = {cases}/>}
     </>
   </CaseList>
   </Wrapper>

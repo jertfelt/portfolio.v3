@@ -62,8 +62,7 @@ useEffect(() => {
   fetchData().catch(console.error)
 }, [])
 
-console.log(workData, "work:", education, "ed")
-
+console.log(workData, "work:", education, "ed") 
   return ( 
     <Container xlarge>
       <Content>
@@ -84,6 +83,7 @@ console.log(workData, "work:", education, "ed")
         </GridItem>
         ))}
         </Grid>
+        
       <h2>Utbildning:</h2>
       <Grid cv>
         {!education && <>Laddar...</>}

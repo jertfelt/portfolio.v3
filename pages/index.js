@@ -1,9 +1,10 @@
 import styled from "styled-components"
-import { useEffect } from "react"
+import { useEffect, useState, useCallback } from "react"
 // import Data from '../components/api/Data'
 import Page from "./page"
 
 //components:
+import { getData } from "../components/api/cases"
 import Head from "next/head"
 import Nav from "../components/Nav"
 import Homepage from "../components/homepage/Homepage"
@@ -26,7 +27,8 @@ export default function Home() {
   </Head>
   {/* <Nav/> */}
 
-  <Homepage/>
+  <Homepage 
+  cases/>
   
   </>
   )

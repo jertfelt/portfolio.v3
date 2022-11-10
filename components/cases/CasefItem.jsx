@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react"
 import styled, {css} from "styled-components"
 import Link from "next/link"
-
 import { flex, device } from "../styles/Styles";
-import Image from "next/image"
+
+import ImageContainer from "../image/ImageContainer";
 
 
 const CaseContainer = styled.article`
@@ -56,88 +56,41 @@ const Subtitle = styled.h4`
 font-size:${({theme}) => theme.fontSizes.medium};
 text-transform:uppercase;
 `
-const CaseImages = styled(Image)`
-width:100%;
-${props => 
-  props.first && 
-  css`
-  &:hover{
-    border-radius: ${({theme}) => theme.borderradius.first};
-    opacity:90%;
-  }
-  &:focus{
-    border-radius: ${({theme}) => theme.borderradius.first};
-    opacity:90%;
-  }
-  &:active{
-    border-radius: ${({theme}) => theme.borderradius.first};
-    opacity:100%;
-  }
-  `}
-${props => 
-  props.second && 
-  css`
-  &:hover{
-    border-radius: ${({theme}) => theme.borderradius.third};
-    opacity:90%;
-  }
-  &:focus{
-      border-radius: ${({theme}) => theme.borderradius.third};
-      opacity:90%;
-  }
-  &:active{
-    border-radius: ${({theme}) => theme.borderradius.third};
-    opacity:100%;
-}
-  `}
-`
-const Images = styled.span`
-${flex}
-gap:2rem;
-max-width:90%;
-padding-left:2rem;
-@media ${device.laptop}{
-  ${flex({direction:"row"})}
-}`
- 
 
 const CasefItem = ({item, index}) => {
+
+
+  useEffect(() => {
+  
+  },[])
+  
+
   return (
     <CaseContainer
     key={index}>
-      <Subtitle>{item.sub}</Subtitle> 
+    <Subtitle>{item.sub}</Subtitle> 
       <CaseHeader>    
         <Link href={'/cases/' + item.id} 
     state={{data: item.id}}
     key={item.id}
     >{item.title}
     </Link>
-    </CaseHeader>
+    </CaseHeader> 
 
     <Link href={'/cases/' + item.id} 
     state={{data: item.id}}
     key={item.id}
     >
-    <Images 
-      arial-label="buttons">
-      <CaseImages first
-      width={300}
-      height={300}
-      src={`${item.sources.imgurl}`}
-      alt="Printscreen"/>
-      <CaseImages second
-      width={300}
-      height={300}
-      src={`${item.extra.file01.url}`}
-      alt="Printscreen"/>
-      </Images>
+    {/* <ImageContainer
+    id = {item.id}
+    /> */}
       <Description>{item.text}</Description>
       
     </Link>
     <Links>
         <Link href= {item.sources.link}>Se mer </Link>
         <Link href= {item.sources.github}>/Github</Link>
-      </Links>
+      </Links> 
     </CaseContainer>
   );
 }

@@ -20,8 +20,6 @@ h1{
 }
 
 `
-
-
 const IndividualPage = ({array, id}) => {
 
   console.log(id)

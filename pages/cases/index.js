@@ -14,8 +14,6 @@ import { capitalize } from "../../components/helpers/capitalize.js";
 
 import cases from "../../data/cases"
 
-
-
 const Content = styled.section`
 min-height:130vh;
 ${flex}
@@ -161,13 +159,12 @@ p{
 
 
 `
-
 const Cases = () => {
 const [showFilter, setShowFilter] = useState(false);
 const [showAll, setShowAll] = useState(true);
 const [allData, setallData] = useState(null);
-const [cases, setCases] = useState([])
-const [filtoptions, setOptions] = useState([])
+const [cases, setCases] = useState(null)
+const [filtoptions, setOptions] = useState(null)
 const [tags, setTags] = useState([]) 
 
 

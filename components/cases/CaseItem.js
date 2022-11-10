@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const CaseItem = ({ item, index, tags}) => {
+const CaseItem = ({ item, index}) => {
 
   const [clName, setClName] = useState(null);
   useEffect(()  => {
