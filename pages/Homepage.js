@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import CasesPage from "./Casespage";
-import HeroContent from "./Hero";
-import WhoAmI from "./WhoAmISection";
-import WordsAboutMe from "./WordsAboutMeSection";
+import HeroContent from "../components/homepage/Hero"
+import WhoAmI from "../components/homepage/WhoAmISection";
+import WordsAboutMe from "../components/homepage/WordsAboutMeSection";
 
 const MainHP = styled.main`
 background-color:${({theme}) => theme.colors.grey};

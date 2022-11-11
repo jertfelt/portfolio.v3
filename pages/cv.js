@@ -2,9 +2,25 @@ import styled, {css} from "styled-components";
 import {flex, device} from "../components/styles/Styles"
 import {Container} from "../components/styles/Container.styled.js"
 import {Line} from "../components/styles/Line.styled"
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useReducer } from "react";
 import {Grid} from "../components/styles/Grid.styled";
 import { getCV } from "../components/api/cases";
+
+
+const initialState = {
+  count: 0
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
 
 const Content = styled.section`
 padding: 5rem;
@@ -49,6 +65,7 @@ ${props =>
 const CVpage = () => {
 const [workData, setWData] = useState([]);
 const [education, setEData] = useState([])
+const [state, dispatch] = useReducer(reducer, initialState);
 
 
 const fetchData = useCallback(async () => {
@@ -63,6 +80,9 @@ useEffect(() => {
 }, [])
 
 console.log(workData, "work:", education, "ed") 
+
+
+
   return ( 
     <Container xlarge>
       <Content>
@@ -71,7 +91,12 @@ console.log(workData, "work:", education, "ed")
         <p>Lorem ipsym</p>
         </Heading>
       <Line/>
-      <Education>
+      <>
+      Count: {state.count}
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+      {/* <Education>
       <CVContent>
       <h2>Arbete:</h2>
       <Grid cv>
@@ -96,7 +121,7 @@ console.log(workData, "work:", education, "ed")
         </Grid>
       
       </CVContent>
-      </Education>
+      </Education> */}
       </Content>
     </Container>
    );

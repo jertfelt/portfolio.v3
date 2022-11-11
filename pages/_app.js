@@ -5,15 +5,20 @@ import '../styles/globals.css'
 import { theme } from "../components/styles/theme";
 
 
+
 const MyApp = ({ Component, pageProps }) => {
   return (
   <>
+ 
   <ThemeProvider theme={theme}>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-    <GlobalStyle/>
+
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      <GlobalStyle/>
+
   </ThemeProvider>
+ 
   </>
  )
 }

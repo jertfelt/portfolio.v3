@@ -1,10 +1,8 @@
-import styled from "styled-components"
-import { useEffect, useState, useCallback } from "react"
 
 //components:
-import { getData } from "../components/api/cases"
+
 import Head from "next/head"
-import Homepage from "../components/homepage/Homepage"
+import Homepage from "./Homepage"
 
 
 

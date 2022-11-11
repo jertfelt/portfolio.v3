@@ -21,10 +21,6 @@ gap: 2rem;
 `
 const ShowCases = ({cases}) => {
 const [errorMsg, setErrorMsg] = useState(false);
-
-console.log(cases)
-
-
   return (
   <Wrapper>
     {errorMsg && <div>Något har gått fel. Prova att refresha sidan.</div>}

@@ -12,7 +12,8 @@ import { getData, getTag, getTags } from "../../components/api/cases";
 import CaseList from "../../components/cases/CaseList.js";
 import { capitalize } from "../../components/helpers/capitalize.js";
 
-import cases from "../../data/cases"
+import { cases } from "../../data/cases";
+const casesDb = {cases};
 
 const Content = styled.section`
 min-height:130vh;
@@ -160,37 +161,51 @@ p{
 
 `
 const Cases = () => {
-const [showFilter, setShowFilter] = useState(false);
-const [showAll, setShowAll] = useState(true);
-const [allData, setallData] = useState(null);
-const [cases, setCases] = useState(null)
-const [filtoptions, setOptions] = useState(null)
-const [tags, setTags] = useState([]) 
+  //*------from cases.js in data, instead of fb:
+  const [cases, setCases] = useState(casesDb.cases)
+  let utag = [...new Set(casesDb.cases.map(item => item.tag))]
+  const [tag, setTag] = useState(utag)
+  let unique = [...new Set(casesDb.cases.map(item => item.tags.c1).concat(casesDb.cases.map(item => item.tags.c2),casesDb.cases.map(item => item.tags.c3)))]
+  const [dbTags, setDbTags] = useState(unique)
 
+  //fb:
+  const [result, setResult] = useState(null)
+  const [tags, setTags] = useState(null)
+  const [ogTag, setOGTag] = useState(null)
 
 const fetchData = useCallback(async () => {
   const newData = await getData();
-  setallData(newData)
+  setResult(newData)
   const newTagsList = await getTag();
-  setOptions(newTagsList)
+  setTags(newTagsList)
   const allTags = await getTags();
-  setTags(allTags)
+  setOGTag(allTags)
 })
 
 useEffect(() => {
   fetchData().catch(console.error)
 }, [])
 
+//both:
+const [loading, setLoading] = useState(false)
+const [showFilter, setShowFilter] = useState(false)
+const [showAll, setShowAll] = useState(true)  
+const [filter, setFiltered] = useState(cases);
+
+
 const checkOption =(e)=>{
   if(e.target.value ==="showMeAll"){
     setShowFilter(false);
+    setLoading(true);
     setShowAll(true);
   }
   else{
-      setShowFilter(true);
       setShowAll(false);
-      const featured = allData.filter(item => (item.tag === e.target.value))
-      setCases(featured)
+      setLoading(true);
+      setShowFilter(true);
+   
+      const featured = cases.filter(item => (item.tag === e.target.value))
+      setFiltered(featured)
   }
   }
 
@@ -198,65 +213,120 @@ const checkOption =(e)=>{
     <Container xlarge>
       <Content>
       <h1>Cases:</h1>
+      
       <Intro>
       <Text>Här är projekt jag jobbat på. De flesta är skoluppgifter under min tid på Nackademin, andra är egna projekt och/eller projekt jag deltar/tagit på under min praktik.
       </Text>
       <Filter>
         <label htmlFor="selectfilter">Välj ett ämne:</label>
         <span className="selectmenu">
-        {!filtoptions &&<>Går ej att filtrera just nu</>}
-        {filtoptions && <>
+{/* 
+        {result && <>
+        {!tags &&<>Går ej att filtrera just nu</>}
+          {tags && <>
           <select id="selectfilter"
           onChange={(checkOption)}>
-    <option 
+              <option 
               value="showMeAll">Visa alla!</option>
-             
-                {filtoptions.map((item,index) => 
-                 (
+                {tags.map((item, index) => 
+                (
                   <option 
                   key= {index}
                   value={item}>{capitalize(item)}
                     </option>
                 ))}
-            
           </select>
           </>}
-          </span>
+          </>} */}
+
+          {cases && <>
+          {!tag &&<>Går ej att filtrera just nu</>}
+          {tag && <>
+          <select id="selectfilter"
+          onChange={(checkOption)}>
+              <option 
+              value="showMeAll">Visa alla!</option>
+                {tag.map((item, index) => 
+                (
+                  <option 
+                  key= {index}
+                  value={item}>{capitalize(item)}
+                    </option>
+                ))}
+          </select>
+          </>}
+          </>}
+        </span>
       </Filter>
       </Intro>
-      <>{!allData && <>...Laddar sidan</>}
-
+      {/* {result && <>
       {showFilter && <>
-      {cases && 
       <div>
       <CaseList
-      array = {cases}
+      array = {filter}
       >
       </CaseList>
-      <p>Antal: {cases.length}</p>
-      </div>}
+      <p>Antal: {filter.length}</p>
+      </div>
       </>}
 
       {showAll && <>
-      {allData && 
-       <div>
-       <CaseList
-      array = {allData}
+      <div>
+      <CaseList
+      array = {result}
       >
       </CaseList>
-      <p>Antal: {allData.length}</p>
-      </div>}
+      <p>Antal: {result.length}</p>
+      </div>
       </>
       }
-       <WordCloud>
+      <WordCloud>
           <div>
-        {tags.map((item,index) => (
-         <p key={index}>#
+        {ogTag.map((item,index) => (
+        <p key={index}>#
           {capitalize(item)}</p>
         ) )}
         </div>
       </WordCloud>
       </>
+      } */}
+
+      {cases && <>
+      {showFilter && <>
+      <div>
+      <p>Antal: {filter.length}</p>
+      <CaseList
+      array = {filter}
+      >
+      </CaseList>
+      
+      </div>
+      </>}
+
+      {showAll && <>
+      <div>
+      <p>Antal: {cases.length}</p>
+      <CaseList
+      array = {cases}
+      >
+      </CaseList>
+      
+      </div>
+      </>
+      }
+      <WordCloud>
+          <div>
+        {dbTags.map((item,index) => (
+        <p key={index}>#
+          {capitalize(item)}</p>
+        ) )}
+        </div>
+      </WordCloud>
+      </>
+      }
+
+
+      
     
       </Content> 
      
