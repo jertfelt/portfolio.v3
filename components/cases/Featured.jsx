@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import CasefItem from "./CasefItem"
 
 const Featured = ({cases}) => {
+  console.log(cases, "")
   return ( 
-<>
+{/* <>
          {cases.map((c) => 
           (
           <CasefItem
@@ -14,7 +15,7 @@ const Featured = ({cases}) => {
           ) 
         )}
         {!cases && <p>..Laddar</p>} 
-</>
+</> */}
   );
 }
 

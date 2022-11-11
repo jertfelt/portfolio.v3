@@ -1,11 +1,9 @@
 import { useEffect, useState, useCallback } from "react"
 import styled, {css} from "styled-components"
-
+import CasefItem from "../cases/CasefItem";
 
 import { flex, device } from "../styles/Styles";
 
-
-import Featured from "../cases/Featured";
 
 const Wrapper = styled.div`
 
@@ -23,20 +21,24 @@ gap: 2rem;
 `
 const ShowCases = ({cases}) => {
 const [errorMsg, setErrorMsg] = useState(false);
-const [loading, setLoading] = useState(false)
 
-if(!cases){
-  setErrorMsg(true)
-}
+console.log(cases)
+
 
   return (
   <Wrapper>
     {errorMsg && <div>Något har gått fel. Prova att refresha sidan.</div>}
   <CaseList>
-    <>
-    <Featured
-    cases = {cases}/>
-    </>
+  {cases.map((c) => 
+          (
+          <CasefItem
+          key={c.id}
+          item= {c}
+          index={c.id}
+          />
+          ) 
+        )}
+   {!cases && <p>..Laddar</p>} 
   </CaseList>
   </Wrapper>
   );
