@@ -2,29 +2,15 @@ import { useState, useEffect } from "react";
 import CasefItem from "./CasefItem"
 
 const Featured = ({cases}) => {
-const [featured, setFeatured] = useState(cases)
-
-
-useEffect(() => {
-  const doubled = cases.map(nested => nested.map(element => element));
-  return () => {
-    setFeatured(doubled[0])
-  }
-}, [])
-
-console.log(featured, "this will go")
-
   return ( 
 <>
-         {featured.map((c, index) => 
+         {cases.map((c) => 
           (
-            <>
           <CasefItem
-          key={index}
+          key={c.id}
           item= {c}
           index={c.id}
           />
-          </>
           ) 
         )}
         {!cases && <p>..Laddar</p>} 

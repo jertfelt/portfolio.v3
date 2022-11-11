@@ -57,7 +57,7 @@ font-size:${({theme}) => theme.fontSizes.medium};
 text-transform:uppercase;
 `
 
-const CasefItem = ({item, index}) => {
+const CasefItem = ({item}) => {
 
   return (
     

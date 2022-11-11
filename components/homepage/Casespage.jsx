@@ -38,41 +38,25 @@ margin-bottom:-2rem;`
 
 
 const CasesPage = () => {
+
+  //*------from cases.js in data, instead of fb:
   const [cases, setCases] = useState(casesDb.cases)
+  const [result, setFeatured] = useState(cases)
 
-  // // console.log("initial:", cases)
-
-  // const fetchData = useCallback(async () => {
-  //   const newData = await getData();
-  //   return newData
-  // })
+  let featured = []
   
+  useEffect(() => {
+    featured.push(cases.filter(item => item.featured === true)) 
+  },[cases])
+ 
+useEffect(() => {
+  const doubled = featured.map(nested => nested.map(element => element));
+  return () => {
+    setFeatured(doubled[0])
+  }
+}, [])
 
-  // useEffect(() => {
-  //   fetchData().then(x => {setCases(x)}).catch(console.error)
-  // }, [])
-
-
-  // console.log("after fetch:", cases)
-
-  // let cases = []
-  // initFirebase("cases/");
-  // const dbRef = ref(getDatabase());
-  // get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
-
-  //   if (snapshot.exists()){
-  //     let data = snapshot.val()
-  //   for (const key in data) {
-  //   cases.push({
-  //     ...data[key]
-  //   })
-  //   }}
-  //   else {
-  //     console.log("Ingen data tillgänglig")
-  //   }
-  // }).catch((error) => {
-  //   console.error(error)
-  // })
+console.log(result, "this will go")
 
  return (
     <Container
@@ -82,10 +66,8 @@ const CasesPage = () => {
       <Headline>Cases</Headline>
       <p>Här finns ett urval av olika saker jag kodat. En del är studentarbeten, andra är egna experiment.</p>
       </div>
-      
       <ShowCases
-      cases={cases}/>
-      
+      cases={result}/>
       </Content>
     </Container>
   );

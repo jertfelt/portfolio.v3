@@ -28,13 +28,6 @@ const [loading, setLoading] = useState(false)
 if(!cases){
   setErrorMsg(true)
 }
-  let featured = []
- useEffect(() => {
-   featured.push(cases.filter(item => item.featured === true)) 
- },[cases])
- 
- console.log(featured, "featured")
-
 
   return (
   <Wrapper>
@@ -42,7 +35,7 @@ if(!cases){
   <CaseList>
     <>
     <Featured
-    cases = {featured}/>
+    cases = {cases}/>
     </>
   </CaseList>
   </Wrapper>
