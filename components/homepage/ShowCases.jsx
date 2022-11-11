@@ -1,15 +1,9 @@
 import { useEffect, useState, useCallback } from "react"
-import { cases } from "../../data/cases"
 import styled, {css} from "styled-components"
-import Link from "next/link"
+
 
 import { flex, device } from "../styles/Styles";
 
-import { getData} from "../../components/api/cases";
-
-//firebase
-import { getDatabase, ref, get, child, onValue } from "firebase/database"
-import initFirebase from "../../components/api/initialize";
 
 import Featured from "../cases/Featured";
 
@@ -28,14 +22,27 @@ gap: 2rem;
 }
 `
 const ShowCases = ({cases}) => {
+const [errorMsg, setErrorMsg] = useState(false);
+const [loading, setLoading] = useState(false)
+
+if(!cases){
+  setErrorMsg(true)
+}
+  let featured = []
+ useEffect(() => {
+   featured.push(cases.filter(item => item.featured === true)) 
+ },[cases])
+ 
+ console.log(featured, "featured")
+
+
   return (
   <Wrapper>
-    {!cases && <div>Något har gått fel. Prova att refresha sidan.</div>}
+    {errorMsg && <div>Något har gått fel. Prova att refresha sidan.</div>}
   <CaseList>
     <>
-    {cases && 
     <Featured
-    array = {cases}/>}
+    cases = {featured}/>
     </>
   </CaseList>
   </Wrapper>
@@ -43,6 +50,3 @@ const ShowCases = ({cases}) => {
 }
  
 export default ShowCases;
-
-
-//https://stackoverflow.com/questions/65362902/loading-image-location-from-json-file-dynamically-cannot-find-module-reac

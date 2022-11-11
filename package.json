@@ -12,7 +12,6 @@
     "babel-plugin-styled-components": "^2.0.7",
     "chart.js": "^3.9.1",
     "dotenv": "^16.0.3",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "firebase": "^9.13.0",
     "next": "^13.0.0",
     "next-images": "^1.8.4",
@@ -27,7 +26,8 @@
   },
   "devDependencies": {
     "eslint": "8.26.0",
-    "eslint-config-next": "13.0.0"
+    "eslint-config-next": "13.0.0",
+    "webpack": "^5.75.0"
   },
   "description": "This is a reboot of jertfelt.se, in NEXTJS format.",
   "main": "next.config.js",

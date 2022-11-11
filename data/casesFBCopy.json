@@ -102,7 +102,7 @@
           "link": "https://jertfelt.github.io/Webshop-clownartists/"
         },
         "sub": "Fiktiv webbshop + memegenerator",
-        "tag": "Eget projekt",
+        "tag": "localStorage",
         "tags": {
           "c1": "localstorage",
           "c2": "javascript",
@@ -115,7 +115,7 @@
         "extra": {
           "file01": {
             "alt": "Ensam användare",
-            "url": "img/node-bowling-single.png"
+            "url": "/img/node-bowling-single.png"
           }
         },
         "featured": false,
@@ -123,7 +123,7 @@
         "sources": {
           "github": "https://github.com/jertfelt/nodejs-bowling",
           "imgalt": "En bild på en bowlingsidas medlemmar",
-          "imgurl": "img/node-bowling.png",
+          "imgurl": "/img/node-bowling-form.png",
           "link": "https://github.com/jertfelt/nodejs-bowling"
         },
         "sub": "Node.js",
@@ -233,6 +233,7 @@
           "c2": "strapi",
           "c3": "api"
         },
+        "text": "Jag skulle ta fram en applikation för ett community som lånar/byter böcker och ljudböcker. Uppgiften var att skapa en frontend som kan kommunicera med en databas jag skapat i CMS-systemet Strapi.",
         "title": "Studentarbete: Bookducks"
       },
       {
@@ -259,6 +260,65 @@
         },
         "text": "Vår uppgift var att skapa en webbplats för ett påhittat företag. Webbplatsen ska bestå av minst följande fyra undersidor - Startsida, Om oss, Cases och Kontakt. Vi började med att ta fram en mockup på webbplatsen som vi förhöll oss till när vi kodade.",
         "title": "PALT"
+      },
+      {
+        "extra": {
+          "file01": {
+            "alt": "Printscreen",
+            "url": "/img/ekoline.png"
+          }
+        },
+        "featured": true,
+        "id": 11,
+        "sources": {
+          "github": "https://github.com/jertfelt/bankingapp-restAPI-node-mongodb",
+          "imgalt": "Designen snodd",
+          "imgurl": "img/ekobanken-2.png",
+          "link": "https://github.com/jertfelt/bankingapp-restAPI-node-mongodb"
+        },
+        "sub": "Fullstack och kryptering",
+        "tag": "nodeJS",
+        "tags": {
+          "c1": "mongodb",
+          "c2": "kryptering",
+          "c3": "rest-api"
+        },
+        "text": "Jag skulle skapa en säker bank med REST-API, med databas i mongoDB där frontenden kommunicerar med JSON. Utöver detta kunde vi jobba med kryptering och cookies. Designen är rakt av snodd från ekobanken.se ",
+        "title": "Ekobanken"
+      },
+      {
+        "extra": {
+          "file01": {
+            "alt": "Printscreen",
+            "url": "/img/disney-bonus.png"
+          }
+        },
+        "featured": false,
+        "id": 12,
+        "sources": {
+          "github": "https://github.com/jertfelt/",
+          "imgalt": "Disney",
+          "imgurl": "img/disney.png",
+          "link": "https://www.tovajertfelt.se/quiz.html"
+        },
+        "sub": "Ett quiz gjort i vanilla javascript",
+        "tag": "JS",
+        "text": "Beskrivning: Du har fått i uppgift att skapa ett quiz med 10 frågor. Användare ska kunna svara på frågor och få feedback på huruvida hen besvarat dessa rätt eller fel. här ska man också jobba med radiobuttons och checkbuttons. Jag valde också att jobba med att få ut en del av frågorna med javascript istället för med HTML. ",
+        "title": "Skoluppgift: Quiz i JS"
+      }
+    ]
+  },
+  "cv": {
+    "education": [
+      {
+        "id": 1,
+        "school": "Konstfack"
+      }
+    ],
+    "work": [
+      {
+        "id": 1,
+        "workplace": "Amnesty Sverige"
       }
     ]
   },

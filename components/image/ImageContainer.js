@@ -79,7 +79,6 @@ padding-left:2rem;
 const ImageContainer = ({id}) => {
 const [imgurl1, set1] = useState("")
 const [imgurl2, set2] = useState("")
-
 useEffect(() => {
   switch (id){
     case 1:

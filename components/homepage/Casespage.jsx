@@ -8,6 +8,8 @@ import { useState, useEffect, useCallback } from "react";
 import { getData } from "../api/cases";
 import { getDatabase, ref, get, child, onValue } from "firebase/database"
 import initFirebase from "../../components/api/initialize";
+import { cases } from "../../data/cases";
+const casesDb = {cases};
 
 const Content = styled.div`
 min-height:100vh;
@@ -33,38 +35,46 @@ font-size:${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
 margin-bottom:-2rem;`
 
+
+
 const CasesPage = () => {
-  // const [cases, setAllData] = useState([])
+  const [cases, setCases] = useState(casesDb.cases)
+
+  // // console.log("initial:", cases)
 
   // const fetchData = useCallback(async () => {
   //   const newData = await getData();
-  //   setAllData(newData)
+  //   return newData
   // })
   
+
   // useEffect(() => {
-  //   fetchData().catch(console.error)
+  //   fetchData().then(x => {setCases(x)}).catch(console.error)
   // }, [])
 
-  let cases = []
-  initFirebase("cases/");
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
-    if (snapshot.exists()){
-      let data = snapshot.val()
-  for (const key in data) {
-    cases.push({
-      ...data[key]
-    })
-    }}
-    else {
-      console.log("Ingen data tillgänglig")
-    }
-  }).catch((error) => {
-    console.error(error)
-  })
 
+  // console.log("after fetch:", cases)
 
-  return (
+  // let cases = []
+  // initFirebase("cases/");
+  // const dbRef = ref(getDatabase());
+  // get(child(dbRef, `/cases/cases/`)).then((snapshot) => {
+
+  //   if (snapshot.exists()){
+  //     let data = snapshot.val()
+  //   for (const key in data) {
+  //   cases.push({
+  //     ...data[key]
+  //   })
+  //   }}
+  //   else {
+  //     console.log("Ingen data tillgänglig")
+  //   }
+  // }).catch((error) => {
+  //   console.error(error)
+  // })
+
+ return (
     <Container
     xlarge>
       <Content>
@@ -72,8 +82,10 @@ const CasesPage = () => {
       <Headline>Cases</Headline>
       <p>Här finns ett urval av olika saker jag kodat. En del är studentarbeten, andra är egna experiment.</p>
       </div>
+      
       <ShowCases
       cases={cases}/>
+      
       </Content>
     </Container>
   );

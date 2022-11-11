@@ -1,29 +1,33 @@
+import { useState, useEffect } from "react";
 import CasefItem from "./CasefItem"
-import { useEffect, useState } from "react"
 
-const Featured = ({array}) => {
+const Featured = ({cases}) => {
+const [featured, setFeatured] = useState(cases)
 
-const [test, setTest] = useState([])
 
 useEffect(() => {
-  let filtered = array.filter(item => item.featured === true);
-  setTest(filtered)
-},[])
-console.log(test, "array?")
+  const doubled = cases.map(nested => nested.map(element => element));
+  return () => {
+    setFeatured(doubled[0])
+  }
+}, [])
+
+console.log(featured, "this will go")
+
   return ( 
 <>
-        {test.map((c) => 
+         {featured.map((c, index) => 
           (
             <>
-            <CasefItem
-          key={c.id}
+          <CasefItem
+          key={index}
           item= {c}
           index={c.id}
           />
           </>
           ) 
         )}
-        {!array && <p>..Laddar</p>}
+        {!cases && <p>..Laddar</p>} 
 </>
   );
 }
