@@ -11,8 +11,10 @@ import { getData, getTag, getTags } from "../../components/api/cases";
 //components
 import CaseList from "../../components/cases/CaseList.js";
 import { capitalize } from "../../components/helpers/capitalize.js";
-
+import SpinnerLoading from "../../components/helpers/loadingSpinner"
 import { cases } from "../../data/cases";
+
+
 const casesDb = {cases};
 
 const Content = styled.section`
@@ -137,29 +139,35 @@ option{
   font-family:Arial;
 }
 `
+const Show = styled.div`
+margin-bottom:3rem;
+`
 
 const WordCloud = styled.div`
-${flex({align:"flex-start", justify:"flex-start"})}
-float: left;
-
+padding:1rem;
+max-width:80%;
+h3{
+  text-align:center;
+  text-transform: uppercase;
+  margin-bottom:-1.5rem;
+}
 div{
-  max-width:400px;
+  padding:2rem;
   flex-wrap:wrap;
   ${flex({direction:"row", align:"flex-start", justify:"flex-start"})}
   gap:10px;
-p{
-  line-height:4px;
-  font-size:12px;
-  &:hover{
-    color: ${({theme}) => theme.colors.vividblue};
-    cursor: none;
   }
 }
-
-}
-
-
 `
+const Tag = styled.p`
+${flex({align:"flex-start", justify: "flex-start"})}
+font-size:18px;
+&:hover{
+  font-size:20px;
+  background-color: ${({theme}) => theme.colors.purple};
+}
+`
+
 const Cases = () => {
   //*------from cases.js in data, instead of fb:
   const [cases, setCases] = useState(casesDb.cases)
@@ -191,7 +199,7 @@ const [loading, setLoading] = useState(false)
 const [showFilter, setShowFilter] = useState(false)
 const [showAll, setShowAll] = useState(true)  
 const [filter, setFiltered] = useState(cases);
-
+const [filtertags, setFilteredTags] = useState(dbTags)
 
 const checkOption =(e)=>{
   if(e.target.value ==="showMeAll"){
@@ -206,8 +214,21 @@ const checkOption =(e)=>{
    
       const featured = cases.filter(item => (item.tag === e.target.value))
       setFiltered(featured)
+      const f2 = featured.filter(item => item.tags).map(item => item.tags.c1)
+      const f3 = featured.filter(item => item.tags).map(item => item.tags.c2)
+      const f4 = featured.filter(item => item.tags).map(item => item.tags.c3)
+      const f1 = [...new Set(f2.concat(f3, f4))]
+      setFilteredTags(f1);
   }
   }
+
+  useEffect(()=>{
+    if (loading){
+      setTimeout(() => {
+        setLoading(false)
+      },3000)
+    }
+  }, [loading])
 
   return (
     <Container xlarge>
@@ -240,7 +261,6 @@ const checkOption =(e)=>{
           </>} */}
 
           {cases && <>
-          {!tag &&<>Går ej att filtrera just nu</>}
           {tag && <>
           <select id="selectfilter"
           onChange={(checkOption)}>
@@ -292,44 +312,72 @@ const checkOption =(e)=>{
       } */}
 
       {cases && <>
+      {loading ?   <SpinnerLoading/>
+   
+      :<>
       {showFilter && <>
-      <div>
+      <Show>
       <p>Antal: {filter.length}</p>
       <CaseList
       array = {filter}
       >
       </CaseList>
       
-      </div>
+      </Show>
+      <WordCloud>
+        <h3>Tags:</h3>
+          <div>
+        {filtertags.map((item,index) => (
+        <Tag key={index}>#
+          {capitalize(item)}</Tag>
+        ) )}
+        </div>
+      </WordCloud>
       </>}
+      </>
+      }
 
       {showAll && <>
-      <div>
+      <Show>
       <p>Antal: {cases.length}</p>
       <CaseList
       array = {cases}
       >
-      </CaseList>
-      
-      </div>
-      </>
-      }
+      </CaseList>      
+      </Show>
+
       <WordCloud>
+      <h3>Tags:</h3>
           <div>
-        {dbTags.map((item,index) => (
-        <p key={index}>#
-          {capitalize(item)}</p>
-        ) )}
+        {dbTags.map((item,index) => {
+          if ((index %5 === 1)){
+            return <Tag key={index}
+            className="large">#
+            {capitalize(item)}</Tag>
+          }
+          else if ((index %3 === 0)){
+            return <Tag key={index}
+            className="white">#
+            {capitalize(item)}</Tag>
+          }
+          else if ((index %2 === 1)){
+            return <Tag key={index}
+            className="lightblue">#
+            {capitalize(item)}</Tag>
+          }
+          else {
+            return <Tag key={index}
+            className="small">#
+            {capitalize(item)}</Tag>
+          }
+        
+        } )}
         </div>
       </WordCloud>
-      </>
+      </>  
+      }</>
       }
-
-
-      
-    
       </Content> 
-     
     </Container>
   );
 }

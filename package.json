@@ -21,7 +21,9 @@
     "react-count": "^0.2.4",
     "react-countup": "^6.3.2",
     "react-dom": "18.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-scroll": "^1.8.8",
+    "react-spinners": "^0.13.6",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
