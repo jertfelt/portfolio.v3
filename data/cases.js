@@ -264,13 +264,13 @@ export const cases = [
   },
   sources:{
     link:"https://github.com/jertfelt/bankingapp-restAPI-node-mongodb",
-    imgurl:"img/ekobanken-2.png",
-    imgalt: "Designen snodd",
+    imgurl:"/img/ekobanken--loggedin.png",
+    imgalt: "Designen snodd från ekobanken.se",
     github:"https://github.com/jertfelt/bankingapp-restAPI-node-mongodb"
   },
   extra:{
     file01:{
-      url:"/img/ekoline.png",
+      url:"/img/ekobanken--konto.png",
       alt:"Printscreen",
     }
   },
