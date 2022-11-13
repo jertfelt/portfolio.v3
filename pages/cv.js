@@ -9,7 +9,8 @@ import { SquigglyLine } from "../components/styles/Line.styled";
 import Nackademin from "../components/homepage/Nackademin";
 import {work, education} from "../data/cv";
 import Link from "next/link";
-
+import kollektivsorg from "../public/img/kollektiv-sorg-samples.png"
+import Image from "next/image";
 const workDb = work;
 const educationDB = education;
 
@@ -367,11 +368,56 @@ function handleClick() {
       
       </>}
       <Erfarenhet>
+      
       <CVContent>
         <h2>Övrigt</h2>
+        <Grid cv> 
+      <GridItem>
+      
+        <h3>Yrkeskunskap</h3>
+        <h4>Mycket goda kunskaper:</h4>
+        <ul>
+          <li>Ansvarstagande</li>
+          <li>Kreativitet</li>
+        <li>Analytisk</li>
+        <li>Kommunikation</li>
+        </ul>
+        <h4>Goda kunskaper:</h4>
+        <ul>
+        <li>Teamarbete i projekt</li>
+        <li>Agilt projektarbete</li>
+        <li>Problemlösning</li>
+        </ul>
+      
+       
+        </GridItem>
+        <GridItem>
+        <h3>Programvara:</h3>
+        <h4>Mycket goda kunskaper:</h4>
+        <ul>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+        </ul>
+        <h4>Goda kunskaper:</h4>
+        <ul>
+        <li>Figma</li>
+        <li>Visual Studio Code</li>
+        <li>After Effects</li>
+        <li>Github</li>
+        </ul>
+      </GridItem>
+        <GridItem>
+      
+     <Bread>Jag lär mig snabbt och har under åren utforskat och kombinerat många olika kunskaper och tools of the trade. Jag har därför en bred bas av erfarenhet och kunskaper: allt från det konstnärliga till det tekniska, det kunskapstörstande och taktila, samt det strategiska, analytiska, affärsmannamässiga och sociala. </Bread>
+     
+      </GridItem>
+          <Image src={kollektivsorg}
+          width={400}
+          heigh={250}
+          alt="Bild på min grafiska profil åt Kollektiv Sorg"/>
+      </Grid>
       </CVContent>
-      <CVContent>
-      </CVContent>
+  
       </Erfarenhet>
       </Content>
     </Container>
