@@ -33,7 +33,7 @@ const TechNames = (props) => {
 
 
   const fill = {
-    marginTop: "-1rem",
+    marginTop: "-5rem",
     height: '100%',
     width: `${amount}%`,
     textAlign: 'left'

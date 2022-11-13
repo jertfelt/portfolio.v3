@@ -107,6 +107,9 @@ const MoreInfo = styled.span`
 const Tech = styled.div``
 const TechProgressBar = styled.div``
 
+const Row= styled.div`
+${flex({direction:"row", align:"flex-start"})}`
+
 const IndividualPage = ({array, id}) => {
 
   const [imageSize, setSmageSize] = useState({
@@ -160,17 +163,6 @@ const IndividualPage = ({array, id}) => {
          <Info>
       
           <p>{item.text}</p>
-          <Tech>
-          <h3>Följande tekniker var krav:</h3>
-         <ul>
-         {item.moreinfo.teknik.map(item => (
-          <li>{item}</li>
-         ))}
-         </ul>
-         </Tech>
-        
-          <ProgressBar
-          items= {item.moreinfo.languages}></ProgressBar>
          
          </Info>
          <ImageContainer>
@@ -216,6 +208,18 @@ const IndividualPage = ({array, id}) => {
          <MoreInfo>
          <p>{item.moreinfo.text1part3}</p>
         </MoreInfo>
+        <Row>
+          <Tech>
+          <h3>Följande tekniker var krav:</h3>
+          <ul>
+          {item.moreinfo.teknik.map(item => (
+            <li>{item}</li>
+          ))}
+          </ul>
+          </Tech>
+          <ProgressBar
+          items= {item.moreinfo.languages}></ProgressBar>
+         </Row>
          </ImageContainer>
         
         {/* <Tags>

@@ -19,8 +19,8 @@ const PBar = (props) => {
       fcolor = "white";
       break;
     case "CSS":
-        bgcolor = "red";
-        fcolor = "black";
+        bgcolor = "midnightblue";
+       
       break;  
     case "EJS":
         bgcolor = "#483d8b";
@@ -42,7 +42,8 @@ const PBar = (props) => {
     width: `${amount}%`,
     backgroundColor: bgcolor,
     textAlign: 'left',
-    padding:"2px"
+    padding:"2px",
+   
   }
 
   const labelStyles = {
@@ -54,7 +55,7 @@ const PBar = (props) => {
 
 
   return ( 
-    <>
+    
       <div style={fillerStyles} 
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}>
@@ -62,12 +63,12 @@ const PBar = (props) => {
         <span style={labelStyles}>
           {`${amount}%  `+ ``}
           </span>)}
-          {!isShown && (
+          {/* {!isShown && (
             <span style={labelStyles}>
             {`${name}`}
-            </span>)}
+            </span>)} */}
       </div>
-      </>
+     
    );
 }
  

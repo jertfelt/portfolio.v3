@@ -32,12 +32,13 @@ export const cases = [
       ["React", "State", "Redux", "De-structuring", "Array methods", "React Router", "Life cycle hooks", "API calls"],
       languages:
       
-      [{id: "HTML",
-        value: 3.6},
+      [
         {id: "CSS",
         value: 36.6},
         {id:"Javascript",
         value: 59.8},
+        {id: "HTML",
+        value: 3.6},
         ]
   }
 },
@@ -73,12 +74,13 @@ moreinfo:{
     ["React", "State", "Array methods", "React Router", "API calls", "useEffect hook", "Custom hooks", "Array.filter", "Conditional operators"],
     languages:
    
-    [{id:"HTML",
-    value: 8},
+    [
       {id:"SCSS",
       value:33.5 },
       {id:"Javascript",
       value:58.5 },
+      {id:"HTML",
+    value: 8},
       ]
 }
 },
@@ -114,12 +116,13 @@ moreinfo:{
   teknik:
     ["React", "State", "Conditional operators"],
     languages:
-    [{id:"HTML",
-    value: 2.4},
+    [
       {id:"SCSS",
       value:27.6 },
       {id:"Javascript",
       value:70 },
+      {id:"HTML",
+    value: 2.4},
       ]
  
 
@@ -454,7 +457,7 @@ moreinfo:{
         {id:"Javascript",
         value:32.9},
         {id:"EJS",
-      value: 4.3},
+        value: 4.3},
       ]
   }
 },

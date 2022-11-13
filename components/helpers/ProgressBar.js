@@ -6,9 +6,10 @@ import TechNames from "./Technames";
 
 const Bar = styled.div`
 ${flex({direction:"row"})}
-height: 30px;
+height: 20px;
 width: 100%;
 overflow:none;
+border-radius:29px;
 `
 
 const Names=styled.div`
@@ -16,9 +17,11 @@ ${flex({direction:"row"})}
 height:30px;
 width: 100%;
 `
+const Container= styled.div`
+${flex({direction:"column"})}`
 const ProgressBar = ({items}) => {
   return ( 
-  <>
+  <Container>
   <h3>Språk:</h3>
       <Bar>
     {items.map((i, idx) => (
@@ -29,7 +32,7 @@ const ProgressBar = ({items}) => {
     ))}
     </Bar>
   
-    {/* <Names>
+    <Names>
     {items.map((i, idx) => (
       <>
      <TechNames 
@@ -38,8 +41,8 @@ const ProgressBar = ({items}) => {
       name={i.id}/>
     </>
     ))}
-      </Names> */}
-  </>
+      </Names>
+  </Container>
   );
 }
  
