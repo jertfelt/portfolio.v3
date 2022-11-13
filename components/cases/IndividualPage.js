@@ -64,7 +64,7 @@ p{
 }
 `
 const ImageContainer=styled.div`
-${flex({align:"flex-start"})} 
+${flex} 
 gap:10px;
 
 `
