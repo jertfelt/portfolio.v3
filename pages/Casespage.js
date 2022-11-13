@@ -4,14 +4,12 @@ import styled, {css} from "styled-components";
 import { useState, useEffect, useCallback, useReducer } from "react";
 import { getData } from "../components/api/cases";
 import CasefItem from "../components/cases/CasefItem";
-
+import Link from "next/link";
 import { flex, device } from "../components/styles/Styles";
 import { cases } from "../data/cases";
 
 
 const casesDb = {cases};
-
-
 
 const Content = styled.div`
 min-height:100vh;
@@ -22,12 +20,21 @@ padding-top:4rem;
 div{
   ${flex ({justify: "space-between"})};
   width:100%;
-  p{
-    padding:2rem;
-    flex-wrap:wrap;
-    line-height:1.8rem;
   }
 }
+`
+const Desc = styled.p`
+  padding:2rem;
+  flex-wrap:wrap;
+  line-height:1.8rem;
+  max-width:70%;
+  a{
+    color:${({theme}) => theme.colors.lightblue};
+    text-decoration:none;
+    font-weight:bold;
+    &:hover{
+      text-decoration:underline;
+    }
 `
 
 const Headline = styled.h2`
@@ -35,19 +42,23 @@ color: ${({theme}) => theme.colors.lightblue};
 font-family:Arya;
 font-size:${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
-margin-bottom:-2rem;`
+`
 
 const Wrapper = styled.div`
-
 ${flex}
 padding:3rem;
 `
 const CaseList = styled.article`
+p{
+  line-height:1.8rem;
+  flex-wrap:wrap;
+}
 max-width:1000px;
 margin: 0 auto;
+padding-left:3rem;
 display: grid;
-gap: 2rem;
-@media ${device.desktop}{
+gap: 3rem; 
+@media ${device.tablet}{
   grid-template-columns: repeat(2, 1fr); 
 }
 `
@@ -59,8 +70,6 @@ const [cases, setCases] = useState(casesDb.cases)
 const [result, setResult] = useState(null)
 const [featuredCases, setFeatured] = useState(null);
 let featured = []
-
-
 
 const checkCases = (data) => {
   console.log(data, "checkC")
@@ -104,12 +113,14 @@ return (
       <Content>
       <div>
       <Headline>Cases</Headline>
-      <p>Här finns ett urval av olika saker jag kodat. En del är studentarbeten, andra är egna experiment.</p>
+      <Desc>Här finns ett urval av olika saker jag kodat. En del är studentarbeten, andra är egna experiment. För att se alla mina projekt, och filtrera på sökord, gå till <Link href="/cases/"> CASES</Link>.
+      </Desc>
       </div>
       {loading ? <><h2>Laddar sidan...</h2></> :
       <>
      
-      {featuredCases && <Wrapper>
+      {featuredCases && 
+      <Wrapper>
   <CaseList>
   {featuredCases.map((c) => 
           (
@@ -120,6 +131,7 @@ return (
           />
           ) 
         )}
+        
    {!featuredCases && 
       <Wrapper>
         <CaseList>

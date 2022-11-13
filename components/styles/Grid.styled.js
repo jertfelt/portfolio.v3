@@ -12,6 +12,7 @@ gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
  }
 
+
 ${props => 
   props.numbers && 
   css`  
@@ -31,7 +32,14 @@ gap: 5rem;
 
 
     `}
+    ${props => 
+      props.cases && 
+      css`  
   
-
+filter: drop-shadow(1mm 1mm 1mm #344ce6);
+      
+  
+      `}
+  
 
 `

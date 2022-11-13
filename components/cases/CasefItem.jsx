@@ -3,61 +3,71 @@ import { useEffect, useState } from "react"
 import styled, {css} from "styled-components"
 import Link from "next/link"
 import { flex, device } from "../styles/Styles";
+import Image from "next/image";
 
-import ImageContainer from "../image/ImageContainer";
+
 
 
 const CaseContainer = styled.article`
 border-radius: 29px;
 padding:1rem;
-background-color:black;
+background-color:${({theme}) => theme.colors.purple};
 font-family:Roboto;
-${flex}
+${flex({align:"center", justify:"center"})}
 @media ${device.laptop}{
-  padding:3rem;
+  padding:2rem;
 }
 a{
   text-decoration: none;
   color:${({theme}) => theme.colors.lightblue};
 }
-`
-const Links = styled.span`
-line-height:1rem;
-${flex({direction:"row"})}
-gap:10px;
-
-a{
-  font-size:${({theme}) => theme.fontSizes.medium};
-  text-decoration:none;
-  color: ${({theme}) => theme.colors.lightblue};
-  &:hover{
-    color: ${({theme}) => theme.colors.white};
-    text-decoration:underline;
-  }
-}
-@media ${device.tablet}{
-  line-height:1.8rem;
-}
-padding-bottom:2em;
+padding-bottom:3rem;
+filter: drop-shadow(2mm 2mm 3mm #344ce6);
 `
 
 const CaseHeader = styled.h3`
 color: ${({theme}) => theme.colors.lightblue};
 font-family:Arya;
 text-transform: uppercase;
-font-size:${({theme}) => theme.fontSizes.mediumlarge};
-margin-top:-2rem;
+font-size:${({theme}) => theme.fontSizes.large};
+flex-wrap: wrap;
+margin-top:-1rem;
+line-height:1.8rem;
+text-align:center;
 `
 const Description = styled.p`
-font-size:${({theme}) => theme.fontSizes.medium};
-width:90%;
+font-size:${({theme}) => theme.fontSizes.mediumsmall};
+width:100%;
+text-align: left;
 `
 const Subtitle = styled.h4`
 font-size:${({theme}) => theme.fontSizes.medium};
 text-transform:uppercase;
 `
+const ImageWrapper= styled.div`
+width: 100%;
+  .image--1 {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transition: transform .7s ease-in-out;
+    &:hover{
+      border-radius: ${({theme}) => theme.borderradius.second};
+      transform: rotate(-6deg);
+      filter: drop-shadow(2mm 2mm 3mm #344ce6);
+    }
+  }
+  }
+`
+const CaseImage = styled(Image)`
+`
+
 
 const CasefItem = ({item}) => {
+  const [imageSize, setSmageSize] = useState({
+    width: 400,
+    height: 400
+  });
 
   return (
     
@@ -76,17 +86,28 @@ const CasefItem = ({item}) => {
     <Link href={'/cases/' + item.id} 
     key={item.id}
     >
-     {/* <ImageContainer
-    id = {item.id}
-    />  */}
-     <Description>{item.text}</Description>
+       <Description>{item.text}</Description>
       
-      </Link>
-      
-    <Links>
-        {/* <Link href= {item.sources.link}>Se mer </Link>
-        <Link href= {item.sources.github}>/Github</Link> */}
-      </Links> 
+  <ImageWrapper
+         second>
+         <CaseImage 
+         layout="fill"
+         className="image--1"
+         onLoadingComplete={target => {
+          setSmageSize({
+            width: target.naturalWidth,
+            height: target.naturalHeight
+          });
+         }}
+        width={imageSize.width}
+        height={imageSize.height}
+         alt= {item.sources.imgalt}
+         src={item.sources.imgurl}
+         />
+         </ImageWrapper>
+    
+        </Link>
+        
       </>
      }
      {!item && <div>Något har gått fel.</div>}

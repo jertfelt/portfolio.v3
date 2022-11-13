@@ -6,11 +6,9 @@ import {flex, device} from "../../components/styles/Styles"
 import {Grid} from "../../components/styles/Grid.styled"
 import { getData } from "../../components/api/cases.js";
 //next and react
-import Link from "next/link";
-import Image from "next/image";
+
 import {useState, useEffect, useCallback } from "react";
-import  backbutt from "../../public/icons/backbuttwhtie.png";
-import  nextbutt from "../../public/icons/forwardbuttwhite.png";
+
 
 import { cases } from "../../data/cases";
 import IndividualPage from "../../components/cases/IndividualPage";
@@ -25,20 +23,6 @@ div{
   width:80%;
 }
 `
-const RowOfArrows=styled.div`
-width:100%;
-${flex({direction: "row", align:"center", justify:"space-between"})}`
-
-const Arrows = styled(Image)`
-height: 40px;
-width: 40px;
-&:hover{
-  transform: skewY(5deg);
-  background-color:${({theme}) => theme.colors.vividblue};
-}
-`
-
-
 
 const Page = () => {
   const router = useRouter()
@@ -61,34 +45,6 @@ const Page = () => {
   }, [])
 
 
-//  const [showBack, setBack] = useState(false)
-//  const [showButts, setShowButts] = useState(true)
-//  const [showFront, setFront] = useState(true)
-//  let max = (cases.length);
-//  const next = Number(id)+1;
-//  const back = Number(id)-1; 
-
-// useEffect(() => {
-//   if (id === undefined){
-//     setShowButts(false)
-//     console.log("id was undefined")
-//   }
-//   else{
-//     setShowButts(true)
-//   }
-// },[id])
-
-
-// useEffect(() => {
-//   if (Number(id) >= 1){
-//     setBack(true)
-//     console.log(Number(id) >= 1)
-//   }
-//   if (Number(id) >= max){
-//     console.log(Number(id) >= max)
-//     setFront(false)
-//   }
-// },[id])
 
 
   return (
@@ -109,4 +65,3 @@ const Page = () => {
 
 export default Page
 
-//lägg in "nästa för att bläddra mellan id" kommer nog vara så att jag måste byta namn på 

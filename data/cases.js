@@ -20,18 +20,24 @@ export const cases = [
     extra:{
       file01:{
         url:"/img/ewallet.png",
-        alt:"Printscreen från projektekt",
+        alt:"Printscreen från projektet",
+      },
+      file02:{
+        url:"https://user-images.githubusercontent.com/30622818/193041736-0ff4106b-3ad9-45cc-8bbb-2346bdde8032.png",
+        alt:"Loading screen"
+      },
+      file03: {
+        url: "https://user-images.githubusercontent.com/30622818/193041997-33605e07-64b2-41e4-b538-abe8e535d27c.png",
+        alt: "Lägg till nytt "
       }
   },
   moreinfo:{
     text1: "Det görs ett API vid start av applikationen, där jag hämtade en slumpvald användare från sidan https://randomuser.me/api/ .",
-    
     text1part2:"Applikationen skulle ha två routes: /cards och /addcard. I /cards skulle jag visa ett aktivt kort, samt om användaren hade flera kort så skulle dessa finnas listade. Om man ville så skulle man kunna byta aktivt kort.",
     text1part3: "I /addcard skulle man kunna lägga till ett nytt kort med följande information: Vendor, card number, cardholder, expire month, expire year, CCV. Vi skulle hårdkoda minst tre alternativ för kortutgivare. Förhandsvisning var ett krav. ",
     teknik:
       ["React", "State", "Redux", "De-structuring", "Array methods", "React Router", "Life cycle hooks", "API calls"],
       languages:
-      
       [
         {id: "CSS",
         value: 36.6},

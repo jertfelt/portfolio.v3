@@ -74,15 +74,16 @@ gap:5px;
 p{
   font-size:${({theme}) => theme.fontSizes.medium};
 }
-  color: ${({theme}) => theme.colors.lightblue};
+ 
+  color: ${({theme}) => theme.colors.white};
   a{
-    color: ${({theme}) => theme.colors.white};
-    text-transform: uppercase;
-    
+    color: ${({theme}) => theme.colors.lightblue};
+    text-decoration: none;
+    &:hover{
+      text-transform: uppercase;
+    }   
   }
 }
-
-
 `
 
 

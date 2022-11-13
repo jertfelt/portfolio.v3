@@ -5,7 +5,7 @@ import { Grid } from "../styles/Grid.styled";
 const CaseList = ({array}) => {
 
   return ( 
-    <Grid>
+    <Grid cases>
 
         {array.map((c, index) => 
           (<CaseItem

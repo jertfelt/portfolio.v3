@@ -100,7 +100,6 @@ select::-ms-expand {
   display: none;
 }
 .selectmenu{
-
   font-family: Arya;
   margin-top:1rem;
   width: 100%;

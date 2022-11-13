@@ -232,8 +232,7 @@ const WordsAboutMe = () => {
   </Button>
   </Row>
   </Container>
-  <SquigglyLine />
-  <Nackademin/>
+ 
   
   <ContainerToLinks>
   <h3>Se även:</h3>
