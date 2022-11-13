@@ -58,20 +58,32 @@ h2{
   font-size:${({theme}) => theme.fontSizes.large};
 }
 p{
-  line-height:1.5rem;
+  width:90%;
+  line-height:1.8rem;
   font-size:${({theme}) => theme.fontSizes.medium};
 }
 `
 const ImageContainer=styled.div`
-${flex} 
+${flex({align:"flex-start"})} 
 gap:10px;
+
 `
 const Tags = styled.span`
 ${flex({direction: "row"})}
 gap:5px;
 p{
+  font-size:${({theme}) => theme.fontSizes.medium};
+}
   color: ${({theme}) => theme.colors.lightblue};
-}`
+  a{
+    color: ${({theme}) => theme.colors.white};
+    text-transform: uppercase;
+    
+  }
+}
+
+
+`
 
 
 const RowOfArrows=styled.div`
@@ -103,9 +115,13 @@ width: 100%;
 const CaseImage = styled(Image)`
 `
 const MoreInfo = styled.span`
+padding:3rem;
+width:80%;
+font-size:20px;
+line-height:24px;
 `
 const Tech = styled.div``
-const TechProgressBar = styled.div``
+
 
 const Row= styled.div`
 ${flex({direction:"row", align:"flex-start"})}`
@@ -179,7 +195,6 @@ const IndividualPage = ({array, id}) => {
          }}
         width={imageSize.width}
         height={imageSize.height}
-      
          alt= {item.sources.imgalt}
          src={item.sources.imgurl}
          />
@@ -220,13 +235,12 @@ const IndividualPage = ({array, id}) => {
           <ProgressBar
           items= {item.moreinfo.languages}></ProgressBar>
          </Row>
+        
          </ImageContainer>
         
-        {/* <Tags>
-          <p>#{item.tags.c1}</p>
-          <p>#{item.tags.c2}</p>
-          <p>#{item.tags.c3}</p>
-          </Tags> */}
+        <Tags>
+        <p>Se mer på <Link href={item.sources.github}>Github</Link> och/eller <Link href={item.sources.link}>här</Link></p>
+          </Tags>
       {showButts ? ( <RowOfArrows>
       {showBack && 
       <Link href={'/cases/' + back}>
