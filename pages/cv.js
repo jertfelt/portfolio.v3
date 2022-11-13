@@ -7,9 +7,12 @@ import {Grid} from "../components/styles/Grid.styled";
 import { getCV } from "../components/api/cases";
 import { SquigglyLine } from "../components/styles/Line.styled";
 import Nackademin from "../components/homepage/Nackademin";
-import { cv } from "../data/cv";
+import {work, education} from "../data/cv";
 import Link from "next/link";
-const cvDb = cv;
+
+const workDb = work;
+const educationDB = education;
+
 
 // const initialState = {
 //   count: 0
@@ -141,7 +144,6 @@ const Bread= styled.p`
 width:80%;
 line-height:1.8rem;
 font-size:${({theme}) => theme.fontSizes.mediumsmall};
-
 `
 const Work = styled.section`
 width:100%;
@@ -154,17 +156,56 @@ margin-bottom:-10em;
 padding-top:7em;
 padding-bottom:13em;
 `
+const Knapp = styled.button`
+padding:10px;
+font-size:${({theme}) => theme.fontSizes.mediumsmall};
+background-color:${({theme}) => theme.colors.grey};
+border:none;
+border-radius:19px;
+color:${({theme}) => theme.colors.white};
+font-weight: bold;
+cursor: pointer;
+&:hover{
+  background-color:${({theme}) => theme.colors.vividblue};
+}
+&:active{
+  background-color:${({theme}) => theme.colors.black};
+}
+&:focus{
+  background-color:${({theme}) => theme.colors.black};
+}
+`
+const LikeButt = styled.button`
+margin-left:5em;
+padding:10px;
+background-color:${({theme}) => theme.colors.grey};
+border:none;
+border-radius:19px;
+color:${({theme}) => theme.colors.white};
+&:focus{
+  background-color:${({theme}) => theme.colors.black};
+}
+&:active{
+  background-color:${({theme}) => theme.colors.black};
+}
+&:hover{
+  cursor: pointer;
+}
+`
 
 const CVpage = () => {
-const [workData, setWData] = useState(cv);
-const [education, setEData] = useState(cv)
-const [likes, setLikes] = useState(0);
-// const [state, dispatch] = useReducer(reducer, initialState);
-const [show, setShow] = useState(false);
-const [buttonMsg, setButtonMsg] = useState("Läs mer om Nackademin")
 
-console.log(cv)
+  const [notShow, setNotShow] = useState(true);
+  const [showFb, setShowFb] = useState(false)
+    //*------from cv.js in data, instead of fb:
 
+  // const [state, dispatch] = useReducer(reducer, initialState);
+const [dbWork, setDbWork] = useState(workDb);
+const [dbEd, setDbEd] = useState(educationDB);
+
+//firebase: 
+const [workData, setWData] = useState(null);
+const [education, setEData] = useState(null)
 
 const fetchData = useCallback(async () => {
   const newData = await getCV("work");
@@ -172,15 +213,32 @@ const fetchData = useCallback(async () => {
   const ed = await getCV("education");
   setEData(ed)
 })
-
+console.log(workData, "workData")
+console.log(dbWork, "db")
+console.log(dbWork.map(item => item).map(item => item.id), "test")
 useEffect(() => {
   fetchData().catch(console.error)
+  if(workData){
+    
+    setShowFb(true);
+    setNotShow(false);
+  }
+  else{
+    setNotShow(true);
+    setShowFb(false);
+  }
 }, [])
+
+//both:
+const [likes, setLikes] = useState(0);
+const [show, setShow] = useState(false);
+const [buttonMsg, setButtonMsg] = useState("Läs mer om vad jag gör på Nackademin")
+
 
 const reveal = () => {
 if(show){
   setShow(false)
-  setButtonMsg("Nackademin stats")
+  setButtonMsg("Läs mer om vad jag gör på Nackademin")
 }
 else{
   setShow(true)
@@ -190,6 +248,10 @@ else{
 
 function handleClick() {
   setLikes(likes + 1);
+  if(likes ===10){
+    alert("Nu har du väl ändå klickat tillräckligt många gånger här!")
+    setLikes(0)
+  }
 }
 
   return ( 
@@ -200,11 +262,12 @@ function handleClick() {
         <p>Här följer relevant urval av jobb, utbildningar och erfarenheter som har med frontend att göra. Se gärna hela mitt cv på <Link href="https://www.linkedin.com/in/tovajertfelt/">Linkedin.</Link></p>
         </Heading>
       <Line/>
+      {showFb && <>
       <Work>
       <CVContent>
       <h2>Arbete</h2>
       <Grid cv>
-        {!workData && <>Laddar...</>}
+        
         {workData && workData.map((item,index) =>(
         <GridItem 
         work
@@ -227,26 +290,82 @@ function handleClick() {
       <CVContent>
       <h2>Utbildning</h2> 
       <Grid cv>
-        {!education && <>Laddar...</>}
+        
         {education && education.map((item,index) =>(
         <GridItem 
         key={index}>
-        <p>{item.period}</p>
+        <Period>{item.period}</Period>
         <h3>{item.school}</h3>
         <h4>{item.title}</h4>
-        <p>{item.text}</p>
+        <Bread>{item.text}</Bread>
         </GridItem>
         ))}
-         <button onClick={reveal}>{buttonMsg}</button>
+         <Knapp 
+         aria-label="button"
+         type="button"
+         onClick={reveal}>{buttonMsg}</Knapp>
         </Grid>
        
         {show && <>
       <Nackademin/>
-      <button onClick={handleClick}>Like({likes})</button>
+      <LikeButt onClick={handleClick}>Likes ({likes})</LikeButt>
+      </> }
+      </CVContent>
+      </Education>
+      </>}
+      
+      {notShow && <>
+        <Work>
+      <CVContent>
+      <h2>Arbete</h2>
+      <Grid cv>
+        
+        {dbWork && dbWork.map(item => item).map((item,index) =>(
+        <GridItem 
+        work
+        key={index}>
+          <Period>{item.period}</Period>
+        <h3>{item.workplace}</h3>
+        <h4>{item.title}</h4>
+        <Bread>{item.text}</Bread>
+        </GridItem>
+        ))}
+        <GridItem workBlob>
+          <h3>Praktik!
+          </h3>
+          <Bread>Just nu går jag praktik som frontendare hos Vinnovera, Stockholm.</Bread>
+        </GridItem>
+        </Grid>
+        </CVContent>
+      </Work>
+      <Education>
+      <CVContent>
+      <h2>Utbildning</h2> 
+      <Grid cv>
+
+        {dbEd && dbEd.map(item => item).map((item,index) =>(
+        <GridItem 
+        key={index}>
+        <Period>{item.period}</Period>
+        <h3>{item.school}</h3>
+        <h4>{item.title}</h4>
+        <Bread>{item.text}</Bread>
+        </GridItem>
+        ))}
+         <Knapp 
+         aria-label="button"
+         type="button"
+         onClick={reveal}>{buttonMsg}</Knapp>
+        </Grid>
+       
+        {show && <>
+      <Nackademin/>
+      <LikeButt onClick={handleClick}>Likes ({likes})</LikeButt>
       </> }
       </CVContent>
       </Education>
       
+      </>}
       <Erfarenhet>
       <CVContent>
         <h2>Övrigt</h2>

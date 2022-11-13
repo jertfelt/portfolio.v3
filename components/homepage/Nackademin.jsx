@@ -9,12 +9,21 @@ import { useEffect, useState } from "react";
 
 const Container = styled.div`
 padding:3rem;
-${flex};
+
+gap:30px;
+@media ${device.laptop}{
+  ${flex({direction:"row", align:"center", justify:"space-around"})};
+}
+div{
+  ${flex};
+  
+}
 
 h3{
   line-height:1.5em;
   text-align: center;
   font-family: Arya;
+ 
   color:${({theme}) => theme.colors.lightblue};
   font-size:${({theme}) => theme.fontSizes.large};
 }
@@ -22,8 +31,10 @@ h3{
 font-family: Roboto;
 
 h4{
+ 
   margin-top:-1rem;
 }
+
 p{
   text-align:center;
   margin-top:-1rem;
@@ -35,12 +46,21 @@ p{
 }
 `
 const Wrapper = styled.div`
-max-width:900px;`
+max-width:300px;
+@media ${device.laptop}{
+  max-width:900px;
+}
+`
 
 
 const CounterWrapper = styled.span`
 position: relative;
-top:-240px;
+top:-400px;
+@media ${device.laptop}{ 
+  position: relative;
+  top:-400px;
+}
+
 `
 
 
@@ -130,6 +150,7 @@ const Nackademin = () => {
     const configdata2 = {
       borderWidth: 0,
       responsive: true,
+      
       plugins: {
         legend: {
           display:false,
@@ -148,6 +169,7 @@ const Nackademin = () => {
 
   return ( 
     <Container>
+      <div>
     <h3>Frontendprogrammet</h3>
     <h4>Nackademin - Yrkeshögskola</h4>
     <p>2021-2023</p>
@@ -162,6 +184,8 @@ const Nackademin = () => {
       percent ={true}
       ></CountingUp>
       </CounterWrapper>
+      </div>
+      <div className="second">
       <h3>Kurser på Nackademin:</h3>
       <WordCloud
       role="Image"
@@ -241,6 +265,7 @@ const Nackademin = () => {
 
       <h3>Totalt {doneCourses.length} av {courses.length} kurser avklarade</h3>
       <p>*LIA: Lärande I Arbete. Praktik på arbetsplats.<br/><Link href="https://vinnovera.se/">LIA 1  & 2 är jag praktikant hos webbyrån Vinnovera.</Link></p>
+      </div>
     </Container>
    );
 }
