@@ -168,10 +168,10 @@ const IndividualPage = ({array, id}) => {
          ))}
          </ul>
          </Tech>
-         <TechProgressBar>
+        
           <ProgressBar
           items= {item.moreinfo.languages}></ProgressBar>
-         </TechProgressBar>
+         
          </Info>
          <ImageContainer>
          <ImageWrapper

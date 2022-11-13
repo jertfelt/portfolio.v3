@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 
 const PBar = (props) => {
   const {name, amount} = props;
@@ -15,8 +15,8 @@ const PBar = (props) => {
       bgcolor = "black";
       break;
     case "SCSS":
-      bgcolor = "blue";
-      fcolor = "black";
+      bgcolor = "#344ce6";
+      fcolor = "white";
       break;
     case "CSS":
         bgcolor = "red";
@@ -26,27 +26,46 @@ const PBar = (props) => {
         bgcolor = "#483d8b";
         fcolor = "white";
     break;
+    case "Shell":
+        bgcolor = "#483d8b";
+        fcolor = "white";
+    break;
     default:
-      bgcolor = "white";
+      bgcolor = "#483d8b";
+      fcolor = "white";
   } 
 
 
   const fillerStyles = {
+    marginTop:"-2rem",
     height: '100%',
     width: `${amount}%`,
     backgroundColor: bgcolor,
-    textAlign: 'left'
+    textAlign: 'left',
+    padding:"2px"
   }
 
   const labelStyles = {
-    padding: 2,
+    padding: 3,
     color: fcolor,
   }
 
+  const [isShown, setIsShown] = useState(false);
+
+
   return ( 
     <>
-      <div style={fillerStyles}>
-        <span style={labelStyles}>{`${amount}%  `+ ``}</span>
+      <div style={fillerStyles} 
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}>
+        {isShown && (
+        <span style={labelStyles}>
+          {`${amount}%  `+ ``}
+          </span>)}
+          {!isShown && (
+            <span style={labelStyles}>
+            {`${name}`}
+            </span>)}
       </div>
       </>
    );

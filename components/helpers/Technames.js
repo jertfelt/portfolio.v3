@@ -33,22 +33,16 @@ const TechNames = (props) => {
 
 
   const fill = {
+    marginTop: "-1rem",
     height: '100%',
     width: `${amount}%`,
     textAlign: 'left'
   }
 
-  const label = {
-    padding: 2,
-  }
-
-
   return ( 
-    <>
     <div style={fill}>
-      <span style={label}>{`${name}:`+ ` ${amount}%`}</span>
+      <span>{`${name}:`+ ` ${amount}%`}</span>
     </div>
-    </>
    );
 }
  
