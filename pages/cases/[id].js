@@ -27,7 +27,6 @@ div{
 `
 const RowOfArrows=styled.div`
 width:100%;
-
 ${flex({direction: "row", align:"center", justify:"space-between"})}`
 
 const Arrows = styled(Image)`
@@ -62,36 +61,34 @@ const Page = () => {
   }, [])
 
 
- const [showBack, setBack] = useState(false)
- const [showButts, setShowButts] = useState(true)
- const [showFront, setFront] = useState(true)
- let max = (cases.length);
- const next = Number(id)+1;
- const back = Number(id)-1; 
- console.log(max, id)
- 
-useEffect(() => {
-  if (id === undefined){
-    setShowButts(false)
-    console.log("id was undefined")
-  }
-  else{
-    setShowButts(true)
-  }
-},[id])
+//  const [showBack, setBack] = useState(false)
+//  const [showButts, setShowButts] = useState(true)
+//  const [showFront, setFront] = useState(true)
+//  let max = (cases.length);
+//  const next = Number(id)+1;
+//  const back = Number(id)-1; 
+
+// useEffect(() => {
+//   if (id === undefined){
+//     setShowButts(false)
+//     console.log("id was undefined")
+//   }
+//   else{
+//     setShowButts(true)
+//   }
+// },[id])
 
 
-useEffect(() => {
-  if (Number(id) >= 1){
-    setBack(true)
-    console.log(Number(id) >= 1)
-  }
-  if (Number(id) >= max){
-    console.log(Number(id) >= max)
-    setFront(false)
-  }
-},[id])
-
+// useEffect(() => {
+//   if (Number(id) >= 1){
+//     setBack(true)
+//     console.log(Number(id) >= 1)
+//   }
+//   if (Number(id) >= max){
+//     console.log(Number(id) >= max)
+//     setFront(false)
+//   }
+// },[id])
 
 
   return (
@@ -102,25 +99,7 @@ useEffect(() => {
       array = {cases}
       id = {id}
       />}
-      <div>
-      {showButts ? ( <RowOfArrows>
-      {showBack && 
-      <Link href={'/cases/' + back}>
-        <Arrows src={backbutt}
-        aria-label="button"
-        alt="Bakåt"/>
-        </Link>
-      }
-      {showFront &&
-        <Link href={'/cases/' + next}>
-        <Arrows src={nextbutt}
-        aria-label="button"
-        alt="Nästa"/></Link>
-      }
-      </RowOfArrows>
-      )
-      : (null)}
-      </div>
+      
       </Content>
       
       
