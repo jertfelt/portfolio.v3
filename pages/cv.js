@@ -156,6 +156,19 @@ margin-top:-5em;
 margin-bottom:-10em;
 padding-top:7em;
 padding-bottom:13em;
+${flex}
+h4{
+  background-color:black;
+  padding:1rem;
+  line-height:1.8rem;
+}
+ul{
+  list-style:none;
+}
+li{
+  margin-left:-2.3rem;
+  margin-bottom:4px;
+  font-size:${({theme}) => theme.fontSizes.medium};
 `
 const Knapp = styled.button`
 padding:10px;
@@ -392,7 +405,7 @@ function handleClick() {
        
         </GridItem>
         <GridItem>
-        <h3>Programvara:</h3>
+        <h3>Programvara</h3>
         <h4>Mycket goda kunskaper:</h4>
         <ul>
           <li>Adobe Photoshop</li>
@@ -406,7 +419,7 @@ function handleClick() {
         <li>Github</li>
         </ul>
       </GridItem>
-        <GridItem>
+        {/* <GridItem>
       
      <Bread>Jag lär mig snabbt och har under åren utforskat och kombinerat många olika kunskaper och tools of the trade. Jag har därför en bred bas av erfarenhet och kunskaper: allt från det konstnärliga till det tekniska, det kunskapstörstande och taktila, samt det strategiska, analytiska, affärsmannamässiga och sociala. </Bread>
      
@@ -414,7 +427,7 @@ function handleClick() {
           <Image src={kollektivsorg}
           width={400}
           heigh={250}
-          alt="Bild på min grafiska profil åt Kollektiv Sorg"/>
+          alt="Bild på min grafiska profil åt Kollektiv Sorg"/> */}
       </Grid>
       </CVContent>
   
