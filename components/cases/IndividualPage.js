@@ -26,7 +26,6 @@ font-family: Roboto;
 max-width:100%;
 article{
   ${flex}
- 
 }
 
 `
@@ -34,7 +33,7 @@ article{
 const Wrapper = styled.div`
 width:100%;
 flex-wrap:wrap;
-background-color:  ${({theme}) => theme.colors.black};
+
 ${flex}
 gap:5px;
 
@@ -186,8 +185,16 @@ console.log(individual)
          <h1>{item.title}</h1>
          <p>{item.sub}</p>
          </Wrapper>
+        
+         <Info>
+          <h3>Om projektet:</h3>
+          <p>{item.text}</p>
+         
+         </Info>
+         <ImageContainer>
+         
          <ImageWrapper
-         firstPic>
+         >
           
         <CaseImage
         layout="responsive"
@@ -205,14 +212,12 @@ console.log(individual)
          />
        
          </ImageWrapper>
-         <Info>
       
-          <p>{item.text}</p>
-         
-         </Info>
-         <ImageContainer>
-      
-         <ImageWrapper
+         <MoreInfo>
+         <p>{item.moreinfo.text1}<br/>{item.moreinfo.text1part2}</p>
+        </MoreInfo>
+       
+        <ImageWrapper
          second>
        
          <CaseImage 
@@ -231,9 +236,6 @@ console.log(individual)
          />
          
          </ImageWrapper>
-         <MoreInfo>
-         <p>{item.moreinfo.text1}<br/>{item.moreinfo.text1part2}</p>
-        </MoreInfo>
          <ImageWrapper
          first>
           
@@ -251,12 +253,14 @@ console.log(individual)
          alt= {item.extra.file02.alt}
          src={item.extra.file02.url}
          />
-       
+     
          </ImageWrapper>
-        
+       
          <MoreInfo>
          <p>{item.moreinfo.text1part3}</p>
         </MoreInfo>
+        
+       
         <ImageWrapper
          first>
           
@@ -276,6 +280,7 @@ console.log(individual)
          />
        
          </ImageWrapper>
+        
         <Row>
           <Tech>
           <h3>Följande tekniker var krav:</h3>

@@ -1,12 +1,12 @@
 import Image from "next/image"
-import { Container } from "../components/styles/Container.styled";
+import { Container } from "../styles/Container.styled";
 import styled, {css} from "styled-components";
 import { useState, useEffect, useCallback, useReducer } from "react";
-import { getData } from "../components/api/cases";
-import CasefItem from "../components/cases/CasefItem";
+import { getData } from "../api/cases";
+import CasefItem from "../cases/CasefItem";
 import Link from "next/link";
-import { flex, device } from "../components/styles/Styles";
-import { cases } from "../data/cases";
+import { flex, device } from "../styles/Styles";
+import { cases } from "../../data/cases";
 
 
 const casesDb = {cases};
@@ -72,7 +72,7 @@ const [featuredCases, setFeatured] = useState(null);
 let featured = []
 
 const checkCases = (data) => {
-  console.log(data, "checkC")
+ 
 if(!cases){
     setCases(data) 
   }
@@ -103,8 +103,6 @@ useEffect(() => {
       setLoading(false);
     }).catch(console.error)
 }, [])
-console.log(cases, "or this goes")
-console.log(featuredCases, "this will go")
 
 
 return (

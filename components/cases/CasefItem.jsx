@@ -22,7 +22,7 @@ a{
   color:${({theme}) => theme.colors.lightblue};
 }
 padding-bottom:3rem;
-filter: drop-shadow(2mm 2mm 3mm #344ce6);
+
 `
 
 const CaseHeader = styled.h3`
@@ -65,8 +65,8 @@ const CaseImage = styled(Image)`
 
 const CasefItem = ({item}) => {
   const [imageSize, setSmageSize] = useState({
-    width: 400,
-    height: 400
+    width: 300,
+    height: 300
   });
 
   return (

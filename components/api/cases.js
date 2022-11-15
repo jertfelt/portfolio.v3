@@ -3,24 +3,6 @@ import { getDatabase, ref, get, child, onValue } from "firebase/database"
 import initFirebase from "../../components/api/initialize";
 
 
-// export async function getData (){
-//   let cases = []
-//   initFirebase("cases/");
-//   const db = getDatabase();
-//   const dbRef = ref(db, `/cases/cases/`);
-//   onValue(dbRef, (snapshot) => {
-//   let data = snapshot.val()
-//   for (const key in data) {
-//     cases.push({
-//       id: key,
-//       ...data[key]
-//     })
-//   }
-//   })
-//   console.log(cases)
-//   return cases
-// }
-
 export async function getData () {
   let cases = []
   initFirebase("cases/");
