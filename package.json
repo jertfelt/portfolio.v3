@@ -9,23 +9,30 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^1.1.3",
+    "@tanem/react-nprogress": "^5.0.17",
     "babel-plugin-styled-components": "^2.0.7",
+    "chart.js": "^3.9.1",
+    "chartjs": "^0.3.24",
+    "chartjs-plugin-datalabels": "^2.1.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.13.0",
     "next": "^13.0.0",
     "next-images": "^1.8.4",
     "react": "18.2.0",
     "react-burger-menu": "^3.0.8",
+    "react-chartjs-2": "^4.3.1",
     "react-count": "^0.2.4",
     "react-countup": "^6.3.2",
     "react-dom": "18.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-scroll": "^1.8.8",
+    "react-spinners": "^0.13.6",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "eslint": "8.26.0",
-    "eslint-config-next": "13.0.0"
+    "eslint-config-next": "13.0.0",
+    "webpack": "^5.75.0"
   },
   "description": "This is a reboot of jertfelt.se, in NEXTJS format.",
   "main": "next.config.js",

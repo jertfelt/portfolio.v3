@@ -125,9 +125,6 @@ span:focus{
 const MenuLinks = styled(Link)`
 font-size: 2rem;
 `
-
-
-
 const Nav = () => {
 
 const [menuOpen, setMenuOpen] = useState(false);
@@ -169,12 +166,15 @@ return (
       alt="Stäng menyn här">
       <p>X</p>
       </span>
-      <MenuLinks href="/"
+      <MenuLinks onClick={toggleMenu}
+      href="/"
       >Hem</MenuLinks>
-      <MenuLinks href="/CV">
+      <MenuLinks onClick={toggleMenu}
+      href="/cv">
         CV
       </MenuLinks>
-      <MenuLinks href="/Cases">
+      <MenuLinks onClick={toggleMenu}
+      href="/cases">
         Cases
       </MenuLinks>
     </DropDownMenu>

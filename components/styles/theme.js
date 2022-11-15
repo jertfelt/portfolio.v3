@@ -1,11 +1,23 @@
 
+// import { Roboto, Arya } from '@next/font/google'
+
+
+// export const roboto = Roboto({
+//   weight: '400',
+// })
+
+// export const arya = Arya({
+//   weight: '500',
+// })
+
 export const theme = {
   fontSizes: {
     small:"12px",
+    mediumsmall:"1rem",
     medium: "20px",
-    large:"34px",
-    mediumlarge:"48px",
-    xlarge:"72px"
+    large:"2em",
+    mediumlarge:"3em",
+    xlarge:"4em"
   },
   paddingSizes: {
     small: "1em",
@@ -22,7 +34,8 @@ export const theme = {
   },
   borderradius: {
    first:"86% 14% 52% 48% / 50% 52% 48% 50%",
-   second:"45% 55% 52% 48% / 50% 25% 75% 50%"
+   second:"45% 55% 52% 48% / 50% 25% 75% 50%",
+   third: "45% 55% 52% 48% / 50% 25% 75% 50%"
   },
   colors: {
     grey: "#282828",

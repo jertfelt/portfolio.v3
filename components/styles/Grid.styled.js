@@ -12,6 +12,7 @@ gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
  }
 
+
 ${props => 
   props.numbers && 
   css`  
@@ -20,6 +21,25 @@ ${props =>
   // // max-width: ${({theme}) => theme.containers.xl};
   `}
 
+  ${props => 
+    props.cv && 
+    css`  
 
+gap: 5rem;
+@media (min-width: 700px) {
+  grid-template-columns: repeat(2, 1fr);
+ }
+
+
+    `}
+    ${props => 
+      props.cases && 
+      css`  
+  
+filter: drop-shadow(1mm 1mm 1mm #344ce6);
+      
+  
+      `}
+  
 
 `

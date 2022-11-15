@@ -1,0 +1,135 @@
+{
+  "cases": [
+    {
+      "id":"c01",
+      "featured": true,
+      "title":"E-wallet",
+      "sub": "React + Redux",
+      "text":"Studentarbete där vi skulle jobba med redux och react.  Jag skapade en SPA-applikation där användaren kan hantera olika betalkort.  Användarens namn skulle i sin tur hämtas från ett externt API, och vara med på alla kort. Jag försökte också jobba med localstorage, på eget iniativ, så man kunde göra en refresh på hemsidan och behålla username och kort.",
+      "tags":{
+        "tag1":{
+          "id":1,
+          "name":"react",
+          "weight":"900"
+        },
+        "tag3":{
+          "id":3,
+          "name":"api",
+          "weight":"500"
+        },
+        "tag4":{
+         "id":4,
+          "name":"css",
+          "weight":"700"
+        },
+        "tag2":{
+          "id":2,
+          "name":"redux",
+          "weight":"900"
+        }
+      },
+     "sources":{
+        "link":"https://github.com/jertfelt/e-wallet",
+       "imgurl":"/img/ewallet--2.png",
+        "imgalt": "Aktiva och inaktiva kort",
+        "github":"https://github.com/jertfelt/e-wallet"
+      },
+      "extra":{
+        "file01":{
+          "isthere": true,
+          "url":"/img/ewallet.png",
+          "alt":"Printscreen från projektekt",
+          "id":"1file01",
+          "buttonid":"1filebutt01"
+        }
+    }
+  },
+  {
+    "id":"c02",
+    "featured": true,
+    "title":"Studentarbete: Forumsida",
+    "sub": "React",
+    "text":"Din uppgift är att skapa ett forum som innehåller inlägg och kommentarer. Alla dessa ska hämtas från två olika API-endpoints.  Jag har även, utöver uppgifterna, labbat med att filtrera materialet.  Jag lärde mig att jag kunde göra en egen hook - useFetch - och har använt den för att slippa upprepa kod.",
+    "tags":{
+      "tag1":{
+        "id":1,
+        "name":"react",
+        "weight":"900"
+      },
+      "tag3":{
+        "id":3,
+        "name":"hooks",
+        "weight":"500"
+      },
+      "tag4":{
+       "id":4,
+        "name":"css",
+        "weight":"700"
+      },
+      "tag2":{
+        "id":2,
+        "name":"react-router-dom",
+        "weight":"900"
+      }
+    },
+   "sources":{
+      "link":"https://github.com/jertfelt/react-forum-js3",
+     "imgurl":"/img/react-forum--2.png",
+      "imgalt": "Screenshot",
+      "github":"https://github.com/jertfelt/react-forum-js3"
+    },
+    "extra":{
+      "file01":{
+        "isthere": true,
+        "url":"/img/react-forum.png",
+        "alt":"Printscreen från projektet",
+        "id":"2file01",
+        "buttonid":"2filebutt01"
+      }
+  }
+},
+{
+  "id":"c03",
+  "featured": false,
+  "title":"Svenhippan",
+  "sub": "Eget projekt i React",
+  "text":"Ett eget, högst experimentiellt och självlärande projekt där jag jobbade med React och olika states. Hemsidan är en 'app' som användes när två kompisar till mig skulle ha en gemensam svenhippa, där de får en digital skattjakt i Uppsala.",
+  "tags":{
+    "tag1":{
+      "id":1,
+      "name":"react",
+      "weight":"900"
+    },
+    "tag3":{
+      "id":3,
+      "name":"hooks",
+      "weight":"500"
+    },
+    "tag4":{
+     "id":4,
+      "name":"css",
+      "weight":"700"
+    },
+    "tag2":{
+      "id":2,
+      "name":"useState",
+      "weight":"900"
+    }
+  },
+ "sources":{
+    "link":"https://www.tovajertfelt.se/smalin/",
+   "imgurl":"/img/smalin--1.png",
+    "imgalt": "Screenshot",
+    "github":"https://github.com/jertfelt/smalin"
+  },
+  "extra":{
+    "file01":{
+      "isthere": true,
+      "url":"/img/smalin-website-2.png",
+      "alt":"Printscreen från projektet",
+      "id":"3file01",
+      "buttonid":"3filebutt01"
+    }
+}
+}
+]}

@@ -1,13 +1,26 @@
 import CaseItem from "./CaseItem"
-const CaseList = (props) => {
-  const {items} = props;
+import { Grid } from "../styles/Grid.styled";
+
+
+const CaseList = ({array}) => {
+
   return ( 
-    <ul>
-      {/* {items.map(c => <CaseItem
-      key={c.id}
-      />)} */}
-    </ul>
+    <Grid cases>
+
+        {array.map((c, index) => 
+          (<CaseItem
+            key={c.id}
+            item= {c}
+            index= {index}
+            />
+            ))}
+   
+       
+    </Grid>
+   
    );
 }
  
 export default CaseList;
+
+
