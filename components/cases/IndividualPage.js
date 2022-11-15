@@ -112,11 +112,20 @@ width: 100%;
     width: 100%;
     height: 100%;
   }
+  ${props => 
+    props.firstPic && 
+    css`
+    margin-top:-3rem;
+    position:relative;
+    top:-2rem;
+
+    `}
+
 `
 const CaseImage = styled(Image)`
 `
 const MoreInfo = styled.span`
-padding:3rem;
+padding:1rem;
 width:80%;
 font-size:20px;
 line-height:24px;
@@ -167,7 +176,7 @@ const IndividualPage = ({array, id}) => {
    }
  },[id])
  
-
+console.log(individual)
 
   return (
   <Detail>
@@ -177,14 +186,35 @@ const IndividualPage = ({array, id}) => {
          <h1>{item.title}</h1>
          <p>{item.sub}</p>
          </Wrapper>
+         <ImageWrapper
+         firstPic>
+          
+        <CaseImage
+        layout="responsive"
+        className="image--2"
+        onLoadingComplete={target => {
+          setSmageSize({
+            width: target.naturalWidth,
+            height: target.naturalHeight
+          });
+         }}
+        width={imageSize.width}
+        height={imageSize.height}
+         alt= {item.extra.file01.alt}
+         src={item.extra.file01.url}
+         />
+       
+         </ImageWrapper>
          <Info>
       
           <p>{item.text}</p>
          
          </Info>
          <ImageContainer>
+      
          <ImageWrapper
          second>
+       
          <CaseImage 
          layout="fill"
          className="image--1"
@@ -199,12 +229,14 @@ const IndividualPage = ({array, id}) => {
          alt= {item.sources.imgalt}
          src={item.sources.imgurl}
          />
+         
          </ImageWrapper>
          <MoreInfo>
          <p>{item.moreinfo.text1}<br/>{item.moreinfo.text1part2}</p>
         </MoreInfo>
          <ImageWrapper
          first>
+          
         <CaseImage
         layout="responsive"
         className="image--2"
@@ -216,25 +248,45 @@ const IndividualPage = ({array, id}) => {
          }}
         width={imageSize.width}
         height={imageSize.height}
-        
-         alt= {item.extra.file01.alt}
-         src={item.extra.file01.url}
+         alt= {item.extra.file02.alt}
+         src={item.extra.file02.url}
          />
+       
          </ImageWrapper>
+        
          <MoreInfo>
          <p>{item.moreinfo.text1part3}</p>
         </MoreInfo>
+        <ImageWrapper
+         first>
+          
+        <CaseImage
+        layout="responsive"
+        className="image--2"
+        onLoadingComplete={target => {
+          setSmageSize({
+            width: target.naturalWidth,
+            height: target.naturalHeight
+          });
+         }}
+        width={imageSize.width}
+        height={imageSize.height}
+         alt= {item.extra.file03.alt}
+         src={item.extra.file03.url}
+         />
+       
+         </ImageWrapper>
         <Row>
           <Tech>
           <h3>Följande tekniker var krav:</h3>
           <ul>
-          {item.moreinfo.teknik.map(item => (
-            <li>{item}</li>
+          {item.moreinfo.teknik.map((item, index) => (
+            <li key={index}>{item}</li>
           ))}
           </ul>
           </Tech>
           <ProgressBar
-          items= {item.moreinfo.languages}></ProgressBar>
+          items= {item.moreinfo.languages}/>
          </Row>
         
          </ImageContainer>

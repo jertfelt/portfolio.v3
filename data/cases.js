@@ -23,12 +23,12 @@ export const cases = [
         alt:"Printscreen från projektet",
       },
       file02:{
-        url:"https://user-images.githubusercontent.com/30622818/193041736-0ff4106b-3ad9-45cc-8bbb-2346bdde8032.png",
+        url:"/img/ewallet--loading.png",
         alt:"Loading screen"
       },
       file03: {
-        url: "https://user-images.githubusercontent.com/30622818/193041997-33605e07-64b2-41e4-b538-abe8e535d27c.png",
-        alt: "Lägg till nytt "
+        url: "/img/ewallet--error.png",
+        alt: "Lägg till nytt: felmeddelande visas. "
       }
   },
   moreinfo:{
@@ -70,6 +70,14 @@ export const cases = [
     file01:{
       url:"/img/react-forum.png",
       alt:"Printscreen från projektet",
+    },
+    file02:{
+      url:"/img/reactforum--filter.png",
+      alt:"Filtrera listan utifrån namn"
+    },
+    file03: {
+      url: "/img/reactforum--thread.png",
+      alt: "Själva inläggets kommentarer"
     }
 },
 moreinfo:{
@@ -104,7 +112,7 @@ moreinfo:{
   },
   sources:{
     link:"https://www.tovajertfelt.se/smalin/",
-    imgurl:"/img/smalin--1.png",
+    imgurl:"/img/smalin-website.png",
     imgalt: "Screenshot",
     github:"https://github.com/jertfelt/smalin"
   },
@@ -113,6 +121,14 @@ moreinfo:{
 
       url:"/img/smalin-website-2.png",
       alt:"Printscreen från projektet",
+    },
+    file02:{
+      url:"/img/smalin-website3.png",
+      alt:"Filtrera listan utifrån namn"
+    },
+    file03: {
+      url: "/img/smalin--1.png",
+      alt: "Själva inläggets kommentarer"
     }
 },
 moreinfo:{
@@ -147,15 +163,23 @@ moreinfo:{
   },
   sources:{
     link:"https://jertfelt.github.io/Webshop-clownartists/",
-    imgurl:"/img/merforsaljning.jpg",
+    imgurl:"/img/clownartists-hero.png",
     imgalt: "Bild på webbshoppen",
     github:"https://github.com/jertfelt/Webshop-clownartists"
   },
   extra:{
     file01:{
+      url:"/img/clownartists-products.png",
+      alt:"Produktlista",
+    },
+    file02:{
+      url:"/img/clown-herocart.png",
+      alt:"Printscreen från projektet",
+    },
+    file03:{
       url:"/img/clownartists-meme.png",
       alt:"Memegeneratort",
-    }
+    },
 },
 moreinfo:{
   text1: "Grafiken är gjord under en grafikverktygkurs, jag har designat bl.a. logotyp och produktbilder samt varit art director.",
@@ -188,12 +212,20 @@ moreinfo:{
   },
   sources:{
     link:"https://github.com/jertfelt/nodejs-bowling",
-    imgurl:"/img/node-bowling-form.png",
+    imgurl:"/img/node-bowling.png",
     imgalt: "En bild på en bowlingsidas medlemmar",
     github:"https://github.com/jertfelt/nodejs-bowling"
   },
   extra:{
     file01:{
+      url:"/img/node-bowling-form.png",
+      alt:"Formulär för att skapa användare",
+    },
+    file02:{
+      url:"/img/node-bowling-update.png",
+      alt:"Uppdatera användare",
+    },
+    file03:{
       url:"/img/node-bowling-single.png",
       alt:"Ensam användare",
     }
@@ -205,8 +237,6 @@ moreinfo:{
   teknik:
     ["mongoose", "mongoDb", "Express", "EJS view engine"],
   languages: 
- 
-
     [{id:"EJS",
     value: 54},
       {id:"CSS",
@@ -230,14 +260,22 @@ moreinfo:{
   },
   sources:{
     link:"https://jertfelt.github.io/webshop/",
-    imgurl:"/img/ekoline.png",
-    imgalt: "Bild på en hemsida som visar upp en varukorg, digital med varor.",
+    imgurl:"/img/Ekoline--home.png",
+    imgalt: "Bild på startsidan",
     github:"https://github.com/jertfelt/webshop"
   },
   extra:{
     file01:{
-      url:"/img/ekoline-2.png",
-      alt:"Categories",
+      url:"/img/ekoline--loggain-2.png",
+      alt:"Logga in eller registrera dig",
+    } ,
+    file02:{
+      url:"/img/ekoline-3.png",
+      alt:"Varukorgen",
+    },
+    file03:{
+      url:"/img/ekoline--produkt.png",
+      alt:"Produktsida",
     }
 },
 moreinfo:{
@@ -271,14 +309,22 @@ moreinfo:{
   },
   sources:{
     link:"https://jertfelt.github.io/starwars-api/",
-    imgurl:"/img/starwars.png",
+    imgurl:"/img/starwars--3.png",
     imgalt: "Bild på hur interfacet ser ut",
     github:"https://github.com/jertfelt/starwars-api"
   },
   extra:{
     file01:{
-      url:"/img/starwars--2.png",
-      alt:"Printscreen",
+      url:"/img/starwars.png",
+      alt:"Renderar användare",
+    },
+    file02:{
+      url:"/img/starwars--4.png",
+      alt:"Hämtar användare från API",
+    },
+    file03:{
+      url:"/img/starwars--5.png",
+      alt:"Funktionalitet med starwars",
     }
 },
 moreinfo:{
@@ -320,7 +366,15 @@ moreinfo:{
     file01:{
       url:"/img/portfolio--2.png",
       alt:"Printscreen från portföljen",
-    }
+    },
+    file02:{
+      url:"/img/portfolio--illustration.png",
+      alt:"Gallerifunktion för illustrationsdelen",
+    },
+    file03:{
+      url:"/img/portfolio--gallery.png",
+      alt:"I formgivning jobbade jag istället med scrollfunktionen",
+    },
 },
 moreinfo:{
   text1: "En statisk hemsida där jag jobbade med att fetcha från JSON, i vanlig Javascript.",
@@ -361,7 +415,15 @@ moreinfo:{
     file01:{
       url:"/img/bookducks--profile.png",
       alt:"Profilsida Bookducks",
-    }
+    },
+    file02:{
+      url:"/img/bookducks.png",
+      alt:"Logga in som medlem",
+    },
+    file03:{
+      url:"/img/bookducks-strapi.png",
+      alt:"Strapis struktur",
+    },
 },
 moreinfo:{
   text1: "Instruktioner: Du ska använda Strapi som CMS. Genom CMS-gränssnittet ska man kunna lägga till: 1) En bok med dess titel, författare, antal sidor, betyg (valfri skala t.ex 1-10), samt en bild på bokomslaget. 2) En ljudbok med dess titel, utgivningsdatum, längd, betyg (valfri skala t.ex 1-10), samt en bild på bokomslaget. 3) Samtliga böcker och ljudböcker ska även vara kopplad till en registrerad användare (som relation, id eller annat sätt) som lånar ut boken/ljudboken. (Du kan skapa upp användare med Strapis inbyggda User-collection type). 4)  Samtliga böcker och ljudböcker ska även ha en eller flera av följande genrer: Romantik, humor, skräck, barnvänlig, fantasy, sci-fi, action. (Skapa en content-type för dina genrer. Du kan också skapa egna genrer om du vill.",
@@ -403,6 +465,14 @@ moreinfo:{
     file01:{
       url:"/img/palt-kontakt.png",
       alt:"Kontaktformulär",
+    },
+    file02:{
+      url:"/img/palt--3.png",
+      alt:"Hemsida",
+    },
+    file03:{
+      url:"/img/palt-cases.png",
+      alt:"Cases",
     }
 },
 moreinfo:{
@@ -413,8 +483,6 @@ moreinfo:{
   teknik:
     ["SASS", "Javascript", "Figma"],
     languages: 
- 
-
       [{id:"HTML",
       value: 54.4},
         {id:"SCSS",
@@ -446,6 +514,14 @@ moreinfo:{
     file01:{
       url:"/img/ekobanken--konto.png",
       alt:"Printscreen",
+    },
+    file02:{
+      url:"/img/ekobanken--screenshot2.png",
+      alt:"Startsidan och kod",
+    },
+    file03:{
+      url:"/img/ekobanken--screenshotblikund.png",
+      alt:"Bli kund-sida",
     }
   },
   moreinfo:{

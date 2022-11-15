@@ -34,12 +34,12 @@ const ProgressBar = ({items}) => {
   
     <Names>
     {items.map((i, idx) => (
-      <>
+  
      <TechNames 
      key={idx}
      amount={i.value}
       name={i.id}/>
-    </>
+  
     ))}
       </Names>
   </Container>
