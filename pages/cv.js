@@ -34,6 +34,7 @@ const Content = styled.section`
 padding-top:5em;
 ${flex}
 font-family:Roboto;
+p{padding:2rem;}
 `
 const Heading = styled.span`
 ${flex({align:"center", justify:"space-around"})}
@@ -47,7 +48,7 @@ line-height:1rem;
 margin-bottom:2rem;`
 
 const CVContent=styled.div`
-padding:5em;
+padding:2em;
 padding-top:-1rem;
 h2{
   font-family: Arya;font-size: ${({theme}) => theme.fontSizes.mediumlarge};
@@ -55,6 +56,9 @@ h2{
   text-transform:uppercase;
   text-align:center;
 }
+@media only screen and (${device.tablet}){
+  padding:5em;
+  }
 `
 const Education =styled.section`
 background-color: ${({theme}) => theme.colors.purple};
@@ -98,17 +102,30 @@ margin-bottom:5em;
 }
 
 `
+const Row = styled.div`
+
+${flex}
+@media only screen and (${device.laptop}){
+  ${flex({direction:"row", align:"center", justify:"center"})}
+  padding:5em;
+ 
+}`
 
 const GridItem = styled.article`
-max-width:80%;
+
+  max-width:80%;
 h3{
   font-family:"Arya";
   font-size:${({theme}) => theme.fontSizes.large};
   color: ${({theme}) => theme.colors.lightblue};
   margin-bottom:-1rem;
+
+  padding-left:2rem;
 }
 h4{
+
   font-size:${({theme}) => theme.fontSizes.medium};
+  padding-left:2rem;
 }
  
 ${props => 
@@ -121,30 +138,39 @@ ${props =>
   `}
   ${props => 
     props.workBlob && 
-    css`
+    css` 
+    border-radius:${({theme}) => theme.borderradius.second};
+    background-color:${({theme}) => theme.colors.black};
+
+    @media only screen and (${device.laptop}){
     height:200px;
-    h3{
-      padding-left:5rem;
-    }
-    p{
-      padding-left:5rem;
-    }
+  
       width:80%;
-      border-radius:${({theme}) => theme.borderradius.second};
-      background-color:${({theme}) => theme.colors.black};
-    
+     
+     
+        h3{
+          padding-left:5rem;
+        }
+        p{
+          padding-left:5rem;
+        }
+      }
     `}
 
 `
 const Period = styled.p`
 font-size:${({theme}) => theme.fontSizes.mediumsmall};
-margin-bottom:-2rem;
+margin-bottom:-4rem;
+
 font-weight:bold;
 `
 const Bread= styled.p`
 width:80%;
+
 line-height:1.8rem;
 font-size:${({theme}) => theme.fontSizes.mediumsmall};
+margin-top:-2rem;
+padding:0;
 `
 const Work = styled.section`
 width:100%;
@@ -156,17 +182,29 @@ margin-top:-5em;
 margin-bottom:-10em;
 padding-top:7em;
 padding-bottom:13em;
+
 ${flex}
 h4{
-  background-color:black;
+ 
+  &:hover{
+    transition: transform 250ms;
+    transform: translateY(4px);
+    background-color:black;
+  }
   padding:1rem;
   line-height:1.8rem;
+  
+  padding-left:2rem;
 }
 ul{
-  list-style:none;
+
+  padding-top:-10px;
+  list-style:square;
+  padding-left:3rem;
+  
 }
 li{
-  margin-left:-2.3rem;
+  
   margin-bottom:4px;
   font-size:${({theme}) => theme.fontSizes.medium};
 `
@@ -192,7 +230,7 @@ cursor: pointer;
 const LikeButt = styled.button`
 margin-left:5em;
 padding:10px;
-background-color:${({theme}) => theme.colors.grey};
+background-color:${({theme}) => theme.colors.vividblue};
 border:none;
 border-radius:19px;
 color:${({theme}) => theme.colors.white};
@@ -227,9 +265,7 @@ const fetchData = useCallback(async () => {
   const ed = await getCV("education");
   setEData(ed)
 })
-console.log(workData, "workData")
-console.log(dbWork, "db")
-console.log(dbWork.map(item => item).map(item => item.id), "test")
+
 useEffect(() => {
   fetchData().catch(console.error)
   if(workData){
@@ -320,10 +356,10 @@ function handleClick() {
          onClick={reveal}>{buttonMsg}</Knapp>
         </Grid>
        
-        {show && <>
+        {show && <Row>
       <Nackademin/>
-      <LikeButt onClick={handleClick}>Likes ({likes})</LikeButt>
-      </> }
+      
+      </Row> }
       </CVContent>
       </Education>
       </>}
@@ -356,7 +392,6 @@ function handleClick() {
       <CVContent>
       <h2>Utbildning</h2> 
       <Grid cv>
-
         {dbEd && dbEd.map(item => item).map((item,index) =>(
         <GridItem 
         key={index}>
@@ -374,7 +409,7 @@ function handleClick() {
        
         {show && <>
       <Nackademin/>
-      <LikeButt onClick={handleClick}>Likes ({likes})</LikeButt>
+
       </> }
       </CVContent>
       </Education>
@@ -429,8 +464,9 @@ function handleClick() {
           heigh={250}
           alt="Bild på min grafiska profil åt Kollektiv Sorg"/> */}
       </Grid>
+      
       </CVContent>
-  
+      <LikeButt onClick={handleClick}>Likes ({likes})</LikeButt>
       </Erfarenhet>
       </Content>
     </Container>
