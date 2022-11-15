@@ -54,12 +54,8 @@ max-width:300px;
 
 
 const CounterWrapper = styled.span`
-position: relative;
-top:-400px;
-@media ${device.laptop}{ 
-  position: relative;
-  top:-400px;
-}
+margin-bottom:-2rem;
+margin-top:-1rem;
 
 `
 
@@ -173,17 +169,18 @@ const Nackademin = () => {
     <h3>Frontendprogrammet</h3>
     <h4>Nackademin - Yrkeshögskola</h4>
     <p>2021-2023</p>
-    <Wrapper>
-      <Canvas
-      data={data2}
-      options={configdata2}/>
-    </Wrapper>
     <CounterWrapper>
       <CountingUp
       number={done}
       percent ={true}
       ></CountingUp>
       </CounterWrapper>
+    <Wrapper>
+      <Canvas
+      data={data2}
+      options={configdata2}/>
+    </Wrapper>
+  
       </div>
       <div className="second">
       <h3>Kurser på Nackademin:</h3>
