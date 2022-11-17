@@ -21,11 +21,14 @@ const Detail = styled.section`
 min-height:100vh;
 font-family: Roboto;
 ${flex({align:"center"})}
-padding:2rem;
+padding:0;
 font-family: Roboto;
 max-width:100%;
 article{
   ${flex}
+}
+@media ${device.tablet}{
+  padding:2rem;
 }
 
 `
