@@ -516,7 +516,7 @@ moreinfo:{
       alt:"Printscreen",
     },
     file02:{
-      url:"/img/ekobanken--screenshot2.png",
+      url:"/img/ekobanken-screenshot2.png",
       alt:"Startsidan och kod",
     },
     file03:{
