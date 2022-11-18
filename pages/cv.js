@@ -35,10 +35,11 @@ margin-top:3rem;
 padding-top:10em;
 ${flex}
 font-family:Roboto;
-padding:2rem;
+
 `
 const IntroParagraph = styled.p`
 line-height:150%;
+padding:2rem;
 width:80%;
 `
 const Heading = styled.span`
@@ -67,7 +68,6 @@ h2{
 `
 
 const Row = styled.div`
-
 ${flex}
 @media only screen and (${device.laptop}){
   ${flex({direction:"row", align:"center", justify:"center"})}
@@ -81,10 +81,11 @@ h3{
   font-family:"Arya";
   font-size:${({theme}) => theme.fontSizes.large};
   color: ${({theme}) => theme.colors.lightblue};
-  margin-bottom:-1rem;
   line-height:1.5rem;
+
 }
 h4{
+  margin-top:-1rem;
   font-size:${({theme}) => theme.fontSizes.medium};
 }
  
@@ -101,18 +102,15 @@ ${props =>
     css` 
     border-radius:${({theme}) => theme.borderradius.second};
     background-color:${({theme}) => theme.colors.black};
-
+    height:180px;
     @media only screen and (${device.laptop}){
-    height:200px;
-  
+    max-height:200px;
       width:80%;
-     
-     
         h3{
-          padding-left:5rem;
+          padding-left:8rem;
         }
         p{
-          padding-left:5rem;
+          padding-left:8rem;
         }
       }
     `}
@@ -120,14 +118,15 @@ ${props =>
 `
 const Period = styled.p`
 font-size:${({theme}) => theme.fontSizes.mediumsmall};
-margin-bottom:-4rem;
+margin-bottom:-1rem;
 font-weight:bold;
 `
+
 const Bread= styled.p`
 width:80%;
 line-height:1.8rem;
 font-size:${({theme}) => theme.fontSizes.mediumsmall};
-margin-top:-2rem;
+margin-top:-1rem;
 padding:0;
 `
 const Work = styled.section`
@@ -186,26 +185,23 @@ padding-bottom:13em;
 
 ${flex}
 h4{
- 
+  margin-top:1rem;
+  margin-bottom:-1rem;
   &:hover{
     transition: transform 250ms;
-    transform: translateY(4px);
+    transform: translateY(-4px);
     background-color:black;
   }
   padding:1rem;
   line-height:1.8rem;
-  
   padding-left:2rem;
 }
 ul{
-
   padding-top:-10px;
   list-style:square;
   padding-left:3rem;
-  
 }
 li{
-  
   margin-bottom:4px;
   font-size:${({theme}) => theme.fontSizes.medium};
 `
