@@ -31,16 +31,18 @@ const educationDB = education;
 // }
 
 const Content = styled.section`
+h1{
+  color:${({theme}) => theme.colors.lightblue}
+}
 margin-top:3rem;
-padding-top:10em;
+padding-top:5em;
 ${flex}
 font-family:Roboto;
-
 `
 const IntroParagraph = styled.p`
 line-height:150%;
 padding:2rem;
-width:80%;
+width:90%;
 `
 const Heading = styled.span`
 ${flex({align:"center", justify:"space-around"})}
@@ -87,6 +89,10 @@ h3{
 h4{
   margin-top:-1rem;
   font-size:${({theme}) => theme.fontSizes.medium};
+}
+@media  screen and (max-width:600px){
+
+  padding-left:1rem;
 }
  
 ${props => 
