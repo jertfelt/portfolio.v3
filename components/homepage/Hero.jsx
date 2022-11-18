@@ -1,21 +1,16 @@
 import styled, {css} from "styled-components";
-
 import Image from "next/image";
 import profilepic from "../../public/img/tova-linkedin-portratt.png"
+import { flex, device } from "../styles/Styles";
 
-const flexInst = ({direction, align, justify}) => `
-display: flex;
-flex-direction: ${direction || "column"};
-align-items: ${align || "center"};
-justify-content: ${justify || "center"}; 
-`
 
 const PageWrapper = styled.div`
-${flexInst}
+${flex};
+
 `
 
 const Hero = styled.div`
-${flexInst}
+${flex};
 flex-wrap: wrap;
 position: absolute;
 right: 0%;
@@ -24,7 +19,7 @@ margin: ${({theme}) => theme.paddingSizes.large};
 z-index: 1;
 max-width: ${({theme}) => theme.containers.medium};
 
-@media only screen and (min-width: 768px){
+@media only screen and ${device.tablet}{
 bottom: 0%
 left: 15%;
 }
@@ -35,7 +30,8 @@ left: 15%;
   height: 300px;
 width: 300px;
 }
-@media only screen and (min-width: 600px)
+
+@media only screen and ${device.mobileL}
 {
   left: 10%;
   bottom: 10%;
@@ -59,8 +55,15 @@ max-width: ${({theme}) => theme.containers.xlarge};
 position: relative;
 overflow: hidden;
 width:40em;
-border-radius: ${({theme}) => theme.borderradius.first}
+height:40em;
+border-radius: ${({theme}) => theme.borderradius.first};
 
+@media screen and ${device.laptop}{
+  position: relative;
+  left:40%;
+  overflow: hidden;
+  width:40em;
+}
 `
 
 
@@ -82,6 +85,11 @@ const Hideable = styled.div`
 overflow: hidden;
 margin-bottom: ${({theme}) => theme.paddingSizes.medium};
 flex-wrap:wrap;
+${props => 
+props.kreativanimation && 
+css`
+
+ `}
 `
 const Heading = styled.h1`
 transition: all 0.5s ease-out;
@@ -91,11 +99,18 @@ line-height: ${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
 color: ${({theme}) => theme.colors.lightblue};
 padding:1rem;
+
+
   @media only screen and (max-width: 700px
   ){
-  font-size:34px;
+  font-size:48px;
   line-height:1rem;
   }
+  @media only screen and (max-width: 500px
+    ){
+    font-size:40px;
+    line-height:1rem;
+    }
 
   ${props => 
     props.first && 
@@ -112,12 +127,18 @@ padding:1rem;
   css`
   text-align:right;
   position: absolute;
+  
   right: 30px;
   top:220px;
   color: ${({theme}) => theme.colors.lightblue};
+
   @media only screen and (max-width: 700px
     ){
     right:50%;
+    }
+    @media screen and ${device.laptop}{
+      position: absolute;
+      right: 20%;
     }
   `}
   
@@ -125,11 +146,13 @@ padding:1rem;
 `
 
 const HeroContent = () => {
+
   return(
     <>
     <PageWrapper>
     <Hero>
     <HeroPic
+    
     src={profilepic}
     loading="lazy"
     alt="Svartvit bild på Tova som tittar in i kameran."
@@ -147,6 +170,7 @@ const HeroContent = () => {
         </Heading>
       </Hideable>
       <Hideable
+      kreativanimation
         >
         <Heading alignright
         title="och kreativ"
@@ -162,8 +186,6 @@ const HeroContent = () => {
         </Heading>
     
       </Hideable>
-   
-     
     </div>
     </HeroSection>
     </>

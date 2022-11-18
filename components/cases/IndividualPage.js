@@ -21,13 +21,15 @@ const Detail = styled.section`
 min-height:100vh;
 font-family: Roboto;
 ${flex({align:"center"})}
-padding:2rem;
+padding:0;
 font-family: Roboto;
 max-width:100%;
 article{
   ${flex}
 }
-
+@media ${device.tablet}{
+  padding:2rem;
+}
 `
 
 const Wrapper = styled.div`
@@ -43,6 +45,11 @@ h1{
   margin-top:2rem;
   color: ${({theme}) => theme.colors.lightblue};
   text-transform: uppercase;
+  line-height:120%;
+  @media screen and (max-width:500px){
+
+    text-align:center;
+  }
 }
 p{
   font-size:${({theme}) => theme.fontSizes.medium};
@@ -52,14 +59,21 @@ p{
 `
 const Info= styled.div`
 
-h2{
+h3{
   text-transform: uppercase;
   font-size:${({theme}) => theme.fontSizes.large};
+  @media screen and (max-width:500px){
+    margin-top:-2rem;
+    padding-left:1rem;
+  }
 }
 p{
   width:90%;
   line-height:1.8rem;
   font-size:${({theme}) => theme.fontSizes.medium};
+  @media screen and (max-width:500px){
+    padding-left:1rem;
+  }
 }
 `
 const ImageContainer=styled.div`
@@ -73,7 +87,6 @@ gap:5px;
 p{
   font-size:${({theme}) => theme.fontSizes.medium};
 }
- 
   color: ${({theme}) => theme.colors.white};
   a{
     color: ${({theme}) => theme.colors.lightblue};
@@ -104,12 +117,62 @@ width: 100%;
     object-fit: contain;
     width: 100%;
     height: 100%;
-    
+    @media screen and (max-width:600px){
+      width:500px;
+      height:400px;
+      margin-left:-4rem;
+    }
+    @media screen and (max-width:500px){
+      width:500px;
+      margin-left: -5rem;
+      left:0;
+    }
   }
   .image--2{
     object-fit: contain;
     width: 100%;
     height: 100%;
+    @media screen and (max-width:600px){
+      width:500px;
+      height:400px;
+      margin-left:-4rem;
+    }
+    @media screen and (max-width:500px){
+      width:500px;
+      margin-left: -5rem;
+      left:0;
+    }
+  }
+  .image--3{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    @media screen and (max-width:600px){
+      width:500px;
+      height:400px;
+      margin-left:-4rem;
+    }
+    @media screen and (max-width:500px){
+      width:500px;
+      margin-left: -5rem;
+      left:0;
+    }
+  }
+  .image--4{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    @media screen and (max-width:600px){
+      width:500px;
+      height:400px;
+      margin-left:-4rem;
+    }
+    @media screen and (max-width:500px){
+      width:500px;
+      margin-left: -5rem;
+      left:0;
+      margin-bottom:-3rem;
+    }
   }
   ${props => 
     props.firstPic && 
@@ -119,21 +182,32 @@ width: 100%;
     top:-2rem;
 
     `}
-
+  
 `
 const CaseImage = styled(Image)`
+
 `
 const MoreInfo = styled.span`
 padding:1rem;
-width:80%;
+@media screen and (${device.tablet}){
+  width:80%;
+}
 font-size:20px;
-line-height:24px;
+line-height:150%;
 `
-const Tech = styled.div``
+const Tech = styled.div`
+font-size:20px;
+`
 
 
 const Row= styled.div`
-${flex({direction:"row", align:"flex-start"})}`
+
+${flex({direction: "column-reverse"})}
+@media screen and (${device.tablet}){
+  ${flex({direction:"row", align:"flex-start"})}
+}
+
+`
 
 const IndividualPage = ({array, id}) => {
 
@@ -198,7 +272,7 @@ console.log(individual)
           
         <CaseImage
         layout="responsive"
-        className="image--2"
+        className="image--1"
         onLoadingComplete={target => {
           setSmageSize({
             width: target.naturalWidth,
@@ -222,7 +296,7 @@ console.log(individual)
        
          <CaseImage 
          layout="fill"
-         className="image--1"
+         className="image--2"
          onLoadingComplete={target => {
           setSmageSize({
             width: target.naturalWidth,
@@ -241,7 +315,7 @@ console.log(individual)
           
         <CaseImage
         layout="responsive"
-        className="image--2"
+        className="image--3"
         onLoadingComplete={target => {
           setSmageSize({
             width: target.naturalWidth,
@@ -266,7 +340,7 @@ console.log(individual)
           
         <CaseImage
         layout="responsive"
-        className="image--2"
+        className="image--4"
         onLoadingComplete={target => {
           setSmageSize({
             width: target.naturalWidth,

@@ -3,16 +3,14 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import {Container} from "../../components/styles/Container.styled.js"
 import {flex, device} from "../../components/styles/Styles"
-import {Grid} from "../../components/styles/Grid.styled"
 import { getData } from "../../components/api/cases.js";
 //next and react
 
 import {useState, useEffect, useCallback } from "react";
-
-
 import { cases } from "../../data/cases";
 import IndividualPage from "../../components/cases/IndividualPage";
 const casesDb = {cases};
+
 
 const Content = styled.section`
 min-height:130vh;
@@ -45,20 +43,14 @@ const Page = () => {
   }, [])
 
 
-
-
   return (
     <Container xlarge>
-       <Content>
-     
+      <Content>
       {cases && <IndividualPage
       array = {cases}
       id = {id}
       />}
-      
       </Content>
-      
-      
     </Container>
   )
 }

@@ -16,18 +16,18 @@ min-height:100vh;
 font-family:Roboto;
 width: 100%;
 margin-top:2em;
-padding-top:4rem;
+padding-top:3rem;
 div{
-  ${flex ({justify: "space-between"})};
+  ${flex };
   width:100%;
   }
 }
 `
 const Desc = styled.p`
-  padding:2rem;
   flex-wrap:wrap;
-  line-height:1.8rem;
+  line-height:150%;
   max-width:70%;
+  font-size: ${({theme}) => theme.fontSizes.medium};
   a{
     color:${({theme}) => theme.colors.lightblue};
     text-decoration:none;
@@ -42,6 +42,7 @@ color: ${({theme}) => theme.colors.lightblue};
 font-family:Arya;
 font-size:${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
+margin-bottom:-1rem;
 `
 
 const Wrapper = styled.div`

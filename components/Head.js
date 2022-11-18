@@ -11,7 +11,35 @@ import Head from "next/head"
   name="description" 
   content="Mitt namn är Tova Jertfelt. Jag älskar programmering!
   Jag älskar att jag nu kan få kombinera mina tre styrkor: problemlösning, kreativitet, osläckta nyfikenhet.
-  Sedan hösten 2021 går jag på Nackademins YH-utbildning för frontend-programmering. Studierna är fokuserade på javascript och webben, med kurser som går igenom CMS, javascript, HTML och CSS (samt tex SASS), grafikverktyg och att jobba i projekt. Jag själv gillar agila projekt, det är jag van med sedan tidigare i livet."/>
+  Sedan hösten 2021 går jag på Nackademins YH-utbildning för frontend-programmering. "/>
+  <meta name="description" 
+  content="Tova Jertfelt"
+  key="desc" />
+
+    <meta property="twitter:title" 
+  content=" Frontendare sedan 2021" />
+ <meta
+ property="twitter:description"
+ content="Jag älskar programmering!
+ Jag älskar att jag nu kan få kombinera mina tre styrkor: problemlösning, kreativitet, osläckta nyfikenhet."
+/>
+<meta property='og:url' 
+content='www.tovajertfelt.se/cases'/>
+<meta
+property="twitter:image"
+content="./img/linkedin.png"
+        />
+  <meta property="og:title" 
+  content=" Frontendare sedan 2021" />
+ <meta
+ property="og:description"
+ content="Jag älskar programmering!
+ Jag älskar att jag nu kan få kombinera mina tre styrkor: problemlösning, kreativitet, osläckta nyfikenhet."
+/>
+<meta
+property="og:image"
+content="./img/linkedin.png"
+        />
   <link rel="icon" 
   href="../static/favicon.ico"/>
   </Head>

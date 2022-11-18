@@ -9,6 +9,7 @@ import { flex, device } from "../styles/Styles";
 const MainSection = styled.section`
 margin-bottom:${({theme}) => theme.paddingSizes.small};
 display:block;
+margin-top:-3rem;
 `
 
 const About = styled.div`
@@ -17,28 +18,24 @@ margin-left: ${({theme}) => theme.paddingSizes.medium};
 align-self: strecth;
 justify-self: start;
 
-
 h2{
   font-family: Arya;
   font-size: ${({theme}) => theme.fontSizes.mediumlarge};
   padding-left:1rem;
   color: ${({theme}) => theme.colors.lightblue};
   text-transform: uppercase;
-  line-height: 55px;
+  line-height: 35px;
 }
 `
 const Quote = styled.h3`
+padding-bottom:2rem;
 color: ${({theme}) => theme.colors.lightblue};
-font-size: ${({theme}) => theme.fontSizes.medium};
+font-size: ${({theme}) => theme.fontSizes.large};
 margin-left:1rem;
 font-family: Arya;
 line-height:1.1em;
 flex-wrap: wrap;
-
-@media ${device.tablet}{
-  font-size: ${({theme}) => theme.fontSizes.large};
-  text-align: left;
-}
+text-align: left;
 `
 const Numbers = styled.section`
 margin-top:-3rem;
@@ -46,7 +43,7 @@ margin-bottom: 5em;
 font-size:  ${({theme}) => theme.fontSizes.medium};
 font-family: Roboto;
 padding-left:4rem;
-
+line-height:150%;
 `
 const BigNumber = styled.h3`
 font-size:${({theme}) => theme.fontSizes.xlarge};
@@ -61,7 +58,7 @@ margin-top:-3em;
 padding-right:1rem;
 text-align:left;
 width:80%;
-
+line-height:150%;
 `
 
 const WhoAmI = () => {

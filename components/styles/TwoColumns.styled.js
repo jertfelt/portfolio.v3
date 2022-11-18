@@ -6,7 +6,7 @@ margin:${({theme}) => theme.paddingSizes.medium};
 margin-top:0;
 font-family: Roboto;
 font-size:${({theme}) => theme.fontSizes.medium};
-line-height:1.8rem;
+line-height:150%;
 
 @media ${device.tablet}{
   ${flex({direction:"row", justify: "space-between"})};
@@ -21,9 +21,6 @@ ${props =>
   left: auto;
   right: auto;
   `}
-
-
-
   `
   
 export const Column = 

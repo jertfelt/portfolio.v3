@@ -4,7 +4,7 @@ export const Grid = styled.div`
 display: grid;
 max-width: 1200px;
 margin: 0 auto;
-gap: 1rem;
+gap: 2rem;
 @media (min-width: 600px) {
   grid-template-columns: repeat(2, 1fr);
  }

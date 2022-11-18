@@ -27,7 +27,7 @@ export const cases = [
         alt:"Loading screen"
       },
       file03: {
-        url: "/img/ewallet--error.png",
+        url: "/img/ewallet-error.png",
         alt: "Lägg till nytt: felmeddelande visas. "
       }
   },
@@ -516,7 +516,7 @@ moreinfo:{
       alt:"Printscreen",
     },
     file02:{
-      url:"/img/ekobanken--screenshot2.png",
+      url:"/img/ekobanken-screenshot2.png",
       alt:"Startsidan och kod",
     },
     file03:{

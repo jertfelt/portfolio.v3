@@ -6,7 +6,6 @@ const CaseList = ({array}) => {
 
   return ( 
     <Grid cases>
-
         {array.map((c, index) => 
           (<CaseItem
             key={c.id}
