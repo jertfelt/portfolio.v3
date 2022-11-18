@@ -201,6 +201,7 @@ font-size:20px;
 
 
 const Row= styled.div`
+
 ${flex({direction: "column-reverse"})}
 @media screen and (${device.tablet}){
   ${flex({direction:"row", align:"flex-start"})}
