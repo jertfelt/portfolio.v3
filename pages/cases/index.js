@@ -21,6 +21,7 @@ const Content = styled.section`
 min-height:130vh;
 ${flex}
 font-family: Roboto;
+padding-top:3em;
 
 h1{
   margin-top:6rem;
@@ -28,6 +29,7 @@ h1{
   font-size:${({theme}) => theme.fontSizes.xlarge};
   text-transform: uppercase;
   margin-bottom:-1rem;
+  color:${({theme}) => theme.colors.lightblue}
 }
 
 a{
@@ -45,14 +47,12 @@ a{
   }
 }
 .first{
- 
   color: ${({theme}) => theme.colors.lightblue};
-  
-  &:hover{
-  border-radius:${({theme}) => theme.borderradius.first};
-  background-color:${({theme}) => theme.colors.lightblue};
-  color: ${({theme}) => theme.colors.purple};
-  }
+    &:hover{
+    border-radius:${({theme}) => theme.borderradius.first};
+    background-color:${({theme}) => theme.colors.lightblue};
+    color: ${({theme}) => theme.colors.purple};
+    }
 }
 .second{
 
@@ -66,17 +66,34 @@ a{
 }
 `
 const Intro = styled.div`
-${flex({direction:"row"})}
-width:80%;
+${flex({direction:"column"})}
+
+@media screen and ${device.tablet}{
+  ${flex({direction:"row"})}
+  width:80%;
 gap:30px;
+}
 margin-bottom:1rem;`
 
 const Text = styled.p`
+max-width:80%;
+line-height:150%;
+@media screen and ${device.tablet}{
 max-width:40%;
-line-height:1.8rem;`
+line-height:120%;}`
 
 const Filter = styled.div`
+${flex({direction:"row", align:"center", align:"center"})}
+label{
+  padding-top:8px;
+}
+
+@media screen and ${device.tablet}{
 ${flex}
+label{
+  padding-top:0px;
+}
+}
 
 *,
 *::before,
@@ -140,21 +157,36 @@ option{
 `
 const Show = styled.div`
 margin-bottom:3rem;
+${flex({direction:"column-reverse"})}
 `
 
 const WordCloud = styled.div`
+width:80%;
 padding:1rem;
-max-width:80%;
 h3{
   text-align:center;
   text-transform: uppercase;
-  margin-bottom:-1.5rem;
 }
 div{
-  padding:2rem;
+  padding:1rem;
   flex-wrap:wrap;
   ${flex({direction:"row", align:"flex-start", justify:"flex-start"})}
-  gap:10px;
+  gap:5px;
+  text-transform:uppercase;
+  font-size:12px;
+  line-height:0px;
+}
+
+@media screen and ${device.tablet}{
+  padding:1rem;
+  max-width:80%;
+ 
+  div{
+    padding:2rem;
+    flex-wrap:wrap;
+    ${flex({direction:"row", align:"flex-start", justify:"flex-start"})}
+    gap:10px;
+    }
   }
 }
 `
@@ -319,9 +351,7 @@ const checkOption =(e)=>{
       <p>Antal: {filter.length}</p>
       <CaseList
       array = {filter}
-      >
-      </CaseList>
-      
+      />
       </Show>
       <WordCloud>
         <h3>Tags:</h3>
@@ -341,10 +371,9 @@ const checkOption =(e)=>{
       <p>Antal: {cases.length}</p>
       <CaseList
       array = {cases}
-      >
-      </CaseList>      
+      />
+     
       </Show>
-
       <WordCloud>
       <h3>Tags:</h3>
           <div>
