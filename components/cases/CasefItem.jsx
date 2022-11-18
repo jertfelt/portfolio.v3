@@ -10,19 +10,18 @@ import Image from "next/image";
 
 const CaseContainer = styled.article`
 border-radius: 29px;
-padding:1rem;
+padding:2rem;
 background-color:${({theme}) => theme.colors.purple};
 font-family:Roboto;
-${flex({align:"center", justify:"center"})}
+${flex({align:"flex-start", justify:"flex-start"})}
 @media ${device.laptop}{
-  padding:2rem;
+  padding:3rem;
 }
 a{
   text-decoration: none;
   color:${({theme}) => theme.colors.lightblue};
 }
-padding-bottom:3rem;
-
+padding-bottom:1rem;
 `
 
 const CaseHeader = styled.h3`
@@ -32,11 +31,11 @@ text-transform: uppercase;
 font-size:${({theme}) => theme.fontSizes.large};
 flex-wrap: wrap;
 margin-top:-1rem;
-line-height:1.8rem;
-text-align:center;
+line-height:120%;
+width:70%;
 `
 const Description = styled.p`
-font-size:${({theme}) => theme.fontSizes.mediumsmall};
+font-size:${({theme}) => theme.fontSizes.medium};
 width:100%;
 text-align: left;
 `
@@ -65,9 +64,10 @@ const CaseImage = styled(Image)`
 
 const CasefItem = ({item}) => {
   const [imageSize, setSmageSize] = useState({
-    width: 300,
-    height: 300
+    width: 200,
+    height: 200
   });
+  console.log(item)
 
   return (
     
@@ -83,12 +83,11 @@ const CasefItem = ({item}) => {
           </Link>
       </CaseHeader> 
 
-    <Link href={'/cases/' + item.id} 
-    key={item.id}
-    >
-       <Description>{item.text}</Description>
-      
-  <ImageWrapper
+        <Link href={'/cases/' + item.id} 
+        key={item.id}
+    >   
+          
+        <ImageWrapper
          second>
          <CaseImage 
          layout="fill"
@@ -105,7 +104,24 @@ const CasefItem = ({item}) => {
          src={item.sources.imgurl}
          />
          </ImageWrapper>
-    
+       <Description>{item.text}</Description>
+       <ImageWrapper
+         second>
+         <CaseImage 
+         layout="fill"
+         className="image--1"
+         onLoadingComplete={target => {
+          setSmageSize({
+            width: target.naturalWidth,
+            height: target.naturalHeight
+          });
+         }}
+        width={imageSize.width}
+        height={imageSize.height}
+         alt= {item.extra.file03.alt}
+         src={item.extra.file03.url}
+         />
+         </ImageWrapper>
         </Link>
         
       </>

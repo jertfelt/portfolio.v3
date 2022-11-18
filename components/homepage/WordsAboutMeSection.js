@@ -78,16 +78,22 @@ ${flex ({align:"center", justify: "space-between"})}
   margin-bottom:3em;
   }
 `
-// transition: all 0.5s ease-out;
+
 const Carousel = styled.article`
+transition: all 0.5s ease-out;
+
 p {
   font-family: Roboto;
   font-size:${({theme}) => theme.fontSizes.medium};
+}
+@media only screen and (${device.tablet}){
+  margin-left:2rem;
 }
 @media only screen and (${device.laptop}){
   max-height: 900px;
   width:90%;
   padding:1rem;
+  margin-left:5rem;
   }
 `
 const QuoteImage =styled(Image)`
@@ -115,6 +121,7 @@ font-size:${({theme}) => theme.fontSizes.xlarge};
 text-decoration: underline;
 margin-bottom:-1rem;
 z-index:3;
+margin-bottom:1rem;
 @media only screen and (${device.tablet}){
   position: absolute;
   top:0;
@@ -130,7 +137,7 @@ margin-bottom:-0.2rem;
 `
 const ContainerToLinks = styled.article`
 margin-bottom:3em;
-@media only screen and (${device.tablet}){
+@media only screen and (${device.laptop}){
   width:60%;
   padding-left:8rem;
   }

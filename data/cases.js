@@ -27,7 +27,7 @@ export const cases = [
         alt:"Loading screen"
       },
       file03: {
-        url: "/img/ewallet--error.png",
+        url: "/img/ewallet-error.png",
         alt: "Lägg till nytt: felmeddelande visas. "
       }
   },
