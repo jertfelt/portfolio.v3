@@ -159,13 +159,13 @@ return (
   <MainMenu >
     {!menuOpen && 
     <HamburgerIcon 
-    tab-index="0"
-    aria-label="button"
-    role="button"
-    src={burgermenu}
-    loading="lazy"
-    alt="Öppna menyn här"
-    onClick={toggleMenu}/>
+      tab-index="0"
+      aria-label="button"
+      role="button"
+      src={burgermenu}
+      loading="lazy"
+      alt="Öppna menyn här"
+      onClick={toggleMenu}/>
   }
   </MainMenu>
   {menuOpen && 

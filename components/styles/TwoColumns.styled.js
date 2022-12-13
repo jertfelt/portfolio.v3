@@ -38,6 +38,7 @@ ${props =>
   width: 100%;
   left: auto;
   right: auto;
+  max-width:800px;
   `}
 
   ${props => 

@@ -7,23 +7,17 @@ import { courses } from "../../data/courses";
 import { useEffect, useState } from "react";
 
 
-const Container = styled.div`
+const Container = styled.section`
 padding:3rem;
-
 gap:30px;
-@media ${device.laptop}{
-  ${flex({direction:"row", align:"center", justify:"space-around"})};
-}
 div{
-  ${flex};
-  
+  ${flex}; 
 }
 
 h3{
   line-height:1.5em;
   text-align: center;
   font-family: Arya;
- 
   color:${({theme}) => theme.colors.lightblue};
   font-size:${({theme}) => theme.fontSizes.large};
 }
@@ -31,7 +25,6 @@ h3{
 font-family: Roboto;
 
 h4{
- 
   margin-top:-1rem;
 }
 
@@ -51,12 +44,13 @@ max-width:300px;
   max-width:900px;
 }
 `
+const Row = styled.div`
 
+`
 
 const CounterWrapper = styled.span`
 margin-bottom:-2rem;
 margin-top:-1rem;
-
 `
 
 
@@ -94,16 +88,20 @@ li {
 }
 `
 const HoverElement = styled.div`
-position:relative;
+position: absolute;
+bottom:30%;
 text-align:center;
 width:50%;
-top:-200px;
-z-index:3;
+z-index:20;
 padding:1rem;
-margin:-2rem;
 border-radius: 29px;
 background-color: ${({theme}) => theme.colors.grey};
 line-height:1.5rem;
+`
+
+const Kursinnehåll = styled.ul`
+list-style: none;
+line-height:1.3rem;
 `
 
 
@@ -247,7 +245,7 @@ const Nackademin = () => {
             return <li key={item.id}
             data-weight={item.id}
             className={item.betyg}
-           >
+          >
               {item.title}
               </li>
           }
@@ -259,10 +257,25 @@ const Nackademin = () => {
           Den här kursen är antingen igång eller kommer att bli klar under läsåret 2022-23.
         </HoverElement>
       )}
-
-      <h3>Totalt {doneCourses.length} av {courses.length} kurser avklarade</h3>
-      <p>*LIA: Lärande I Arbete. Praktik på arbetsplats.<br/><Link href="https://vinnovera.se/">LIA 1  & 2 är jag praktikant hos webbyrån Vinnovera.</Link></p>
+    
       </div>
+      <Row>
+      <Kursinnehåll>
+          <h4>Kursinnehåll</h4>
+          <li><b>Javascript 1 - </b>grundläggande javascript</li>
+          <li><b>Javascript 2 - </b>API-anrop, fetch, querystrings och local storage</li>
+          <li><b>Javascript 3 -</b> REACT och Redux</li>
+          <li><b>Javascript 4 -</b> Tester</li>
+          <li><b>JS som backend-språk -</b> Node JS </li>
+          <li><b>Interaktion med CMS - </b> Strapi CMS, Postman och Axios </li>
+        </Kursinnehåll>
+      <h3>Totalt {doneCourses.length} av {courses.length} kurser avklarade</h3>
+     
+      <p>*LIA: Lärande I Arbete. Praktik på arbetsplats.<br/><Link href="https://vinnovera.se/">LIA 1  & 2 är jag praktikant hos webbyrån Vinnovera.</Link></p>
+      <div>
+      
+      </div>
+      </Row>
     </Container>
    );
 }

@@ -334,7 +334,8 @@ function handleClick() {
         <GridItem workBlob>
           <h3>Praktik!
           </h3>
-          <Bread>Just nu går jag praktik som frontendare hos Vinnovera, Stockholm.</Bread>
+          <Bread>Just nu går jag praktik som frontendare hos Vinnovera, Stockholm.
+          </Bread>
         </GridItem>
         </Grid>
         </CVContent>
@@ -353,12 +354,12 @@ function handleClick() {
         <Bread>{item.text}</Bread>
         </GridItem>
         ))}
-         <Knapp 
-         aria-label="button"
-         type="button"
-         onClick={reveal}>{buttonMsg}</Knapp>
+        <Knapp 
+          aria-label="button"
+          type="button"
+          onClick={reveal}>{buttonMsg}
+        </Knapp>
         </Grid>
-       
         {show && <Row>
       <Nackademin/>
       
