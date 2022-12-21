@@ -1,5 +1,51 @@
 export const cases = [
   {
+    id:0,
+    featured: true,
+    tag: "NextJS",
+    title:"Greenpeace: Sveriges Utsläpp",
+    sub:"En interaktiv sida gjord med NextJS",
+    text:"Projektarbete under min tid som praktikant på Vinnovera. Under max 10 veckor så jobbade jag i ett frontend-team där vi pitchade idén och sedan genomförde projektet åt Greenpeace.",
+    tags:{
+      c1:"Netlify",
+      c2:"NextJS",
+      c3:"GraphJS"
+    },
+    sources:{
+      link:"https://sverigesutslapp.se",
+      imgurl:"/img/greenpeace__1.png",
+      imgalt:"Scrollbar hero och animerad svg",
+      github:""
+    },
+    extra:{
+      file01:{
+        url:"/img/greenpeace__2.png",
+        alt:"Interaktiv graf",
+      },
+      file02:{
+        url:"/img/greenpeace__4.png",
+        alt:"Text och bild"
+      },
+      file03: {
+        url: "/img/greenpeace__3.png",
+        alt: "Adminportal med olika funktioner"
+      }
+  },
+  moreinfo:{
+    text1: "Greenpeace ville ha en hemsida som hanterar statistik från SCB och som ska ge en tydligare bild av biobränsle. Det skulle vara sökbart, interaktivt, och enkelt att ta till sig. Utöver frontend-programmering så illustrerade jag även några illustrationer.",
+    text1part2:"Vi jobbade med verktyget GraphJS för att skapa interaktiva grafer för användaren, totalt tre stycken. Datan hämtade vi från bl.a. SCB, och lagrade på vår egen databas i Firebase. Vi byggde även en funktion där användaren kan välja ett år och se datan för det specifika året. Datan uppdateras automatiskt när Naturvårdsverket uppdaterar.",
+    text1part3: "Vi skapade ett eget CMS-system för Greenpeace där de kan gå in och ändra i länkar, bildtexter och texter samt avpublicera/publicera hela sektioner. Tech lead: Jonas Stattin, Vinnovera. UX lead: Per Lundgren. Projektledare: Harald Mellbom. Frontend-utvecklare: Tova Jertfelt, Vidar Rehn.",
+    teknik:
+      ["React", "SEO", "API calls", "GraphJS", "NextJS", "JSX", "Netlify", "Styled Components", "Firebase"],
+      languages:
+      [
+        {id: "Javascript",
+        value: 100.0},
+        ]
+  }
+  }
+  ,
+  {
     id:1,
     featured: true,
     tag: "Redux",
