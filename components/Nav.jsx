@@ -51,20 +51,28 @@ margin-left:3rem;
 border-radius:50%;
 max-width:100%;
 height:3em;
+cursor: pointer;
 `
 
 const MainMenu = styled.ul`
 list-style: none;
-
 `
 const HamburgerIcon = styled(Image)`
 margin-left:3rem;
-max-width:2.4em;
+max-width:2.8em;
 max-height:2em;
+cursor:pointer;
+width:1.8em;
+&:focus{
+  margin-left:3.2rem;
+}
+&:hover{
+  margin-left:2.8rem;
+  width:2.8em;
+}
 `
 
 const DropDownMenu = styled.ul`
-
 background-color: ${({theme}) => theme.colors.white};
 color: ${({theme}) => theme.colors.purple};
 display: flex;
@@ -150,11 +158,14 @@ return (
 
   <MainMenu >
     {!menuOpen && 
-  <HamburgerIcon aria-label="button"
-  src={burgermenu}
-  loading="lazy"
-  alt="Öppna menyn här"
-  onClick={toggleMenu}/>
+    <HamburgerIcon 
+      tab-index="0"
+      aria-label="button"
+      role="button"
+      src={burgermenu}
+      loading="lazy"
+      alt="Öppna menyn här"
+      onClick={toggleMenu}/>
   }
   </MainMenu>
   {menuOpen && 
@@ -162,8 +173,8 @@ return (
      <span 
       onClick={toggleMenu}
       loading="lazy"
-      aria-label="button"
-      alt="Stäng menyn här">
+      role="button"      aria-label="button"
+      alt="Stäng menyn ">
       <p>X</p>
       </span>
       <MenuLinks onClick={toggleMenu}

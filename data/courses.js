@@ -63,9 +63,9 @@ export const courses = [
   },
   {
     id:11,
-    betyg: "",
+    betyg: "VG",
     title:"LIA 1",
-    done: false,
+    done: true,
   },
   {
     id:12,

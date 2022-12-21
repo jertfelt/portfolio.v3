@@ -14,14 +14,13 @@ margin-top:-3rem;
 
 const About = styled.div`
 padding-top: ${({theme}) => theme.paddingSizes.small};
-margin-left: ${({theme}) => theme.paddingSizes.medium};
-align-self: strecth;
-justify-self: start;
+margin-left: ${({theme}) => theme.paddingSizes.large};
+
+
 
 h2{
   font-family: Arya;
   font-size: ${({theme}) => theme.fontSizes.mediumlarge};
-  padding-left:1rem;
   color: ${({theme}) => theme.colors.lightblue};
   text-transform: uppercase;
   line-height: 35px;
@@ -66,11 +65,9 @@ const WhoAmI = () => {
   <MainSection>
     <Container
     xlarge>
-      <Grid>
-     <About>
+       <About>
       <h2>OM MIG:</h2>
      </About>
-      </Grid>
       <TwoColumns>
         <Column 
         whoamI_1>
@@ -93,9 +90,9 @@ const WhoAmI = () => {
     xlarge>
       <Grid numbers>
         <CountingUp
-         number = {10}
-         text = {"års erfarenhet som digital formgivare, både som frilans och anställd."}
-         />
+          number = {10}
+          text = {"års erfarenhet som digital formgivare, både som frilans och anställd."}
+        />
         <div>
         <BigNumber>2021</BigNumber>
         <Text>började jag lära mig frontendprogrammering genom YH, vänner, discord och youtube. </Text>
