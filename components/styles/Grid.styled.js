@@ -6,11 +6,17 @@ max-width: 1200px;
 margin: 0 auto;
 gap: 2rem;
 @media (min-width: 600px) {
-  grid-template-columns: repeat(2, 1fr);
- }
-@media (min-width: 700px) {
   grid-template-columns: repeat(3, 1fr);
  }
+ ${props => 
+  props.cverfarenhet && 
+  css`  
+  @media (min-width: 600px) {
+  grid-template-columns: repeat(3, 1fr);
+ }
+  
+  `}
+
 
 
 ${props => 

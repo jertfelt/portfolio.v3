@@ -90,13 +90,14 @@ const WhoAmI = () => {
     xlarge>
       <Grid numbers>
         <CountingUp
-          number = {10}
+          number = {11}
           text = {"års erfarenhet som digital formgivare, både som frilans och anställd."}
         />
         <div>
         <BigNumber>2021</BigNumber>
         <Text>började jag lära mig frontendprogrammering genom YH, vänner, discord och youtube. </Text>
         </div>
+
       </Grid>
     </Container>
     </Numbers>

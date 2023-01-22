@@ -75,9 +75,9 @@ export const courses = [
   },
   {
     id:13,
-    betyg: "",
+    betyg: "N/A",
     title:"Javascript 4",
-    done: false,
+    done: true,
   },
   {
     id:14,

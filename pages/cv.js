@@ -94,6 +94,10 @@ h4{
 
   padding-left:1rem;
 }
+img{
+  border-radius: 50%;
+  margin-top:1rem;
+}
  
 ${props => 
   props.work && 
@@ -335,6 +339,7 @@ function handleClick() {
           <h3>Praktik!
           </h3>
           <Bread>Just nu går jag praktik som frontendare hos Vinnovera, Stockholm.
+          Våren 2023: praktiserande junior konsult hos Society Icon.
           </Bread>
         </GridItem>
         </Grid>
@@ -422,51 +427,66 @@ function handleClick() {
       <Erfarenhet>
       
       <CVContent>
-        <h2>Övrigt</h2>
-        <Grid cv> 
+        <h2>Erfarenhet</h2>
+       
+        <Grid cverfarenhet> 
+        <GridItem>
+          <h3>Techstack</h3>
+          <h4>Frontend</h4>
+          <ul>
+            <li>GIT</li>
+            <li>React</li>
+            <li>NEXT.js</li>
+            <li>JavaScript</li>
+            <li>Node.js</li>
+            <li>CSS/SASS</li>
+            <li>Styled components</li>
+            <li>HTML5</li>
+            <li>BEM</li>
+            <li>Netlify</li>
+            <li>Google firebase</li>
+            <li>Strapi</li>
+            <li>Wordpress</li>
+          </ul>
+        </GridItem>
       <GridItem>
-      
-        <h3>Yrkeskunskap</h3>
+        <h3>Yrkeskunskaper</h3>
         <h4>Mycket goda kunskaper:</h4>
         <ul>
           <li>Ansvarstagande</li>
           <li>Kreativitet</li>
-        <li>Analytisk</li>
-        <li>Kommunikation</li>
+          <li>Analytisk</li>
+          <li>Kommunikation</li>
         </ul>
         <h4>Goda kunskaper:</h4>
         <ul>
-        <li>Teamarbete i projekt</li>
-        <li>Agilt projektarbete</li>
-        <li>Problemlösning</li>
+          <li>Teamarbete i projekt</li>
+          <li>Agilt projektarbete</li>
+          <li>Problemlösning</li>
         </ul>
-      
-       
         </GridItem>
         <GridItem>
-        <h3>Programvara</h3>
-        <h4>Mycket goda kunskaper:</h4>
-        <ul>
-          <li>Adobe Photoshop</li>
-          <li>Adobe Illustrator</li>
-        </ul>
-        <h4>Goda kunskaper:</h4>
-        <ul>
-        <li>Figma</li>
-        <li>Visual Studio Code</li>
-        <li>After Effects</li>
-        <li>Github</li>
-        </ul>
-      </GridItem>
-        {/* <GridItem>
-      
-     <Bread>Jag lär mig snabbt och har under åren utforskat och kombinerat många olika kunskaper och tools of the trade. Jag har därför en bred bas av erfarenhet och kunskaper: allt från det konstnärliga till det tekniska, det kunskapstörstande och taktila, samt det strategiska, analytiska, affärsmannamässiga och sociala. </Bread>
-     
-      </GridItem>
-          <Image src={kollektivsorg}
-          width={400}
-          heigh={250}
-          alt="Bild på min grafiska profil åt Kollektiv Sorg"/> */}
+          <h3>Programvaror</h3>
+          <h4>Mycket goda kunskaper:</h4>
+          <ul>
+            <li>Adobe Photoshop</li>
+            <li>Adobe Illustrator</li>
+          </ul>
+          <h4>Goda kunskaper:</h4>
+          <ul>
+            <li>Figma</li>
+            <li>Visual Studio Code</li>
+            <li>After Effects</li>
+            <li>Github</li>
+          </ul>
+        </GridItem>
+        {/* <GridItem>       
+          <Image 
+            src={kollektivsorg}
+                width={400}
+                heigh={250}
+                alt="Bild på min grafiska profil åt Kollektiv Sorg"/>
+        </GridItem> */}
       </Grid>
       
       </CVContent>

@@ -10,6 +10,11 @@ export const quotesAboutMe = [
     quote:"Tova är hjälpsam, kunnig och lyhörd inför önskemål.",
     name:"– Globalportalen"
   },
+  // {id:4,
+  //   headline: "",
+  //   quote:"Tova har mycket goda kunskaper i hur och varför man arbetar med JavaScript inom frontendutveckling och kan med säkerhet välja rätt metoder.",
+  //   name:"– Harald Mellbom, Vinnovera"
+  // },
   {
     id:1,
     headline:"Teamplayer",
