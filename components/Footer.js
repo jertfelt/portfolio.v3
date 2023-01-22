@@ -60,7 +60,7 @@ a{
 const Footer = () => {
   return (
   <FooterContainer>
-    
+    <p>Sidan är under uppbyggnad och vissa buggar kan förekomma. <br/>Hör av dig om så är fallet!</p>
     <FooterTitle>Hör av dig!</FooterTitle>
     <Links>
     <Link 
