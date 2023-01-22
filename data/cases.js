@@ -594,7 +594,7 @@ moreinfo:{
   featured: false,
   tag: "TDD: React",
   title:"Westcoast Education",
-  sub:"REACT",
+  sub:"Studentarbete i React och jest",
   text:"Studentarbete i testdriven development.",
   tags:{
     c1:"React",
@@ -626,7 +626,7 @@ moreinfo:{
   text1part2:"Jag har vidare jobbat med styled components, och testat olika filstrukturer. Vidare har jag experimenterat med dark mode/ light mode och tillgänglighet.",
   text1part3: "Sidan är fortfarande under uppbyggnad och kan ha vissa buggar igång. Jag håller fortfarande på att skriva klart logiken för studenter, för att lägga till kurs som student, och för att kors-referera lärare, studenter och kurser.",
   teknik:
-    ["React",  "API calls",  "JSX", "Netlify", "Styled Components", "Firebase", "useContext", "jest", "Unit-testing", "UX", "UI", "Interaction testing", "Portals"],
+    ["React",  "API calls",  "useContext", "jest", "Unit-testing",  "Interaction testing", "React Portals", "useRef"],
     languages:
     [
       {id: "Javascript",
