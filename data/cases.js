@@ -246,7 +246,7 @@ moreinfo:{
 },
 {
   id:5,
-  featured: false,
+  featured: true,
   tag: "NodeJS",
   title:"Fyrishovs Bowling",
   sub: "Studentarbete i node.js",
@@ -441,7 +441,7 @@ moreinfo:{
 },
 {
   id:9,
-  featured: true,
+  featured: false,
   tag: "cms",
   title:"Studentarbete: Bookducks",
   sub: "Interaktion med CMS",
@@ -589,6 +589,53 @@ moreinfo:{
       ]
   }
 },
+{
+  id:12,
+  featured: false,
+  tag: "TDD: React",
+  title:"Westcoast Education",
+  sub:"REACT",
+  text:"Studentarbete i testdriven development.",
+  tags:{
+    c1:"React",
+    c2:"Netlify",
+    c3:"Firebase"
+  },
+  sources:{
+    link:"https://westcoast-education.netlify.app/",
+    imgurl:"/img/westcoast__admin.png",
+    imgalt:"Adminsidan",
+    github:"https://github.com/jertfelt/westcoast_education-nyhjs4"
+  },
+  extra:{
+    file01:{
+      url:"/img/westcoast__homepage.png",
+      alt:"Bild på startsidan",
+    },
+    file02:{
+      url:"/img/westcoast__adminchange.png",
+      alt:"Vy för att ändra kurs"
+    },
+    file03: {
+      url: "/img/westcoast__courseshomepage.png",
+      alt: "Publicerade kurser på startsidan"
+    }
+},
+moreinfo:{
+  text1: " Vi skulle bygga en adminportal till en skola med kurser och lärare.  Jag har även jobbat med Netlify och firebase, och då migrerat från att jobba med localserver och json server. Skoluppgiften gick ut på att skriva testdrivet, här har jag jobbat med unit-testing och viss interaction testing med hjälp av Jest.",
+  text1part2:"Jag har vidare jobbat med styled components, och testat olika filstrukturer. Vidare har jag experimenterat med dark mode/ light mode och tillgänglighet.",
+  text1part3: "Sidan är fortfarande under uppbyggnad och kan ha vissa buggar igång. Jag håller fortfarande på att skriva klart logiken för studenter, för att lägga till kurs som student, och för att kors-referera lärare, studenter och kurser.",
+  teknik:
+    ["React",  "API calls",  "JSX", "Netlify", "Styled Components", "Firebase", "useContext", "jest", "Unit-testing", "UX", "UI", "Interaction testing", "Portals"],
+    languages:
+    [
+      {id: "Javascript",
+      value: 98.9},
+      {id: "Other",
+      value: 1.1},
+    ]
+}
+}
 ]
 
 
