@@ -54,15 +54,13 @@ transform: rotate(10deg);
 max-width: ${({theme}) => theme.containers.xlarge};
 position: relative;
 overflow: hidden;
-width:40em;
-height:40em;
 border-radius: ${({theme}) => theme.borderradius.first};
 
 @media screen and ${device.laptop}{
   position: relative;
   left:40%;
   overflow: hidden;
-  width:40em;
+  min-height:600px;
 }
 `
 
@@ -152,7 +150,6 @@ const HeroContent = () => {
     <PageWrapper>
     <Hero>
     <HeroPic
-    
     src={profilepic}
     loading="lazy"
     alt="Svartvit bild på Tova som tittar in i kameran."
