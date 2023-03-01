@@ -250,7 +250,7 @@ moreinfo:{
   tag: "NodeJS",
   title:"Fyrishovs Bowling",
   sub: "Studentarbete i node.js",
-  text:"Med node.js, mongoDB, mongoose, och express view engine har jag skapat, renderat och gett möjlighet att uppdatera en hemsidas enkla dagabas",
+  text:"Med node.js, mongoDB, mongoose, och express view engine har jag skapat, renderat och gett möjlighet att uppdatera en hemsidas enkla databas",
   tags:{
     c1: "mongoDB",
     c2: "nodejs",
