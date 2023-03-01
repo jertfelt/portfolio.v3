@@ -246,7 +246,7 @@ moreinfo:{
 },
 {
   id:5,
-  featured: true,
+  featured: false,
   tag: "NodeJS",
   title:"Fyrishovs Bowling",
   sub: "Studentarbete i node.js",
