@@ -82,7 +82,6 @@ if(!cases){
   }
 }
 
-
 const fetchData = useCallback(async () => {
   const newData = await getData()
   return newData
@@ -95,7 +94,6 @@ useEffect(() => {
       checkCases(data)
     }
     ).then(() => {
-     
       featured.push(cases.filter(item => item.featured === true))
       const doubled = featured.map(nested => nested.map(element => element))
       setFeatured(doubled[0])
@@ -112,25 +110,24 @@ return (
       <Content>
       <div>
       <Headline>Cases</Headline>
-      <Desc>Här finns ett urval av olika saker jag kodat. En del är studentarbeten, andra är egna experiment. För att se alla mina projekt, och filtrera på sökord, gå till <Link href="/cases/"> CASES</Link>.
+      <Desc>Här finns ett urval av olika saker jag kodat.<br/> En del är studentarbeten, andra är egna experiment. För att se alla mina projekt, och filtrera på sökord, gå till <Link href="/cases/"> CASES</Link>.
       </Desc>
       </div>
       {loading ? <><h2>Laddar sidan...</h2></> :
       <>
-     
       {featuredCases && 
       <Wrapper>
-  <CaseList>
-  {featuredCases.map((c) => 
-          (
-          <CasefItem
-          key={c.id}
-          item= {c}
-          index={c.id}
-          />
-          ) 
-        )}
-        
+      <CaseList>
+      {featuredCases.map((c) => 
+              (
+              <CasefItem
+              key={c.id}
+              item= {c}
+              index={c.id}
+              />
+              ) 
+            )}
+            
    {!featuredCases && 
       <Wrapper>
         <CaseList>
