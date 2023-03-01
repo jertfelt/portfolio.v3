@@ -96,7 +96,7 @@ export const cases = [
 },
 {
   id:2,
-  featured: true,
+  featured: false,
   tag: "React",
   title:"Studentarbete: Forumsida",
   sub: "React med API",
@@ -592,10 +592,10 @@ moreinfo:{
 {
   id:12,
   featured: true,
-  tag: "TDD: React",
+  tag: "Jext & React",
   title:"Westcoast Education",
   sub:"Studentarbete i React och jest",
-  text:"Studentarbete i testdriven development.",
+  text:"Vi skulle bygga en adminportal till en skola med kurser och lärare.  Jag har även jobbat med Netlify och firebase, och då migrerat från att jobba med localserver och json server. ",
   tags:{
     c1:"React",
     c2:"Netlify",
@@ -622,7 +622,7 @@ moreinfo:{
     }
 },
 moreinfo:{
-  text1: "Vi skulle bygga en adminportal till en skola med kurser och lärare.  Jag har även jobbat med Netlify och firebase, och då migrerat från att jobba med localserver och json server. Skoluppgiften gick ut på att skriva testdrivet, här har jag jobbat med unit-testing och viss interaction testing med hjälp av Jest.",
+  text1: "Skoluppgiften gick ut på att skriva testdrivet, här har jag jobbat med unit-testing och viss interaction testing med hjälp av Jest.",
   text1part2:"Jag har vidare jobbat med styled components, och testat olika filstrukturer. Vidare har jag experimenterat med dark mode/ light mode och tillgänglighet.",
   text1part3: "Sidan är fortfarande under uppbyggnad och kan ha vissa buggar igång. Jag håller fortfarande på att skriva klart logiken för studenter, för att lägga till kurs som student, och för att kors-referera lärare, studenter och kurser.",
   teknik:
