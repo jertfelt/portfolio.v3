@@ -11,7 +11,6 @@ import Image from "next/image";
 const CaseContainer = styled.article`
 border-radius: 29px;
 padding:2rem;
-background-color:${({theme}) => theme.colors.purple};
 font-family:Roboto;
 ${flex({align:"flex-start", justify:"flex-start"})}
 @media ${device.laptop}{
@@ -22,6 +21,9 @@ a{
   color:${({theme}) => theme.colors.lightblue};
 }
 padding-bottom:1rem;
+&:hover{
+  background-color:${({theme}) => theme.colors.black};
+}
 `
 
 const CaseHeader = styled.h3`
@@ -33,26 +35,28 @@ flex-wrap: wrap;
 margin-top:-1rem;
 line-height:120%;
 width:70%;
+
 `
 const Description = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
-width:100%;
+width:80%;
+color:${({theme}) => theme.colors.white};
 text-align: left;
+margin-top:0;
 `
 const Subtitle = styled.h4`
 font-size:${({theme}) => theme.fontSizes.medium};
 text-transform:uppercase;
 `
 const ImageWrapper= styled.div`
-width: 100%;
+width: 50%;
   .image--1 {
     object-fit: contain;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     transition: transform .7s ease-in-out;
     &:hover{
       border-radius: ${({theme}) => theme.borderradius.second};
-      transform: rotate(-6deg);
       filter: drop-shadow(2mm 2mm 3mm #344ce6);
     }
   }
@@ -60,20 +64,23 @@ width: 100%;
 `
 const CaseImage = styled(Image)`
 `
+const Row = styled.div`
+gap:2rem;
+${flex({direction: "row", align:"center", justify:"space-between"})};
 
+`
 
 const CasefItem = ({item}) => {
   const [imageSize, setSmageSize] = useState({
-    width: 200,
-    height: 200
+    width: 300,
+    height: 300
   });
-  console.log(item)
 
+ 
   return (
-    
     <CaseContainer key={item.id}
     >
-     {item && <>
+    {item && <>
       <Subtitle>{item.sub}</Subtitle> 
         <CaseHeader>    
           <Link href={'/cases/' + item.id} 
@@ -86,26 +93,30 @@ const CasefItem = ({item}) => {
         <Link href={'/cases/' + item.id} 
         key={item.id}
     >   
-          
-        <ImageWrapper
-         second>
-         <CaseImage 
-         layout="fill"
-         className="image--1"
-         onLoadingComplete={target => {
-          setSmageSize({
-            width: target.naturalWidth,
-            height: target.naturalHeight
-          });
-         }}
-        width={imageSize.width}
-        height={imageSize.height}
-         alt= {item.sources.imgalt}
-         src={item.sources.imgurl}
-         />
-         </ImageWrapper>
-       <Description>{item.text}</Description>
-       <ImageWrapper
+        
+          {/* <ImageWrapper
+          second>
+          <CaseImage 
+          layout="fill"
+          className="image--1"
+          onLoadingComplete={target => {
+            setSmageSize({
+              width: target.naturalWidth,
+              height: target.naturalHeight
+            });
+          }}
+          width={imageSize.width}
+          height={imageSize.height}
+          alt= {item.sources.imgalt}
+          src={item.sources.imgurl}
+          />
+          </ImageWrapper> */}
+          <Description>{item.text}
+          </Description>
+         
+
+   
+       {/* <ImageWrapper
          second>
          <CaseImage 
          layout="fill"
@@ -121,7 +132,7 @@ const CasefItem = ({item}) => {
          alt= {item.extra.file03.alt}
          src={item.extra.file03.url}
          />
-         </ImageWrapper>
+         </ImageWrapper> */}
         </Link>
         
       </>
