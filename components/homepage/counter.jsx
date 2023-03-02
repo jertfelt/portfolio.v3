@@ -7,13 +7,17 @@ max-width:180px;
 const BigNumber = styled.h3`
 font-size:${({theme}) => theme.fontSizes.xlarge};
 line-height:1em;
-color:${({theme}) => theme.colors.lightblue};
+color:${({theme}) => theme.colors.white};
 font-family: Arya;
 font-weight: 500;
+border-radius: ${({theme}) => theme.borderradius.third};
+background-color:${({theme}) => theme.colors.vividblue};
+padding:2rem;
 `
 const Text = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
 margin-top:-3em;
+
 `
 const CountingUp = ({number, percent, text}) => {
 

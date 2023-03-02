@@ -11,6 +11,10 @@ width:100%;
 background-color: ${({theme}) => theme.colors.purple};
 position:relative;
 z-index:1;
+p{
+  font-family:Robot;
+  text-align:center;
+}
 
 ${flex}
 
@@ -45,15 +49,15 @@ font-family: Roboto;
 font-size:  ${({theme}) => theme.fontSizes.medium};
 line-height: 1.4rem;
 a{
-  border-style: outset;
+  border-style: solid;
   border-color: transparent;
-  border-radius: 19px;
-  padding:8px 8px;
+  border-radius: ${({theme}) => theme.borderradius.first};
+  padding:18px 18px;
   text-decoration:none;
   color: ${({theme}) => theme.colors.lightblue};
   &:hover{
     color:${({theme}) => theme.colors.white};
-    border-color: ${({theme}) => theme.colors.white};
+    background-color:black;
   }
 }`
 

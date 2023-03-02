@@ -1,15 +1,4 @@
 
-// import { Roboto, Arya } from '@next/font/google'
-
-
-// export const roboto = Roboto({
-//   weight: '400',
-// })
-
-// export const arya = Arya({
-//   weight: '500',
-// })
-
 export const theme = {
   fontSizes: {
     small:"12px",

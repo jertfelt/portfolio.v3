@@ -33,3 +33,18 @@ ${props =>
   
 
 `
+
+export const ContactButton = styled.button`
+background:transparent;
+border-color:${({theme}) => theme.colors.white};
+color: ${({theme}) => theme.colors.white};
+padding:1rem;
+border-radius:29px;
+border:solid 2px;
+
+&:hover, &:active {
+  border-color:none;
+  border-radius: ${({theme}) => theme.borderradius.third};
+}
+
+`

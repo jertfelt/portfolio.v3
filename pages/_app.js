@@ -10,12 +10,10 @@ const MyApp = ({ Component, pageProps }) => {
   return (
   <>
   <ThemeProvider theme={theme}>
-
       <Layout>
         <Component {...pageProps} />
       </Layout>
       <GlobalStyle/>
-
   </ThemeProvider>
  
   </>

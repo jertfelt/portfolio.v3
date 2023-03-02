@@ -3,10 +3,8 @@ import Image from "next/image";
 import profilepic from "../../public/img/tova-linkedin-portratt.png"
 import { flex, device } from "../styles/Styles";
 
-
 const PageWrapper = styled.div`
 ${flex};
-
 `
 
 const Hero = styled.div`
