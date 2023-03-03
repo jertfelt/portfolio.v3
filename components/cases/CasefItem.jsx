@@ -7,8 +7,6 @@ import Image from "next/image";
 import { BlackButton } from "../styles/Button.styled";
 
 
-
-
 const CaseContainer = styled.article`
 border-radius: 29px;
 padding:2rem;
@@ -22,10 +20,7 @@ a{
   color:${({theme}) => theme.colors.lightblue};
 }
 padding-bottom:1rem;
-// &:hover{
-//   background-color:${({theme}) => theme.colors.black};
-//   border-radius: ${({theme}) => theme.borderradius.second};
-// }
+max-width:80%;
 `
 
 const CaseHeader = styled.h3`
@@ -50,37 +45,39 @@ const Subtitle = styled.h4`
 font-size:${({theme}) => theme.fontSizes.medium};
 text-transform:uppercase;
 `
-const ImageWrapper= styled.div`
-width: 50%;
-  .image--1 {
-    object-fit: contain;
-    width: 50%;
-    height: 50%;
-    transition: transform .7s ease-in-out;
-    &:hover{
-      border-radius: ${({theme}) => theme.borderradius.second};
-      filter: drop-shadow(2mm 2mm 3mm #344ce6);
-    }
-  }
-  }
-`
-const CaseImage = styled(Image)`
-`
-const Row = styled.div`
-gap:2rem;
-${flex({direction: "row", align:"center", justify:"space-between"})};
 
+const CaseImage = styled(Image)`
+border-radius: ${({theme}) => theme.borderradius.second};
+&:hover{
+
+  border-radius: ${({theme}) => theme.borderradius.first};
+
+}
 `
+const Wrapper = styled.div`
+
+transform: rotate(2deg);
+transition: all .8s ease-out;
+position:relative;
+top:-30rem;
+left:35%;
+margin-bottom:-25rem;
+&:hover{
+  filter: drop-shadow(0 6mm 4mm #344ce6);
+  transform: rotate(5deg);
+}
+`
+
 
 const CasefItem = ({item}) => {
   const [imageSize, setSmageSize] = useState({
     width: 300,
     height: 300
   });
-
  
-  return (
+  return (<>
     <CaseContainer key={item.id}
+   
     >
     {item && <>
       <Subtitle>{item.sub}</Subtitle> 
@@ -92,23 +89,7 @@ const CasefItem = ({item}) => {
           </Link>
           
       </CaseHeader> 
- {/* <ImageWrapper
-          second>
-          <CaseImage 
-          layout="fill"
-          className="image--1"
-          onLoadingComplete={target => {
-            setSmageSize({
-              width: target.naturalWidth,
-              height: target.naturalHeight
-            });
-          }}
-          width={imageSize.width}
-          height={imageSize.height}
-          alt= {item.sources.imgalt}
-          src={item.sources.imgurl}
-          />
-          </ImageWrapper> */}
+
         <Link href={'/cases/' + item.id} 
         key={item.id}
     >   
@@ -142,8 +123,24 @@ const CasefItem = ({item}) => {
      }
      {!item && <div>Något har gått fel.</div>}
       </CaseContainer>
-   
-
+       <Wrapper>
+          <CaseImage 
+          layout="fill"
+          className="image--1"
+          onLoadingComplete={target => {
+            setSmageSize({
+              width: target.naturalWidth,
+              height: target.naturalHeight
+            });
+          }}
+          width={imageSize.width}
+          height={imageSize.height}
+          alt= {item.sources.imgalt}
+          src={item.sources.imgurl}
+          />
+          </Wrapper>
+      
+   </>
   );
 }
 export default CasefItem;

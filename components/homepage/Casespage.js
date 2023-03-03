@@ -14,7 +14,8 @@ const casesDb = {cases};
 const Content = styled.div`
 font-family:Roboto;
 width: 100%;
-padding-bottom:5rem;
+min-height:130vh;
+
 div{
   ${flex };
   width:100%;
@@ -22,7 +23,8 @@ div{
 }
 background-color: ${({theme}) => theme.colors.grey};
 position: relative;
-z-index:1;
+z-index:10;
+padding-bottom:15rem;
 
 &::before {
   top: 0;
@@ -33,11 +35,11 @@ z-index:1;
   background: inherit;
   content: "";
   display: block;
-  height: 75%;
+  height: 100%;
   left: 0;
   position: absolute;
   right: 0;
-  z-index: -1;
+  z-index: -2;
 }
 `
 const Desc = styled.p`
@@ -80,9 +82,7 @@ margin: 0 auto;
 padding-left:3rem;
 display: grid;
 gap: 3rem; 
-// @media ${device.tablet}{
-//   grid-template-columns: repeat(2, 1fr); 
-// }
+
 `
 
 const CasesPage = () => {

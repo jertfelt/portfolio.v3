@@ -23,7 +23,7 @@ position: fixed;
 
 const AboveLandingImg = styled.div`
 position: relative;
-z-index:2;
+z-index:1;
 `
 
 

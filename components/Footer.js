@@ -6,11 +6,11 @@ const FooterContainer = styled.footer`
 display:flex;
 flex-direction:row;
 width:100%;
-position: relative;
-z-index:1;
+position: absolute;
+z-index:5;
 padding:${({theme}) => theme.paddingSizes.medium};
-
-height:8rem;
+height:20vh;
+bottom:100;
 align-items:center;
 justify-content:center;
 background-color:${({theme}) => theme.colors.grey};
@@ -40,7 +40,7 @@ a{
 const Footer = () => {
   return (
   <FooterContainer>
-   
+ 
     <Links>
     <Link 
     href="https://www.linkedin.com/in/tovajertfelt/">
