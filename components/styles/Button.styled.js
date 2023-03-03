@@ -33,6 +33,21 @@ ${props =>
   
 
 `
+export const BlackButton = styled.button`
+background:transparent;
+border:none;
+color: ${({theme}) => theme.colors.white};
+padding:1rem;
+border-radius:29px;
+border:solid 2px;
+font-size:18px;
+&:hover, &:active {
+  border-color:transparent;
+  color:white;
+  border-radius: ${({theme}) => theme.borderradius.second};
+  background-color:black;
+}
+`
 
 export const ContactButton = styled.button`
 background:transparent;
@@ -41,10 +56,22 @@ color: ${({theme}) => theme.colors.white};
 padding:1rem;
 border-radius:29px;
 border:solid 2px;
+font-size:18px;
 
 &:hover, &:active {
   border-color:none;
   border-radius: ${({theme}) => theme.borderradius.third};
+}
+a{
+  text-decoration:none;
+  color: ${({theme}) => theme.colors.white};
+}
+a:visited{
+  color: ${({theme}) => theme.colors.white};
+}
+a:focus{
+  color:${({theme}) => theme.colors.white};
+  border-radius: ${({theme}) => theme.borderradius.first};
 }
 
 `

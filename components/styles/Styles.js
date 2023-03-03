@@ -8,10 +8,6 @@ align-items: ${align || "center"};
 justify-content: ${justify || "center"}; 
 `
 
-export const Row = styled.span`
-${flex}
-gap: 10px;`
-
 const size = {
         mobileS: '320px',
         mobileM: '375px',
@@ -49,4 +45,13 @@ export const device = {
   }
 
 
-//https://gist.github.com/ralphwengerek/4124325e1fb789f1e17f87e187198d6e
+  export const Row = styled.span`
+display:flex;
+flex-direction:row;
+align-items:center;
+gap: 1rem;
+@media (max-width: ${size.mobileL}){
+  display:flex;
+  flex-direction:column;
+}
+`

@@ -2,50 +2,26 @@ import styled from "styled-components";
 import {flex, device} from "../components/styles/Styles"
 import Link from "next/link";
 
-
 const FooterContainer = styled.footer`
-margin-top:10em;
-padding:1rem;
-padding-bottom: ${({theme}) => theme.paddingSizes.medium};
+display:flex;
+flex-direction:row;
 width:100%;
-background-color: ${({theme}) => theme.colors.purple};
-position:relative;
+position: relative;
 z-index:1;
-p{
-  font-family:Robot;
-  text-align:center;
-}
+padding:${({theme}) => theme.paddingSizes.medium};
 
-${flex}
-
-&::before {
-  top: 0;
-  -webkit-transform: skewY(-4deg);
-  transform: skewY(-4deg);
-  -webkit-transform-origin: 0% 0;
-  transform-origin: 0% 0;
-  background: inherit;
-  content: "";
-  display: block;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  z-index: -1;
-}
+height:8rem;
+align-items:center;
+justify-content:center;
+background-color:${({theme}) => theme.colors.grey};
 `
 
-const FooterTitle = styled.h2`
-font-size:  ${({theme}) => theme.fontSizes.mediumlarge};
-font-family: Arya;
-text-transform:uppercase;
-color: ${({theme}) => theme.colors.lightblue};`
 
 const Links = styled.div`
-margin-top:-2rem;
+
 ${flex({direction:"row"})}
 gap:10px;
-font-family: Roboto;
+font-family: Arya;
 font-size:  ${({theme}) => theme.fontSizes.medium};
 line-height: 1.4rem;
 a{
@@ -54,9 +30,9 @@ a{
   border-radius: ${({theme}) => theme.borderradius.first};
   padding:18px 18px;
   text-decoration:none;
-  color: ${({theme}) => theme.colors.lightblue};
+  color: ${({theme}) => theme.colors.white};
   &:hover{
-    color:${({theme}) => theme.colors.white};
+    color:${({theme}) => theme.colors.lightblue};
     background-color:black;
   }
 }`
@@ -64,8 +40,7 @@ a{
 const Footer = () => {
   return (
   <FooterContainer>
-    <p>Sidan är under uppbyggnad och vissa buggar kan förekomma. <br/>Hör av dig om så är fallet!</p>
-    <FooterTitle>Hör av dig!</FooterTitle>
+   
     <Links>
     <Link 
     href="https://www.linkedin.com/in/tovajertfelt/">
@@ -75,7 +50,6 @@ const Footer = () => {
     <Link 
     href="https://www.tovajertfelt.com">Portfolio</Link>
     </Links>
-
   </FooterContainer>);
 }
  

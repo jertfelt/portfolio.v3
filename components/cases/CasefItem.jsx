@@ -4,6 +4,7 @@ import styled, {css} from "styled-components"
 import Link from "next/link"
 import { flex, device } from "../styles/Styles";
 import Image from "next/image";
+import { BlackButton } from "../styles/Button.styled";
 
 
 
@@ -21,9 +22,10 @@ a{
   color:${({theme}) => theme.colors.lightblue};
 }
 padding-bottom:1rem;
-&:hover{
-  background-color:${({theme}) => theme.colors.black};
-}
+// &:hover{
+//   background-color:${({theme}) => theme.colors.black};
+//   border-radius: ${({theme}) => theme.borderradius.second};
+// }
 `
 
 const CaseHeader = styled.h3`
@@ -88,13 +90,9 @@ const CasefItem = ({item}) => {
                 key={item.id}>
                 {item.title}
           </Link>
+          
       </CaseHeader> 
-
-        <Link href={'/cases/' + item.id} 
-        key={item.id}
-    >   
-        
-          {/* <ImageWrapper
+ {/* <ImageWrapper
           second>
           <CaseImage 
           layout="fill"
@@ -111,10 +109,15 @@ const CasefItem = ({item}) => {
           src={item.sources.imgurl}
           />
           </ImageWrapper> */}
+        <Link href={'/cases/' + item.id} 
+        key={item.id}
+    >   
+        
+         
           <Description>{item.text}
           </Description>
-         
-
+          <Link href={'/cases/' + item.id} state={{data: item.id}}><BlackButton>Se mer här</BlackButton>
+          </Link>
    
        {/* <ImageWrapper
          second>

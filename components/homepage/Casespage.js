@@ -12,28 +12,47 @@ import { cases } from "../../data/cases";
 const casesDb = {cases};
 
 const Content = styled.div`
-min-height:100vh;
 font-family:Roboto;
 width: 100%;
-margin-top:2em;
-padding-top:3rem;
+padding-bottom:5rem;
 div{
   ${flex };
   width:100%;
   }
 }
+background-color: ${({theme}) => theme.colors.grey};
+position: relative;
+z-index:1;
+
+&::before {
+  top: 0;
+  -webkit-transform: skewY(-4deg);
+  transform: skewY(-4deg);
+  -webkit-transform-origin: 0% 0;
+  transform-origin: 0% 0;
+  background: inherit;
+  content: "";
+  display: block;
+  height: 75%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}
 `
 const Desc = styled.p`
   flex-wrap:wrap;
   line-height:150%;
-  max-width:70%;
+  max-width:50%;
+  text-align:center;
   font-size: ${({theme}) => theme.fontSizes.medium};
   a{
     color:${({theme}) => theme.colors.lightblue};
     text-decoration:none;
     font-weight:bold;
     &:hover{
-      text-decoration:underline;
+      background-color: ${({theme}) => theme.colors.black};
+      border-radius: ${({theme}) => theme.borderradius.first};
     }
 `
 
@@ -42,7 +61,9 @@ color: ${({theme}) => theme.colors.lightblue};
 font-family:Arya;
 font-size:${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
-margin-bottom:-1rem;
+background-color: ${({theme}) => theme.colors.black};
+border-radius: ${({theme}) => theme.borderradius.first};
+padding:2rem;
 `
 
 const Wrapper = styled.div`
@@ -59,16 +80,15 @@ margin: 0 auto;
 padding-left:3rem;
 display: grid;
 gap: 3rem; 
-@media ${device.tablet}{
-  grid-template-columns: repeat(2, 1fr); 
-}
+// @media ${device.tablet}{
+//   grid-template-columns: repeat(2, 1fr); 
+// }
 `
 
 const CasesPage = () => {
 const [loading, setLoading] = useState(false)
   //*------from cases.js in data, instead of fb:
 const [cases, setCases] = useState(casesDb.cases)
-const [result, setResult] = useState(null)
 const [featuredCases, setFeatured] = useState(null);
 let featured = []
 
@@ -110,7 +130,7 @@ return (
       <Content>
       <div>
       <Headline>Cases</Headline>
-      <Desc>Här finns ett urval av olika saker jag kodat.<br/> En del är studentarbeten, andra är egna experiment. För att se alla mina projekt, och filtrera på sökord, gå till <Link href="/cases/"> CASES</Link>.
+      <Desc>Här finns ett urval av olika saker jag kodat.<br/> En del är studentarbeten, andra är egna experiment. <br/>För att se alla mina projekt, och filtrera på sökord, gå till <Link href="/cases/"> CASES</Link>.
       </Desc>
       </div>
       {loading ? <><h2>Laddar sidan...</h2></> :

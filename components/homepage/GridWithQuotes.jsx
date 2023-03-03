@@ -4,15 +4,14 @@ import styled from "styled-components";
 import { flex, device, borders} from "../styles/Styles"
 
 const Section = styled.div`
+min-height:80vh;
 margin-top:2rem;
 padding:2rem;
 padding-bottom: ${({theme}) => theme.paddingSizes.medium};
 width:100%;
-background-color: ${({theme}) => theme.colors.black};
+background-color: transparent;
 position: relative;
 z-index:1;
-
-
 
 &::before {
   top: 0;
@@ -34,13 +33,13 @@ z-index:1;
   background: inherit;
   content: '';
   display: block;
-  height: 10%;
+  height: 20%;
   left: 0;
   position: absolute;
   right: 0;
   z-index: -1;
   bottom: 0;
-    -webkit-transform: skewY(0deg);
+  -webkit-transform: skewY(0deg);
   transform: skewY(-4deg);
   -webkit-transform-origin: 100%;
   transform-origin: 100%;
@@ -55,20 +54,31 @@ z-index:1;
 
 const GridThree = styled.div`
 display:grid;
-grid-template-columns: .3fr .2fr .7fr;
+grid-template-columns: .5fr .2fr .7fr;
 justify-items:start;
 align-items:start;
 column-gap:2rem;
 padding:5em;
-padding-top:0;
+
 margin:5em;
 div{
+  text-align:center;
+  display:flex;
+  flex-wrap:wrap;
+   background-color: ${({theme}) => theme.colors.black};
+    border-radius: ${({theme}) => theme.borderradius.second};
   &:hover{
-
-    background-color: ${({theme}) => theme.colors.vividblue};
-    border-radius: ${({theme}) => theme.borderradius.third};
+    background-color: ${({theme}) => theme.colors.black};
+    border-radius: ${({theme}) => theme.borderradius.first};
+    filter: drop-shadow(0 2mm 4mm #344ce6);
   }
   padding:1rem;
+  padding-bottom:3rem;
+  blockquote{
+    width:80%;
+  }
+  p{width:90%;}
+  
 }
 
 blockquote{
@@ -76,8 +86,10 @@ blockquote{
   h3{
     font-family: Arya;
     font-size:40px;
+    color:${({theme}) => theme.colors.lightblue};
   }
   h4{
+    text-align:left;
     margin-top:-2rem;
     font-size:18px;
   }

@@ -17,14 +17,27 @@ gap: 2rem;
   
   `}
 
+${props => props.about && css`
+
+font-family:Roboto;
+line-height:150%;
+padding:1rem;
+
+padding-top:8rem;
+font-size:${({theme}) => theme.fontSizes.medium};
+@media (min-width: 1000px){
+  gap: 5rem;
+}
+@media (max-width: 1000px){
+  gap:1rem;
+}
+`}
 
 
 ${props => 
   props.numbers && 
   css`  
-  margin-top:2em;
-  
-  // // max-width: ${({theme}) => theme.containers.xl};
+  gap:5em;
   `}
 
   ${props => 

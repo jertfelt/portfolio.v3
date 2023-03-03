@@ -6,6 +6,7 @@ import { ContactButton } from "../styles/Button.styled";
 
 const PageWrapper = styled.div`
 ${flex};
+height:100vh;
 `
 const Heading = styled.h1`
 transition: all 0.5s ease-out;
@@ -24,9 +25,7 @@ line-height:3.7rem;
     font-size:40px;
     line-height:1rem;
     }
-    &:hover{
-      font-style: italic;
-    }
+  
 `
 
 const HeroPic = styled(Image)`
@@ -40,26 +39,12 @@ width:300px;
 `
 
 
-const Row = styled.div`
-${flex({direction:"row-reverse"})}
-gap: 5rem; 
-padding: 2rem;
-padding-top:12em;
-div{
-  margin-top:5rem;
-  p{
-    margin-bottom:-3rem;
-    font-family:Arya;
-    font-size:2rem;
-  }
-}`
-
 const ParagraphRow = styled.div`
 margin-top:-3rem;
 display:flex;
 gap:5rem;
 p{
-  max-width:300px;
+  max-width:500px;
 }
 button{
   max-height: 50px;
@@ -67,12 +52,14 @@ button{
 }
 font-family:Roboto;
 line-height:150%;
+font-size:18px;
 `
 
 const Paragraph = styled.p `
 font-family: Arya;
 max-width:300px;
 margin-bottom:-3rem;
+font-size:20px;
 `
 
 const Grid = styled.div`
@@ -84,6 +71,7 @@ grid-template-columns: 1fr 2fr;
   align-items: start;
   column-gap: 50px;
   row-gap: 10px;
+
 `
 
 const IntroHomepage = () => {
