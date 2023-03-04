@@ -3,9 +3,9 @@ import styled, {css} from "styled-components"
 import Image from "next/image"
 import logo from "../public/img/tova-jertfelt-logo.png"
 import burgermenu from "../public/icons/pngkey.com-mobile-menu-icon-png-3321462.png"
-import close from "../public/icons/closing.png"
-import { Line } from "./styles/Line.styled"
+
 import { useState } from "react"
+import { device } from "./styles/Styles"
 
 const Header = styled.header`
 position: fixed;
@@ -86,7 +86,7 @@ border-radius: ${({theme}) => theme.borderradius.first};
 `
 
 const DropDownMenu = styled.ul`
-background-color: ${({theme}) => theme.colors.black};
+background-color: ${({theme}) => theme.colors.lavendel};
 color: ${({theme}) => theme.colors.white};
 display: flex;
 flex-direction: column;
@@ -100,7 +100,8 @@ right:0px;
 list-style: none;
 font-size: ${({theme}) => theme.fontSizes.small};
 font-weight:bold;
-filter: drop-shadow(0 2mm 4mm #344ce6);
+filter: drop-shadow(0 2mm 4mm #766c5a);
+
 a{
   font-family: Arya;
   text-align: left;
@@ -121,6 +122,28 @@ a{
     color:white;
   }
 }
+@media screen and ${device.maxtablet}{
+  width:30%;
+  background-color:${({theme}) => theme.colors.white};
+  p{
+  color: ${({theme}) => theme.colors.black};
+  }
+  a{
+    &:hover{
+      color:${({theme}) => theme.colors.vividblue};
+      font-style:italic;
+    }
+    &:focus{
+      color:${({theme}) => theme.colors.vividblue};
+    }
+    &:active{
+      color:${({theme}) => theme.colors.vividblue};
+    }
+    &:visited{
+      color:${({theme}) => theme.colors.vividblue};
+    }
+  }
+  }
 span{
   border-radius: 50%;
   align-items: center;
@@ -157,6 +180,9 @@ font-size: 2rem;
 const Name = styled.p`
 text-transform: uppercase;
 font-family:Arya;
+@media screen and ${device.maxmobile}{
+  font-size:10px;
+}
 `
 
 const Nav = () => {

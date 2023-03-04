@@ -541,7 +541,7 @@ moreinfo:{
 {
   id:11,
   featured: true,
-  tag: "nodeJS",
+  tag: "NodeJS",
   title:"Ekobanken",
   sub: "Fullstack och kryptering",
   text:"Jag skulle skapa en säker bank med REST-API, med databas i mongoDB där frontenden kommunicerar med JSON. Utöver detta kunde vi jobba med kryptering och cookies. Designen är rakt av snodd från ekobanken.se ",
@@ -592,7 +592,7 @@ moreinfo:{
 {
   id:12,
   featured: true,
-  tag: "Jext & React",
+  tag: "React",
   title:"Westcoast Education",
   sub:"Studentarbete i React och jest",
   text:"Vi skulle bygga en adminportal till en skola med kurser och lärare.  Jag har även jobbat med Netlify och firebase, och då migrerat från att jobba med localserver och json server. ",

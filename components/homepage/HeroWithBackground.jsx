@@ -1,21 +1,21 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import Image from "next/image";
 import landingpic from "../../public/img/IMG_20230303_154910.jpg"
-import { flex, device } from "../styles/Styles";
+import { device } from "../styles/Styles";
 import IntroHomepage from "./Intro";
 import AboutMe from "./AboutMe";
 import CasesPage from "./Casespage";
 
 const Overlay = styled.div`
-height:100vh;
-width:100%;
 position:fixed;
+height:150vh;
+width:100%;
 inset: 0;
 background: rgba(50, 57, 57, 0.5);
 z-index:1;
 `
 const LandingImage = styled(Image)`
-height: 100vh;
+height: 150vh;
 width:100%;
 z-index:0;
 position: fixed;
@@ -24,8 +24,8 @@ position: fixed;
 const AboveLandingImg = styled.div`
 position: relative;
 z-index:1;
+width:100%;
 `
-
 
 const HeroWBackground = () => {
   return ( 
@@ -42,6 +42,7 @@ const HeroWBackground = () => {
     <AboutMe/>
     <CasesPage/>
     </AboveLandingImg>
+
   </section> );
 }
  

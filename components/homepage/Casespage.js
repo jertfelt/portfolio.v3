@@ -1,30 +1,27 @@
-import Image from "next/image"
 import { Container } from "../styles/Container.styled";
-import styled, {css} from "styled-components";
-import { useState, useEffect, useCallback, useReducer } from "react";
+import styled from "styled-components";
+import { useState, useEffect, useCallback,} from "react";
 import { getData } from "../api/cases";
 import CasefItem from "../cases/CasefItem";
 import Link from "next/link";
 import { flex, device } from "../styles/Styles";
 import { cases } from "../../data/cases";
 
-
 const casesDb = {cases};
 
 const Content = styled.div`
 font-family:Roboto;
-width: 100%;
 min-height:130vh;
-
 div{
   ${flex };
-  width:100%;
   }
 }
-background-color: ${({theme}) => theme.colors.grey};
+background-color: ${({theme}) => theme.colors.lavendel};
 position: relative;
 z-index:10;
 padding-bottom:15rem;
+@media screen and ${device.maxtablet}{ padding:3rem;}
+@media screen and ${device.maxmobile}{ padding:1rem;}
 
 &::before {
   top: 0;
@@ -36,6 +33,7 @@ padding-bottom:15rem;
   content: "";
   display: block;
   height: 100%;
+  width:100%;
   left: 0;
   position: absolute;
   right: 0;
@@ -49,11 +47,11 @@ const Desc = styled.p`
   text-align:center;
   font-size: ${({theme}) => theme.fontSizes.medium};
   a{
-    color:${({theme}) => theme.colors.lightblue};
+    color:${({theme}) => theme.colors.vividblue};
     text-decoration:none;
     font-weight:bold;
     &:hover{
-      background-color: ${({theme}) => theme.colors.black};
+      background-color: ${({theme}) => theme.colors.lightblue};
       border-radius: ${({theme}) => theme.borderradius.first};
     }
 `
@@ -63,26 +61,29 @@ color: ${({theme}) => theme.colors.lightblue};
 font-family:Arya;
 font-size:${({theme}) => theme.fontSizes.xlarge};
 text-transform: uppercase;
-background-color: ${({theme}) => theme.colors.black};
-border-radius: ${({theme}) => theme.borderradius.first};
-padding:2rem;
+background-color: ${({theme}) => theme.colors.vividblue};
+border-radius: ${({theme}) => theme.borderradius.third};
+padding:1rem;
+margin-bottom:0;
 `
 
 const Wrapper = styled.div`
 ${flex}
-padding:3rem;
 `
 const CaseList = styled.article`
+border: solid 2px;
+border-radius:29px;
+border-color: ${({theme}) => theme.colors.vividblue};
 p{
   line-height:1.8rem;
   flex-wrap:wrap;
 }
-max-width:1000px;
+max-width:900px;
 margin: 0 auto;
-padding-left:3rem;
 display: grid;
 gap: 3rem; 
-
+@media screen and ${device.maxmobile}{
+  border: none;}
 `
 
 const CasesPage = () => {

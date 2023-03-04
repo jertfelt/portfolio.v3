@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 // mixins
 export const flex = ({direction, align, justify}) => `
@@ -22,11 +22,13 @@ export const device = {
     mobileS: `(min-width: ${size.mobileS})`,
     mobileM: `(min-width: ${size.mobileM})`,
     mobileL: `(min-width: ${size.mobileL})`,
+    maxmobile: `(max-width: ${size.tablet})`,
     tablet: `(min-width: ${size.tablet})`,
     laptop: `(min-width: ${size.laptop})`,
     laptopL: `(min-width: ${size.laptopL})`,
     desktop: `(min-width: ${size.desktop})`,
-    desktopL: `(min-width: ${size.desktop})`
+    desktopL: `(min-width: ${size.desktop})`,
+    maxtablet: `(max-width: ${size.laptop})`
   };
 
   const borderoptions = {

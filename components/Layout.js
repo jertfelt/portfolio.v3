@@ -9,7 +9,6 @@ const Layout = ({children}) => {
     <Nav/>
     {children}
     <Footer/>
-
     </>
     );
 }

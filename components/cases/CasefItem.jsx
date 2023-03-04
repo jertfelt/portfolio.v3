@@ -6,7 +6,6 @@ import { flex, device } from "../styles/Styles";
 import Image from "next/image";
 import { BlackButton } from "../styles/Button.styled";
 
-
 const CaseContainer = styled.article`
 border-radius: 29px;
 padding:2rem;
@@ -32,7 +31,6 @@ flex-wrap: wrap;
 margin-top:-1rem;
 line-height:120%;
 width:70%;
-
 `
 const Description = styled.p`
 font-size:${({theme}) => theme.fontSizes.medium};
@@ -49,13 +47,13 @@ text-transform:uppercase;
 const CaseImage = styled(Image)`
 border-radius: ${({theme}) => theme.borderradius.second};
 &:hover{
-
   border-radius: ${({theme}) => theme.borderradius.first};
-
+}
+@media screen and ${device.maxmobile}{
+  display:none;
 }
 `
 const Wrapper = styled.div`
-
 transform: rotate(2deg);
 transition: all .8s ease-out;
 position:relative;
@@ -63,21 +61,19 @@ top:-30rem;
 left:35%;
 margin-bottom:-25rem;
 &:hover{
-  filter: drop-shadow(0 6mm 4mm #344ce6);
+  filter: drop-shadow(0 6mm 4mm #bee5f5);
   transform: rotate(5deg);
 }
 `
 
-
 const CasefItem = ({item}) => {
   const [imageSize, setSmageSize] = useState({
-    width: 300,
-    height: 300
+    width: 140,
+    height: 140
   });
  
   return (<>
     <CaseContainer key={item.id}
-   
     >
     {item && <>
       <Subtitle>{item.sub}</Subtitle> 
@@ -99,24 +95,7 @@ const CasefItem = ({item}) => {
           </Description>
           <Link href={'/cases/' + item.id} state={{data: item.id}}><BlackButton>Se mer här</BlackButton>
           </Link>
-   
-       {/* <ImageWrapper
-         second>
-         <CaseImage 
-         layout="fill"
-         className="image--1"
-         onLoadingComplete={target => {
-          setSmageSize({
-            width: target.naturalWidth,
-            height: target.naturalHeight
-          });
-         }}
-        width={imageSize.width}
-        height={imageSize.height}
-         alt= {item.extra.file03.alt}
-         src={item.extra.file03.url}
-         />
-         </ImageWrapper> */}
+
         </Link>
         
       </>

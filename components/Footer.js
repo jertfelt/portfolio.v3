@@ -13,7 +13,12 @@ height:20vh;
 bottom:100;
 align-items:center;
 justify-content:center;
-background-color:${({theme}) => theme.colors.grey};
+background:${({theme}) => theme.colors.lavendel};
+@media screen and ${device.maxmobile}{
+height:10vh;
+bottom:120;
+padding:0;
+}
 `
 
 
@@ -33,7 +38,7 @@ a{
   color: ${({theme}) => theme.colors.white};
   &:hover{
     color:${({theme}) => theme.colors.lightblue};
-    background-color:black;
+    background-color:${({theme}) => theme.colors.vividblue};
   }
 }`
 

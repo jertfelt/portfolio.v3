@@ -43,9 +43,9 @@ border:solid 2px;
 font-size:18px;
 &:hover, &:active {
   border-color:transparent;
-  color:white;
   border-radius: ${({theme}) => theme.borderradius.second};
-  background-color:black;
+  background-color:${({theme}) => theme.colors.white};
+  color:${({theme}) => theme.colors.vividblue};
 }
 `
 

@@ -8,10 +8,10 @@ min-height:80vh;
 margin-top:2rem;
 padding:2rem;
 padding-bottom: ${({theme}) => theme.paddingSizes.medium};
-width:100%;
 background-color: transparent;
 position: relative;
 z-index:1;
+@media screen and ${device.maxtablet}{ background-color:${({theme}) => theme.colors.lavendel};}
 
 &::before {
   top: 0;
@@ -54,23 +54,30 @@ z-index:1;
 
 const GridThree = styled.div`
 display:grid;
-grid-template-columns: .5fr .2fr .7fr;
+@media screen and ${device.laptop}{
+grid-template-columns: .5fr .2fr .7fr;}
+
 justify-items:start;
 align-items:start;
 column-gap:2rem;
 padding:5em;
-
 margin:5em;
 div{
   text-align:center;
   display:flex;
   flex-wrap:wrap;
-   background-color: ${({theme}) => theme.colors.black};
+    background-color: ${({theme}) => theme.colors.purple};
     border-radius: ${({theme}) => theme.borderradius.second};
   &:hover{
-    background-color: ${({theme}) => theme.colors.black};
+    background-color: ${({theme}) => theme.colors.vividblue};
     border-radius: ${({theme}) => theme.borderradius.first};
-    filter: drop-shadow(0 2mm 4mm #344ce6);
+    filter: drop-shadow(0 2mm 4mm #856530);
+  }
+  @media screen and ${device.maxtablet}{
+    max-width:500px;
+  }
+  @media screen and ${device.maxmobile}{
+    background-color:transparent;
   }
   padding:1rem;
   padding-bottom:3rem;
@@ -93,6 +100,10 @@ blockquote{
     margin-top:-2rem;
     font-size:18px;
   }
+}
+@media screen and ${device.maxtablet}{
+  gap:3rem;
+  padding:0;
 }
 
 `

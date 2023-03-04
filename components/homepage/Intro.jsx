@@ -6,7 +6,11 @@ import { ContactButton } from "../styles/Button.styled";
 
 const PageWrapper = styled.div`
 ${flex};
-height:100vh;
+@media screen and ${device.maxtablet}{ 
+  display:flex;
+  flex-direction:column;
+  
+}
 `
 const Heading = styled.h1`
 transition: all 0.5s ease-out;
@@ -18,24 +22,35 @@ line-height:3.7rem;
   @media only screen and (max-width: 700px
   ){
   font-size:48px;
-  line-height:1rem;
+  line-height:3rem;
   }
   @media only screen and (max-width: 500px
     ){
     font-size:40px;
-    line-height:1rem;
+    line-height:3rem;
     }
-  
 `
 
 const HeroPic = styled(Image)`
 transition: all .8s ease-out;
-filter: drop-shadow(0 6mm 4mm #344ce6);
+filter: drop-shadow(0 6mm 4mm #867794);
 transform: rotate(10deg);
 overflow: hidden;
-border-radius: ${({theme}) => theme.borderradius.second};
+border-radius: ${({theme}) => theme.borderradius.fourth};
 height:300px;
 width:300px;
+@media screen and ${device.maxtablet}{ 
+  height:200px;
+  width:200px;
+  filter: drop-shadow(0 2mm 1mm #867794);
+  position:fixed;
+  z-index:-1;
+  top:10%;
+  right:20%;;
+}
+@media screen and ${device.maxmobile}{
+  display:none;
+}
 `
 
 
@@ -63,7 +78,7 @@ font-size:20px;
 `
 
 const Grid = styled.div`
-padding-top:10em;
+padding-bottom:10rem;
 display: grid;
 grid-template-columns: 1fr 2fr;
   grid-template-rows: auto;
@@ -71,6 +86,13 @@ grid-template-columns: 1fr 2fr;
   align-items: start;
   column-gap: 50px;
   row-gap: 10px;
+  @media screen and ${device.maxtablet}{ 
+    display:flex;
+    flex-direction:column-reverse;
+    div{
+      z-index:2;
+    }
+  }
 
 `
 

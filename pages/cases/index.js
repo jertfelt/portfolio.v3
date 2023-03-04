@@ -30,16 +30,18 @@ h1{
   text-transform: uppercase;
   margin-bottom:-1rem;
   color:${({theme}) => theme.colors.lightblue}
+  
 }
 
 a{
   text-decoration: none;
   color: ${({theme}) => theme.colors.lightblue};
-  padding:2rem;
-  background-color: ${({theme}) => theme.colors.purple};
-  border-radius:29px;
-  text-align:center;
+  padding:1rem;
+  background-color: transparent;
+  border-radius:59px;
+  text-align:left;
   &:hover{
+    text-align:center;
     color: ${({theme}) => theme.colors.white};
     border-radius:${({theme}) => theme.borderradius.third};
     background-color:${({theme}) => theme.colors.vividblue};

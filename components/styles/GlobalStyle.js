@@ -8,9 +8,7 @@ body {
   color: ${({theme}) => theme.colors.white};
 }
 
-* {
-  box-sizing: border-box;
-}
+
 `
 export default GlobalStyle;
 
