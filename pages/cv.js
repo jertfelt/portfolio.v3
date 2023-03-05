@@ -9,44 +9,35 @@ import { SquigglyLine } from "../components/styles/Line.styled";
 import Nackademin from "../components/homepage/Nackademin";
 import {work, education} from "../data/cv";
 import Link from "next/link";
-import kollektivsorg from "../public/img/kollektiv-sorg-samples.png"
-import Image from "next/image";
+import { courses } from "../data/courses";
+import CountingUp from "../components/homepage/counter";
 const workDb = work;
 const educationDB = education;
 
 
-// const initialState = {
-//   count: 0
-// }
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case 'increment':
-//       return {count: state.count + 1};
-//     case 'decrement':
-//       return {count: state.count - 1};
-//     default:
-//       throw new Error();
-//   }
-// }
-
 const Content = styled.section`
 h1{
+  border-radius: ${({theme}) => theme.borderradius.first};
+  background-color:${({theme}) => theme.colors.vividblue};
+  padding:2rem;
   color:${({theme}) => theme.colors.lightblue}
 }
-margin-top:3rem;
-padding-top:5em;
+padding-top:2em;
 ${flex}
 font-family:Roboto;
+padding-bottom:10em;
 `
 const IntroParagraph = styled.p`
 line-height:150%;
-padding:2rem;
-width:90%;
+width:50%;
 `
 const Heading = styled.span`
 ${flex({align:"center", justify:"space-around"})}
 a{color:${({theme}) => theme.colors.lightblue};
+font-weight:bold;
+&:hover{
+border-radius: ${({theme}) => theme.borderradius.fourth};
+background-color:${({theme}) => theme.colors.vividblue}; }
 text-decoration:none;}
 `
 const Title = styled.h1`
@@ -56,17 +47,13 @@ line-height:1rem;
 margin-bottom:2rem;`
 
 const CVContent=styled.div`
-padding:2em;
-padding-top:-1rem;
 h2{
-  font-family: Arya;font-size: ${({theme}) => theme.fontSizes.mediumlarge};
+  font-family: Arya;
+  font-size: ${({theme}) => theme.fontSizes.mediumlarge};
   text-decoration:underline;
   text-transform:uppercase;
-  text-align:center;
+  text-align:left;
 }
-@media only screen and (${device.tablet}){
-  padding:5em;
-  }
 `
 
 const Row = styled.div`
@@ -78,7 +65,7 @@ ${flex}
 }`
 
 const GridItem = styled.article`
-  max-width:80%;
+  max-width:70%;
 h3{
   font-family:"Arya";
   font-size:${({theme}) => theme.fontSizes.large};
@@ -98,30 +85,28 @@ img{
   border-radius: 50%;
   margin-top:1rem;
 }
- 
+
 ${props => 
   props.work && 
   css`
   &:hover{
     border-radius:${({theme}) => theme.borderradius.third};
-    background-color:${({theme}) => theme.colors.black};
+    background-color:${({theme}) => theme.colors.vividblue};
   }
   `}
   ${props => 
     props.workBlob && 
     css` 
-    border-radius:${({theme}) => theme.borderradius.second};
-    background-color:${({theme}) => theme.colors.black};
-    height:180px;
+    border-radius:${({theme}) => theme.borderradius.fourth};
+    &:hover{
+      border-radius:${({theme}) => theme.borderradius.third};
+    }
+    background-color:${({theme}) => theme.colors.vividblue};
     @media only screen and (${device.laptop}){
-    max-height:200px;
-      width:80%;
-        h3{
-          padding-left:8rem;
-        }
-        p{
-          padding-left:8rem;
-        }
+    max-height:220px;
+      width:70%;
+      margin-left:-4rem;
+      padding-left:4rem;
       }
     `}
 
@@ -143,19 +128,108 @@ const Work = styled.section`
 width:100%;
 padding-bottom:2rem;`
 
-const Education =styled.section`
-background-color: ${({theme}) => theme.colors.purple};
-width:100%;
+const Arbete = styled.section`
+background-color: ${({theme}) => theme.colors.yellow};
+width:80%;
 position: relative;
 z-index:1;
 padding-bottom:3rem;
-padding-top:3rem;
+padding-top:rem;
+padding:2rem;
+margin-top:4rem;
 margin-bottom:5em;
 
 &::before {
   top: 0;
   -webkit-transform: skewY(-4deg);
-  transform: skewY(-3deg);
+  transform: skewY(-4deg);
+  -webkit-transform-origin: 0% 0;
+  transform-origin: 0% 0;
+  background: inherit;
+  content: "";
+  display: block;
+  height: 30%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}
+
+&::after {
+  background: inherit;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  bottom: 0;
+    -webkit-transform: skewY(-4deg);
+  transform: skewY(-4deg);
+  -webkit-transform-origin: 100%;
+  transform-origin: 100%;
+}
+`
+
+const Wisdom =styled.section`
+background-color: ${({theme}) => theme.colors.vividblue};
+width:80%;
+position: relative;
+z-index:1;
+padding-bottom:3rem;
+padding-top:3rem;
+padding:2rem;
+margin-bottom:5em;
+
+&::before {
+  top: 0;
+  -webkit-transform: skewY(-4deg);
+  transform: skewY(-4deg);
+  -webkit-transform-origin: 0% 0;
+  transform-origin: 0% 0;
+  background: inherit;
+  content: "";
+  display: block;
+  height: 30%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}
+
+&::after {
+  background: ${({theme}) => theme.colors.vividblue};
+  content: '';
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  bottom: 0;
+  
+  -webkit-transform: skewY(8deg);
+  transform: skewY(8deg);
+  -webkit-transform-origin: 100%;
+  transform-origin: -10%;
+}
+`
+
+const Education =styled.section`
+background-color: ${({theme}) => theme.colors.brown};
+width:80%;
+position: relative;
+z-index:1;
+padding-bottom:3rem;
+padding-top:3rem;
+padding:2rem;
+margin-bottom:5em;
+
+&::before {
+  top: 0;
+  -webkit-transform: skewY(-4deg);
+  transform: skewY(-4deg);
   -webkit-transform-origin: 0% 0;
   transform-origin: 0% 0;
   background: inherit;
@@ -183,24 +257,17 @@ margin-bottom:5em;
   -webkit-transform-origin: 100%;
   transform-origin: 100%;
 }
-
 `
 
-const Erfarenhet = styled.section`
-width:100%;
-margin-top:-5em;
-margin-bottom:-10em;
-padding-top:7em;
-padding-bottom:13em;
-
-${flex}
+const Erfarenhet = styled.div`
 h4{
   margin-top:1rem;
   margin-bottom:-1rem;
   &:hover{
     transition: transform 250ms;
     transform: translateY(-4px);
-    background-color:black;
+    background-color:${({theme}) => theme.colors.yellow};
+    border-radius:${({theme}) => theme.borderradius.fourth};
   }
   padding:1rem;
   line-height:1.8rem;
@@ -216,39 +283,59 @@ li{
   font-size:${({theme}) => theme.fontSizes.medium};
 `
 const Knapp = styled.button`
-padding:10px;
+padding:18px;
 font-size:${({theme}) => theme.fontSizes.mediumsmall};
-background-color:${({theme}) => theme.colors.grey};
-border:none;
-border-radius:19px;
-color:${({theme}) => theme.colors.white};
-font-weight: bold;
+border-color:${({theme}) => theme.colors.white};
+background:transparent;
+border-radius:${({theme}) => theme.borderradius.second};
+color:${({theme}) => theme.colors.lightblue};
+border:solid;
 cursor: pointer;
+max-width:50%;
 &:hover{
-  background-color:${({theme}) => theme.colors.vividblue};
+  border-color:${({theme}) => theme.colors.white};
+  color:${({theme}) => theme.colors.white};
 }
 &:active{
-  background-color:${({theme}) => theme.colors.black};
+  background-color:${({theme}) => theme.colors.lightblue};
+  border:none;
 }
 &:focus{
-  background-color:${({theme}) => theme.colors.black};
+  background-color:transparent;
+  color:${({theme}) => theme.colors.white};
 }
 `
 const LikeButt = styled.button`
-margin-left:5em;
 padding:10px;
-background-color:${({theme}) => theme.colors.vividblue};
+border-radius:${({theme}) => theme.borderradius.fourth};
+background-color:${({theme}) => theme.colors.purple};
 border:none;
 border-radius:19px;
 color:${({theme}) => theme.colors.white};
 &:focus{
-  background-color:${({theme}) => theme.colors.black};
+  background-color:${({theme}) => theme.colors.brown};
 }
 &:active{
-  background-color:${({theme}) => theme.colors.black};
+  background-color:${({theme}) => theme.colors.brown};
 }
 &:hover{
   cursor: pointer;
+}
+`
+
+const BlobInGrid = styled.div`
+margin-top:-2rem;
+padding:0;
+display:flex;
+align-items:center;
+gap:1rem;
+span{
+
+
+  margin:0;
+  padding:0;
+  margin-bottom:1rem;
+  
 }
 `
 
@@ -256,6 +343,7 @@ const CVpage = () => {
 
   const [notShow, setNotShow] = useState(true);
   const [showFb, setShowFb] = useState(false)
+  const [doneCourses, setCourses] = useState([]);
     //*------from cv.js in data, instead of fb:
 
   // const [state, dispatch] = useReducer(reducer, initialState);
@@ -274,6 +362,12 @@ const fetchData = useCallback(async () => {
 })
 
 useEffect(() => {
+  setCourses(courses.filter(item => (item.done === true)))
+  }, [])
+
+const done = (doneCourses.length/courses.length *100);
+
+useEffect(() => {
   fetchData().catch(console.error)
   if(workData){
     
@@ -289,7 +383,7 @@ useEffect(() => {
 //both:
 const [likes, setLikes] = useState(0);
 const [show, setShow] = useState(false);
-const [buttonMsg, setButtonMsg] = useState("Läs mer om vad jag gör på Nackademin")
+const [buttonMsg, setButtonMsg] = useState("Läs mer om frontend på Nackademin")
 
 
 const reveal = () => {
@@ -318,14 +412,22 @@ function handleClick() {
         <Title>CV</Title>
         <IntroParagraph>Här följer relevant urval av jobb, utbildningar och erfarenheter som har med frontend att göra. Se gärna hela mitt cv på <Link href="https://www.linkedin.com/in/tovajertfelt/">Linkedin.</Link></IntroParagraph>
         </Heading>
-      <Line/>
-      {showFb && <>
-      <Work>
-      <CVContent>
-      <h2>Arbete</h2>
-      <Grid cv>
-        
-        {workData && workData.map((item,index) =>(
+
+      <Arbete>
+    <CVContent>
+    <h2>Arbete</h2>
+    <Grid cv>
+      
+      {showFb ? workData.map((item,index) =>(
+      <GridItem 
+      work
+      key={index}>
+        <Period>{item.period}</Period>
+      <h3>{item.workplace}</h3>
+      <h4>{item.title}</h4>
+      <Bread>{item.text}</Bread>
+      </GridItem>
+      )) : dbWork.map(item => item).map((item,index) =>(
         <GridItem 
         work
         key={index}>
@@ -334,31 +436,60 @@ function handleClick() {
         <h4>{item.title}</h4>
         <Bread>{item.text}</Bread>
         </GridItem>
-        ))}
-        <GridItem workBlob>
-          <h3>Praktik!
-          </h3>
-          <Bread>Just nu går jag praktik som frontendare hos Vinnovera, Stockholm.
-          Våren 2023: praktiserande junior konsult hos Society Icon.
-          </Bread>
-        </GridItem>
-        </Grid>
-        </CVContent>
-      </Work>
+        ))
+      
+      }
+      <GridItem workBlob>
+        <h3>Praktik!
+        </h3>
+        <Bread>Just nu går jag praktik som frontendare hos Vinnovera, Stockholm.
+        Våren 2023: praktiserande junior konsult hos Society Icon.
+        </Bread>
+      </GridItem>
+      </Grid>
+      
+      </CVContent>
+      </Arbete>
       <Education>
       <CVContent>
       <h2>Utbildning</h2> 
       <Grid cv>
         
-        {education && education.map((item,index) =>(
+        {showFb ? education.map((item,index) =>(
         <GridItem 
         key={index}>
         <Period>{item.period}</Period>
         <h3>{item.school}</h3>
         <h4>{item.title}</h4>
+
         <Bread>{item.text}</Bread>
+        {item.school === "Nackademin" &&  
+        <BlobInGrid>
+          <h3>Process:</h3>
+              <CountingUp
+          number={done}
+          percent ={true}
+          />
+         
+          </BlobInGrid>}
         </GridItem>
-        ))}
+        )) : dbEd.map(item => item).map((item,index) =>(
+          <GridItem 
+          key={index}>
+            <Period>{item.period}</Period>
+          <h3>{item.school}</h3>
+          <h4>{item.title}</h4>
+         
+          <Bread>{item.text}</Bread>
+          {item.school === "Nackademin" &&  
+        <BlobInGrid>
+              <CountingUp
+          number={done}
+          percent ={true}
+          />
+          </BlobInGrid>}
+          </GridItem>
+          ))}
         <Knapp 
           aria-label="button"
           type="button"
@@ -371,64 +502,12 @@ function handleClick() {
       </Row> }
       </CVContent>
       </Education>
-      </>}
-      
-      {notShow && <>
-        <Work>
-      <CVContent>
-      <h2>Arbete</h2>
-      <Grid cv>
-        
-        {dbWork && dbWork.map(item => item).map((item,index) =>(
-        <GridItem 
-        work
-        key={index}>
-          <Period>{item.period}</Period>
-        <h3>{item.workplace}</h3>
-        <h4>{item.title}</h4>
-        <Bread>{item.text}</Bread>
-        </GridItem>
-        ))}
-        <GridItem workBlob>
-          <h3>Praktik!
-          </h3>
-          <Bread>Just nu går jag praktik som frontendare hos Vinnovera, Stockholm.</Bread>
-        </GridItem>
-        </Grid>
-        </CVContent>
-      </Work>
-      <Education>
-      <CVContent>
-      <h2>Utbildning</h2> 
-      <Grid cv>
-        {dbEd && dbEd.map(item => item).map((item,index) =>(
-        <GridItem 
-        key={index}>
-        <Period>{item.period}</Period>
-        <h3>{item.school}</h3>
-        <h4>{item.title}</h4>
-        <Bread>{item.text}</Bread>
-        </GridItem>
-        ))}
-         <Knapp 
-         aria-label="button"
-         type="button"
-         onClick={reveal}>{buttonMsg}</Knapp>
-        </Grid>
-       
-        {show && <>
-      <Nackademin/>
-
-      </> }
-      </CVContent>
-      </Education>
-      
-      </>}
+ 
+      <Wisdom>
       <Erfarenhet>
       
       <CVContent>
         <h2>Erfarenhet</h2>
-       
         <Grid cverfarenhet> 
         <GridItem>
           <h3>Techstack</h3>
@@ -480,28 +559,15 @@ function handleClick() {
             <li>Github</li>
           </ul>
         </GridItem>
-        {/* <GridItem>       
-          <Image 
-            src={kollektivsorg}
-                width={400}
-                heigh={250}
-                alt="Bild på min grafiska profil åt Kollektiv Sorg"/>
-        </GridItem> */}
       </Grid>
       
       </CVContent>
       <LikeButt onClick={handleClick}>Likes ({likes})</LikeButt>
       </Erfarenhet>
+      </Wisdom>
       </Content>
     </Container>
    );
 }
  
 export default CVpage;
-
-  
-      {/* <>
-      Count: {state.count}
-      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
-    </> */}

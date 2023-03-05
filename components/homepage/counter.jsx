@@ -24,7 +24,6 @@ padding:2rem;
   padding:0rem;
   padding-bottom:1rem;
   background-color:transparent;
-  
 }
 `
 const Text = styled.p`
@@ -36,14 +35,14 @@ const CountingUp = ({number, percent, text}) => {
   return ( 
     <NumberSpan>
     <BigNumber>
-     <CountUp 
-     start={0} 
-     end={number} 
-     duration={2} 
-     delay={0}/>
-     {percent && <>%</>}
-     </BigNumber>
-     <Text>{text}</Text>
+    <CountUp 
+      start={0} 
+      end={number} 
+      duration={2} 
+      delay={0}/>
+    {percent && <>%</>}
+    </BigNumber>
+    <Text>{text}</Text>
     </NumberSpan>     
    );
 }

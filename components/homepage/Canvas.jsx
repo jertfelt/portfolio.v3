@@ -2,14 +2,11 @@ import { Doughnut } from "react-chartjs-2";
 import 'chart.js/auto';
 import styled from "styled-components";
 
-
-import {Bar} from "react-chartjs-2";
-
 const DougnoutItem = styled(Doughnut)`
-margin-top:3rem;
+max-width:100px;
+max-height:100px;
 `
 const Canvas = ({data, options}) => {
-
   return (
       <DougnoutItem 
       data={data}
