@@ -54,18 +54,18 @@ h1{
 p{
   font-size:${({theme}) => theme.fontSizes.medium};
   margin-top:-3rem;
-  padding-bottom:2rem;
 }
 `
 const Info= styled.div`
 
 h3{
   text-transform: uppercase;
+  text-align:center;
   font-size:${({theme}) => theme.fontSizes.large};
-  @media screen and (max-width:500px){
-    margin-top:-2rem;
-    padding-left:1rem;
-  }
+  border-radius:${({theme}) => theme.borderradius.second};
+  background:${({theme}) => theme.colors.vividblue};
+  max-width:300px;
+  padding:10px;
 }
 p{
   width:90%;
@@ -89,10 +89,14 @@ p{
 }
   color: ${({theme}) => theme.colors.white};
   a{
+  
+    padding:4px;
+    border-radius:${({theme}) => theme.borderradius.second};
     color: ${({theme}) => theme.colors.lightblue};
+    font-weight:bold;
     text-decoration: none;
     &:hover{
-      text-transform: uppercase;
+      background:${({theme}) => theme.colors.brown};
     }   
   }
 }
@@ -106,9 +110,12 @@ ${flex({direction: "row", align:"center", justify:"space-between"})}`
 const Arrows = styled(Image)`
 height: 40px;
 width: 40px;
+border-radius:${({theme}) => theme.borderradius.fourth};
+padding:1rem;
 &:hover{
   transform: skewY(5deg);
-  background-color:${({theme}) => theme.colors.vividblue};
+  
+  background-color:${({theme}) => theme.colors.brown};
 }
 `
 const ImageWrapper= styled.div`
@@ -197,6 +204,13 @@ line-height:150%;
 `
 const Tech = styled.div`
 font-size:20px;
+background-color: ${({theme}) => theme.colors.vividblue};
+padding:1rem;
+text-align:center;
+ul{
+  list-style:none;
+}
+border-radius:${({theme}) => theme.borderradius.second};
 `
 
 
@@ -212,8 +226,8 @@ ${flex({direction: "column-reverse"})}
 const IndividualPage = ({array, id}) => {
 
   const [imageSize, setSmageSize] = useState({
-    width: 800,
-    height: 800
+    width: 500,
+    height: 500
    });
 
   let individual = array.filter(item => {
@@ -357,7 +371,7 @@ console.log(individual)
         
         <Row>
           <Tech>
-          <h3>Följande tekniker var krav:</h3>
+          <h3>Techstack:</h3>
           <ul>
           {item.moreinfo.teknik.map((item, index) => (
             <li key={index}>{item}</li>

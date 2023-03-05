@@ -17,22 +17,30 @@ import { cases } from "../../data/cases";
 
 const casesDb = {cases};
 
-const Content = styled.section`
-min-height:130vh;
-${flex}
+const Header = styled.div`
+padding:2em;
+padding-left:5em;
 font-family: Roboto;
-padding-top:3em;
-
 h1{
-  margin-top:6rem;
   font-family:Arya;
   font-size:${({theme}) => theme.fontSizes.xlarge};
   text-transform: uppercase;
-  margin-bottom:-1rem;
-  color:${({theme}) => theme.colors.lightblue}
-  
+  color:${({theme}) => theme.colors.lightblue};
+  background: ${({theme}) => theme.colors.brown};
+  border-radius: ${({theme}) => theme.borderradius.fourth};
+  padding:1rem;
 }
+`
+const Row = styled.div`
+display:flex;
+align-items:center;
+gap:2rem;
+`
 
+const Content = styled.section`
+padding:0;
+${flex}
+font-family: Roboto;
 a{
   text-decoration: none;
   color: ${({theme}) => theme.colors.lightblue};
@@ -57,25 +65,14 @@ a{
     }
 }
 .second{
-
   color: ${({theme}) => theme.colors.white};
-  
   &:hover{
     border-radius:${({theme}) => theme.borderradius.second};
-    background-color:${({theme}) => theme.colors.black};
+    background-color:${({theme}) => theme.colors.yellow};
     color: ${({theme}) => theme.colors.white};
     }
 }
 `
-const Intro = styled.div`
-${flex({direction:"column"})}
-
-@media screen and ${device.tablet}{
-  ${flex({direction:"row"})}
-  width:80%;
-gap:30px;
-}
-margin-bottom:1rem;`
 
 const Text = styled.p`
 max-width:80%;
@@ -122,16 +119,16 @@ select::-ms-expand {
   font-family: Arya;
   margin-top:1rem;
   width: 100%;
-  min-width: 15ch;
+  min-width: 10ch;
   max-width: 30ch;
-  border: 1px solid ${({theme}) => theme.colors.purple};
+  border: 1px solid ${({theme}) => theme.colors.brown};
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
   font-size: 1.25rem;
   cursor: pointer;
   line-height: 1.1;
   background-color: ${({theme}) => theme.colors.white};
-  background-image: linear-gradient(to top, ${({theme}) => theme.colors.lightblue}, ${({theme}) => theme.colors.white}33%);
+  background-image: linear-gradient(to top, ${({theme}) => theme.colors.lavendel}, ${({theme}) => theme.colors.white} 13%);
   display: grid;
   grid-template-areas: "select";
   align-items: center;
@@ -149,7 +146,7 @@ select,
   content: "";
   width: 0.8em;
   height: 0.5em;
-  background-color: ${({theme}) => theme.colors.purple};
+  background-color: ${({theme}) => theme.colors.brown};
   clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 }
 
@@ -159,14 +156,18 @@ option{
 `
 const Show = styled.div`
 margin-bottom:3rem;
+padding-top:2rem;
 ${flex({direction:"column-reverse"})}
 `
 
 const WordCloud = styled.div`
-width:80%;
+background:${({theme}) => theme.colors.brown};
+border-radius:${({theme}) => theme.borderradius.third};
+width:60%;
 padding:1rem;
 h3{
   text-align:center;
+  font-size:2rem;
   text-transform: uppercase;
 }
 div{
@@ -196,8 +197,7 @@ const Tag = styled.p`
 ${flex({align:"flex-start", justify: "flex-start"})}
 font-size:18px;
 &:hover{
-  font-size:20px;
-  background-color: ${({theme}) => theme.colors.purple};
+  color: ${({theme}) => theme.colors.purple};
 }
 `
 
@@ -265,33 +265,19 @@ const checkOption =(e)=>{
 
   return (
     <Container xlarge>
-      <Content>
-      <h1>Cases:</h1>
-      
-      <Intro>
+    <Header>
+      <Row>
+            <h1>Cases:</h1>
       <Text>Här är projekt jag jobbat på. De flesta är skoluppgifter under min tid på Nackademin, andra är egna projekt och/eller projekt jag deltar/tagit på under min praktik.
       </Text>
+      
+      </Row>
+      
+    </Header>
+      <Content>
       <Filter>
         <label htmlFor="selectfilter">Välj ett ämne:</label>
         <span className="selectmenu">
-{/* 
-        {result && <>
-        {!tags &&<>Går ej att filtrera just nu</>}
-          {tags && <>
-          <select id="selectfilter"
-          onChange={(checkOption)}>
-              <option 
-              value="showMeAll">Visa alla!</option>
-                {tags.map((item, index) => 
-                (
-                  <option 
-                  key= {index}
-                  value={item}>{capitalize(item)}
-                    </option>
-                ))}
-          </select>
-          </>}
-          </>} */}
 
           {cases && <>
           {tag && <>
@@ -311,42 +297,9 @@ const checkOption =(e)=>{
           </>}
         </span>
       </Filter>
-      </Intro>
-      {/* {result && <>
-      {showFilter && <>
-      <div>
-      <CaseList
-      array = {filter}
-      >
-      </CaseList>
-      <p>Antal: {filter.length}</p>
-      </div>
-      </>}
-
-      {showAll && <>
-      <div>
-      <CaseList
-      array = {result}
-      >
-      </CaseList>
-      <p>Antal: {result.length}</p>
-      </div>
-      </>
-      }
-      <WordCloud>
-          <div>
-        {ogTag.map((item,index) => (
-        <p key={index}>#
-          {capitalize(item)}</p>
-        ) )}
-        </div>
-      </WordCloud>
-      </>
-      } */}
-
+    
       {cases && <>
       {loading ?   <SpinnerLoading/>
-   
       :<>
       {showFilter && <>
       <Show>
@@ -374,7 +327,6 @@ const checkOption =(e)=>{
       <CaseList
       array = {cases}
       />
-     
       </Show>
       <WordCloud>
       <h3>Tags:</h3>
