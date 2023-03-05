@@ -4,8 +4,6 @@ import GlobalStyle from "../components/styles/GlobalStyle";
 import '../styles/globals.css'
 import { theme } from "../components/styles/theme";
 
-
-
 const MyApp = ({ Component, pageProps }) => {
   return (
   <>
@@ -15,7 +13,6 @@ const MyApp = ({ Component, pageProps }) => {
       </Layout>
       <GlobalStyle/>
   </ThemeProvider>
- 
   </>
  )
 }
